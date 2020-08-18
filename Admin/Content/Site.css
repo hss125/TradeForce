@@ -1,0 +1,7 @@
+﻿.imain-content { padding: 0 12px }
+.layer-win { position: fixed; box-shadow: 1px 1px 50px rgba(0,0,0,.3); background: #fff; left: 50%; top: 50%; transform: translate(-50%,-50%); }
+.layer-win .lw-body { max-height: calc(100vh - 61px); overflow-y: auto;margin:6px 0 }
+.layer-win .lw-title { padding: 0 15px 0 20px; height: 38px; line-height: 38px; border-bottom: 1px solid #eee;overflow: hidden; background-color: #F8F8F8; border-radius: 2px 2px 0 0; }
+.win-shade { top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,.4); position: fixed; }
+.layer-win .lw-title > label { float: right;  }
+.layer-win .lw-title > label i { font-size: 20px; color: #666;cursor:pointer}

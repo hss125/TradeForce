@@ -1,0 +1,158 @@
+﻿@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    ViewBag.NavIndex = 4;
+}
+@using TradeForce.Models;
+@model product
+@{ 
+    var cla = ViewBag.classify as classify;
+    string name = "Tools";
+    if (cla.Type == "1")
+    {
+        name = "Safety";
+    }
+    else if (cla.Type == "2")
+    {
+        name = "Accessories";
+    }
+}
+<link href="~/Content/Css/ProductDetail.css" rel="stylesheet" />
+<div class="ban01">
+    <img src="/Content/Img/Products/products_banner.jpg" />
+</div>
+<div class="main-bd" style="width:1020px">
+    <h2 class="crumbs">Products  > <a href="/Product/Index?type=@cla.Type">@name</a>  >  <a href="Product/Product?classify=@cla.Id">@cla.Name</a> </h2>
+    <div class="pro-ms clear">
+        <div class="pm-left">
+            <div id="showbox">
+                @if (!string.IsNullOrEmpty(Model.ImgUrl))
+                {
+                    var imgs = Model.ImgUrl.Split('|');
+                    foreach (var img in imgs)
+                    {
+                        <img src="@ViewBag.AdminUrl/Upload/Product/@img" width="440" height="440" style="display: none" />
+                    }
+                }
+            </div>
+            <div>
+                <a href="javascript:void(0);" id="showlast"></a>
+                <div id="showsum"></div>
+                <a href="javascript:void(0);" id="shownext"></a>
+            </div>
+        </div>
+        <div class="pm-right">
+            <h2>@Model.Name</h2>
+            <div class="pmr-con">
+                <div style="min-height: 335px;">
+                    <div class="wheretobuy">
+                        <div class="wtb-bt">
+                            <div class="l2 select">Product Description</div>
+                            <div class="l1">Where to buy</div>
+                        </div>
+                        <div class="wtb0">
+                            <pre>@Model.Describe</pre>
+                            @{
+                                if (!string.IsNullOrWhiteSpace(Model.Features))
+                                {
+                                    var feat = Model.Features.Split('|');
+                                    <h3>Features</h3>
+                                    foreach (var f in feat)
+                                    {
+                                        <p class="p2">@f</p>
+                                    }
+                                }
+                                if (!string.IsNullOrWhiteSpace(Model.Quality))
+                                {
+                                    var qual = Model.Quality.Split('|');
+                                    <h3>Quality assurance</h3>
+                                    foreach (var f in qual)
+                                    {
+                                        <p class="p2">@f</p>
+                                    }
+                                }
+                            }
+                        </div>
+                        <div class="wtb1">
+                            <p>Slip Joint Pliers are versatile pliers with a movable joint designed to grip larger materials and provide additional leverage. Made from drop-forged steel, this durable tool features a low-profile design for easy access to small spaces. The double dipped grip provides a comfortable firm grip with powerful leverage.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="file">
+                    <img src="/Content/Img/Products/pro_ico.png" />
+                    <span class="format">PDF</span>
+                    <span class="name">
+                        <a href="http://localhost:64919/Upload/PDF/@Model.PDF" download="">Product Datasheet</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pro-detail">
+        <h2>SPECIFICATION</h2>
+        <div class="pd-con">
+            @*<p>@Model.Describe</p>*@            
+            <div class="props">
+                @{
+                    var props = ViewBag.Props as List<productproperty>;
+                }
+                <table>
+                    @foreach (var p in props)
+                    {
+                        <tr>
+                            <td><i class="dot">•</i>@p.Name:</td>
+                            <td style="padding-left:140px">@p.Value</td>
+                            <td style="width:80%"></td>
+                        </tr>
+                    }
+                </table>
+                <div class="code-id"><label>Product code</label><label>ID</label></div>
+                <div class="code-id ci2"><label>@Model.ProductCode</label><label>@Model.ProductID</label></div>
+                @*@foreach (var p in props)
+                {
+                    <div class="prop-item"><span class="name">@p.Name</span><span class="value">@p.Value</span></div>
+                }*@
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Action("LeftMenu", "Product")
+<script src="/Content/Js/jqzoom.js"></script>
+<script type="text/javascript">
+    $(".wtb-bt>div").click(function () {
+        $(this).addClass("select").siblings().removeClass("select");
+        $(".wtb0,.wtb1").hide();
+        $(".wtb" + $(this).index()).show();
+    })
+    $(document).ready(function () {
+        var showproduct = {
+            "boxid": "showbox",
+            "sumid": "showsum",
+            "boxw": 440,
+            "boxh": 440,
+            "sumw": 60,
+            "sumh": 60,
+            "sumi": 7,
+            "sums": 5,
+            "sumsel": "sel",
+            "sumborder": 1,
+            "lastid": "showlast",
+            "nextid": "shownext"
+        };
+        $.ljsGlasses.pcGlasses(showproduct);
+    });
+    function downloadPdf(id) {
+        $.post("/Product/DownloadPdf", { id: id }, function (data) {
+            var res = JSON.parse(data);
+            if (res.isLogin) {
+                $("#pdfdl").remove();
+                $("body").append('<a id="pdfdl" href="http://localhost:64919/Upload/PDF/' + res.url + '" download="">下载</a>');
+                $("#pdfdl")[0].click();
+            }
+            else {
+                alert("未登录或登录信息已过期！");
+            }
+        })
+    }
+</script>

@@ -1,0 +1,270 @@
+﻿@{ 
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@RenderSection("head", false)
+@using TradeForce.Models;
+@using Newtonsoft.Json;
+@{ 
+    var user =  new user();
+    if(ViewData["User"]!=null)
+    {
+        user = JsonConvert.DeserializeObject<user>(ViewData["User"].ToString());
+    }
+}
+<script src="~/Scripts/vue.js"></script>
+<script src="~/Content/Lib/layer/layer.js"></script>
+<script>
+    var Store = { lang: {} };
+</script>
+<div class="head-placehoder"></div>
+<div id="head">
+    @*<div class="head-user">
+        <div class="user-bd">
+            <i class="h-icon lang-ico"></i>
+            <dl>
+                <dt><span>{{lang.lang}}</span></dt>
+                <dd>
+                    <ul>
+                        <li v-on:click="langSwitch('en')">Britain / English</li>
+                        <li v-on:click="langSwitch('fr')">France / Français</li>
+                        <li>Italia / Italiano</li>
+                        <li>Nederland / Nederlands</li>
+                        <li>Norway / norsk språk</li>
+                        <li>Sweden / Svenska</li>
+                        <li>Finland / Suomalainen</li>
+                    </ul>
+                </dd>
+            </dl>
+            <span class="split-line"></span>
+            <span class="u-login">
+                <i class="h-icon"></i>
+                @if (user.Id == 0)
+                {
+                    <a href="/Account/Login">{{lang.login}}</a>
+                }
+                else
+                {
+                    <span>@user.UserName <span class="split-line"></span> </span><a href="/Account/Logout">LogOut</a>
+                }
+            </span>
+        </div>
+    </div>*@
+    <div class="menu-bd">
+        <div class="main-bd">
+            <span class="logo">
+                <a href="/Home/Index"><img src="/Content/Img/logo.png" /></a>                
+            </span>
+            <ul class="menu-first">
+                @*<li class="@(ViewBag.NavIndex==1?"select":"")"><a href="/Home/Index">{{lang.home}}</a></li>*@
+                <li class="@(ViewBag.NavIndex==2?"select":"")">
+                    <a href="/Home/About"v-text="lang.about"></a>
+                    @*<div class="menu-second">
+                        <div class="ms-left">
+                            <a href="/Home/About#brandstory">Brand Story</a>
+                            <a href="#">Our Mission</a>
+                            <a href="#">Our Vision</a>
+                            <a href="#">Our Values</a>
+                        </div>
+                        <div class="ms-right">
+                            <img src="/Content/Img/About/Menu_aboutus.jpg" />
+                            <h2>Any Job, any Where.</h2>
+                        </div>
+                    </div>*@
+                </li>
+                <li class="@(ViewBag.NavIndex==3?"select":"")"><a href="/Home/Customers" v-text="lang.customer"></a></li>
+                <li class="@(ViewBag.NavIndex==4?"select":"")">
+                    <a href="/Product/Index" v-text="lang.products"></a>
+                    <div class="menu-second">
+                        <div class="ms-left">
+                            <a href="/Product/Index?type=0">Tools</a>
+                            <a href="/Product/Index?type=1">Safety</a>
+                            <a class="dh" href="/Product/Index?type=2">Installation Accessories</a>
+                        </div>
+                        <div class="ms-right">
+                            <img src="~/Content/Img/Product_Navimg.png" />
+                            <h2>Any Job, any Where.</h2>
+                        </div>
+                    </div>
+                </li>
+                <li class="@(ViewBag.NavIndex==5?"select":"")">
+                    <a href="#" v-text="lang.mediaCenter"></a>
+                    <div class="menu-second">
+                        <div class="ms-left">
+                            <a href="/Media/News">News</a>
+                            <a href="#">Download</a>
+                        </div>
+                        <div class="ms-right">
+                            <img src="~/Content/Img/Media_Navimg.png" />
+                            <h2>Any Job, any Where.</h2>
+                        </div>
+                    </div>
+                </li>
+                <li class="@(ViewBag.NavIndex==6?"select":"")">
+                    <a href="#" v-text="lang.support"></a>
+                    <div class="menu-second ms-support">
+                        <div class="ms-left">
+                            <a href="/Home/Where">Where to buy</a>
+                            <a href="#">Quality Assurance</a>
+                            <a href="/Home/Contact">Contact us</a>
+                        </div>
+                        <div class="ms-right">
+                            <img src="~/Content/Img/Support_Navimg.png" />
+                            <h2>Any Job, any Where.</h2>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            @*<div class="head-search">
+                <input type="text" placeholder="请输入关键字" />
+                <i class="h-icon"></i>
+            </div>*@
+            <div class="user-bd">
+                <i class="h-icon lang-ico"></i>
+                <dl>
+                    <dt><span v-text="lang.lang"></span></dt>
+                    <dd>
+                        <ul>
+                            <li v-on:click="langSwitch(@((int)Lang.english))">Britain / English</li>
+                            <li v-on:click="langSwitch(@((int)Lang.French))">France / Français</li>
+                            <li>Italia / Italiano</li>
+                            <li>Nederland / Nederlands</li>
+                            <li>Norway / norsk språk</li>
+                            <li>Sweden / Svenska</li>
+                            <li>Finland / Suomalainen</li>
+                        </ul>
+                    </dd>
+                </dl>
+                <span class="split-line"></span>
+                <span class="u-login">
+                    <i class="h-icon"></i>
+                    @if (user.Id == 0)
+                    {
+                        <a href="/Account/Login" v-text="lang.login"></a>
+                    }
+                    else
+                    {
+                        <span>@user.UserName <span class="split-line"></span> </span><a href="/Account/Logout">LogOut</a>
+                    }
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+@RenderBody()
+<div id="foot">
+    <div class="ws-navigation">
+        <div class="main-bd">
+            <ul>
+                <li>
+                    <h3>{{lang.about}}</h3>
+                    <p><a href="/Home/About">About</a></p>
+                </li>
+                <li>
+                    <h3>{{lang.customer}}</h3>
+                    <p><a href="/Home/Customers">Customer</a></p>
+                </li>
+                <li>
+                    <h3>{{lang.products}}</h3>
+                    <p><a href="/Product/Index?type=0">Tools</a></p>
+                    <p><a href="/Product/Index?type=1">Safety</a></p>
+                    <p><a href="/Product/Index?type=2">Installation Accessories</a></p>
+                </li>
+                <li>
+                    <h3>{{lang.mediaCenter}}</h3>
+                    <p><a href="/Media/News">News</a></p>
+                    <p><a href="#">Download</a></p>
+                </li>
+                <li>
+                    <h3>{{lang.support}}</h3>
+                    <p><a href="/Home/Where">Where to Buy</a></p>
+                    <p><a href="/Home/Contact">Contact Us</a></p>
+                    <p><a href="#">Quality Assurance</a></p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="foot">
+        <div class="main-bd">
+            <div class="f-left">
+                © Copyright  2019 TradeForce. All rights reserved <label>|</label> Contact <label>|</label> Terms of Use <label>|</label> Privacy
+            </div>
+            <div class="f-right">
+                <a href="#" class="h-icon i1"></a>
+                <a href="#" class="h-icon i2"></a>
+                <a href="#" class="h-icon i3"></a>
+                <a href="#" class="h-icon i4"></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@RenderSection("foot", false)
+<script>
+    //$(".head-search .h-icon").click(function () {
+    //    if ($(".head-search").hasClass("inpt-show")) {
+
+    //    } else {
+    //        $(".head-search").addClass("inpt-show");
+    //    }
+    //})
+</script>
+<script src="~/Content/Lib/lang/lang.js"></script>
+<script>
+    function getCookie(c_name) {
+        //console.log(document.cookie);
+        if (document.cookie.length > 0) {
+            c_start = document.cookie.indexOf(c_name + "=")
+            if (c_start != -1) {
+                c_start = c_start + c_name.length + 1
+                c_end = document.cookie.indexOf(";", c_start)
+                if (c_end == -1)
+                    c_end = document.cookie.length
+                return unescape(document.cookie.substring(c_start, c_end))
+            }
+        }
+        return ""
+    }
+    function setCookie(name, value) {
+        var Days = 1;
+        var exp = new Date();
+        exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+        document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+
+    }
+    var app = new Vue({
+        el: '#head',
+        data: Store,
+        mounted: function () {
+            var lang = getCookie("lang");
+            lang = lang ? lang : 1;
+            this.getLang(lang);
+        },
+        methods: {
+            getLang: function (lan) {
+                var that = this;
+                that.lang = lang[lan];
+                //$.get("/Content/Lib/lang/" + lan + ".json", function (data) {
+                //    that.lang = data;
+                //});
+            },
+            langSwitch: function (lang) {
+                setCookie("lang", lang);
+                location.reload();
+            }
+        }
+    })
+    var app2 = new Vue({
+        el: '#foot',
+        data: Store
+    })
+    $(function () {
+        $(window).scroll(function () {
+            var sTop = $(window).scrollTop()
+            if (sTop > 100) {
+                $(".menu-bd").addClass("mb-s");
+            } else {
+                $(".menu-bd").removeClass("mb-s");
+            }
+        })
+    })
+</script>

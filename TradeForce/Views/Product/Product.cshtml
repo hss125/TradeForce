@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Product";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    ViewBag.NavIndex = 4;
+}
+@using TradeForce.Models;
+@model List<product>
+<div class="ban01">
+    <img src="/Content/Img/Products/products_banner.jpg" />
+</div>
+@{ 
+    var cla = ViewBag.classify as classify;
+    string name = "Tools";
+    if (ViewBag.type == "1")
+    {
+        name = "Safety";
+    }
+    else if (ViewBag.type == "2")
+    {
+        name = "Accessories";
+    }
+
+}
+<div class="main-bd">
+    <h2 class="crumbs">Products  > <a href="/Product/Index?type=@ViewBag.type">@name</a>  >  @cla.Name </h2>
+    <ul class="pro-list clear">
+        <li class="first">
+            <img src="@ViewBag.AdminUrl/Upload/Classify/@cla.ImgUrl2" />
+            <label>@cla.Name</label>
+        </li>
+        @foreach (var pro in Model)
+        {
+            var img = pro.ImgUrl==null?"": pro.ImgUrl.Split('|')[0];
+            <li>
+                <img src="@ViewBag.AdminUrl/Upload/Product/@img" />
+                <h2>@pro.Name</h2>
+                <input type="button" onclick="location.href='/Product/Detail?id=@pro.Id'" value="Learn More" />
+            </li>
+        }
+        
+    </ul>
+</div>
+@Html.Action("LeftMenu", "Product")
+<style>
+    body { background: #d8dfe1; }
+    .pro-list { padding-bottom:100px}
+    .pro-list li { float: left; width: 299px; border: 1px solid #c7c7c7; background: #fff; padding: 0 8px; position: relative; margin: 8px; margin-bottom: 60px; height: 408px; text-align: center; padding-top: 12px; overflow: hidden }
+    .pro-list li img { width: 275px; height: 275px; transition: all .3s; -webkit-backface-visibility: hidden; -webkit-transform-style: preserve-3d }
+    .pro-list li h2 { border-bottom: 1px dashed #999; margin-bottom: 15px; line-height: 1.1em; font-family: 'acuminprosemicondblod'; font-size: 16px; height: 46px; padding-top: 6px; }
+    .pro-list li input { background: #00c4b3; border: 0; color: #fff; width: 240px; height: 39px; font-size: 16px; cursor: pointer }
+    .pro-list li input:hover { opacity: .9 }
+   
+    .pro-list .first { width: 614px; padding: 0; position: relative }
+    .pro-list .first img { width: 100%; height: 100% }
+    .pro-list .first label { position: absolute; bottom: 60px; left: 40px; background: #00c4b3; height: 56px; line-height: 56px; padding: 0 20px; font-family: 'acuminproextracondblod'; font-size: 32px; min-width: 125px }
+</style>

@@ -1,0 +1,86 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@using Admin.Models
+@using Newtonsoft.Json;
+@model List<ProductPage>
+<div class="login-content">
+    <form class="layui-form layui-form-pane">
+        <h2 style="line-height: 50px;text-align: center;padding-bottom: 20px;">User login</h2>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><i class="layui-icon layui-icon-username"></i>Email</label>
+            <div class="layui-input-block">
+                <input type="text" name="email" lay-verify="title" autocomplete="off" placeholder="Email" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><i class="layui-icon layui-icon-password"></i>Password</label>
+            <div class="layui-input-block">
+                <input type="password" name="password" placeholder="Password" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div>
+            <button type="submit"  lay-submit="" lay-filter="demo2" class="layui-btn layui-btn-fluid">Sign in</button>
+        </div>
+        <div>@ViewBag.err</div>
+    </form>
+</div>
+<div style="overflow:hidden;height:0">
+    <div class="lang" style="padding:15px 25px;">
+        <ul>
+            <li class="select" onclick="selectLang(@((int)Lang.english))"><i class="layui-icon layui-icon-ok"></i>Britain / English</li>
+            <li onclick="selectLang(@((int)Lang.French))"><i class="layui-icon layui-icon-ok"></i>France / Français</li>
+            <li><i class="layui-icon layui-icon-ok"></i>Italia / Italiano</li>
+            <li><i class="layui-icon layui-icon-ok"></i>Nederland / Nederlands</li>
+            <li><i class="layui-icon layui-icon-ok"></i>Norway / norsk språk</li>
+            <li><i class="layui-icon layui-icon-ok"></i>Sweden / Svenska</li>
+            <li><i class="layui-icon layui-icon-ok"></i>Finland / Suomalainen</li>
+        </ul>
+    </div>
+</div>
+
+<style>
+    body { background:#f2f2f2; }
+    .login-content { width: 370px; margin: 0 auto; margin-top: calc(50vh - 160px); border: 1px solid #ddd; padding: 30px 30px; background: #fff; box-shadow: 0 3px 5px rgba(0,0,0,.1); }
+    .lang li .layui-icon-ok { margin-right: 8px; visibility: hidden; color: #009688 }
+    .lang li.select .layui-icon-ok {visibility: visible }
+    .lang li { line-height: 26px; border-bottom: 1px solid #ecebeb; cursor:pointer}
+</style>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    function selectLang(lang) {
+        location.href = "/Home/Admin?lang=" + lang;
+    }
+    layui.use(['form'], function () {
+        var form = layui.form;        
+        //监听提交
+        form.on('submit(demo2)', function (data) {
+            $.post("/Account/Login", data.field, function (data) {
+                var res = JSON.parse(data);
+                if (res.success) {
+                    if (res.msg == 0) {
+                        layer.open({
+                            type: 1,
+                            closeBtn: 0,
+                            area: ['290px', '270px'], //宽高
+                            title: "Please select a language", //不显示标题
+                            content: $('.lang'), //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素所影响
+                            cancel: function () {
+
+                            }
+                        });
+                    }
+                    else {
+                        location.href = "/Home/Admin";
+                    }                    
+                    
+                }
+                else {
+                    layer.alert("用户名或密码错误！");
+                }
+            })
+            return false;
+        });
+
+    })
+</script>

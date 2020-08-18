@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "Where";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    ViewBag.NavIndex = 2;
+}
+<div class="ban01">
+    <img src="/Content/Img/whereToBuy_banner.jpg" />
+</div>
+<div class="main-bd">
+    <h2 class="crumbs">Home  > Support > Where to buy</h2>
+    <dl class="global-locations">
+        <dt>Global Locations</dt>
+        <dd>
+            <p>Headquartered in Switzerland, TRADEFROCE’s global reach and presence enable a better service to the customers. Besides manufacturing, marketing, logistics, services, research and development (R&D) and related facilities, TRADEFORCE collaborate with professional dealers all around the world. </p>
+        </dd>
+    </dl>
+    <dl class="global-locations gl2">
+        <dt>Where to buy</dt>
+        <dd>
+            <p>Reach out to TRADEFORCE distribution partners to purchase.</p>
+        </dd>
+    </dl>
+</div>
+<div class="select-country">
+    <div class="main-bd">
+        <dl class="worldwide">
+            <dt>TRADEFORCE  Worldwide</dt>
+            @*<dd>All adresses and contacts</dd>*@
+        </dl>
+        <dl class="selectCountry">
+            <dt>Select country</dt>
+            <dd>
+                <select>
+                    <option>Please Choose</option>
+                    <option>TU, Netherlands</option>
+                    <option>ESK Sweden, Sweden</option>
+                    <option>Sonepar Norway</option>
+                    <option>SLO, Finland</option>
+                    <option>Sonepar Brazil</option>
+                    <option>Sonepar France</option>
+                    <option>Sonepar Italy</option>
+                    <option>Cebeo Belgium</option>
+                </select>
+            </dd>
+        </dl>
+    </div>
+</div>
+<div class="contact-foot">
+    <img src="/Content/Img/contact/contact_foot.jpg" />
+</div>
+<style>
+    .contact-foot img { width: 100%; vertical-align: middle; }
+    .global-locations { padding-top: 40px }
+    .global-locations dt { font-family: 'acuminproextracondblod'; font-size: 48px }
+    .global-locations dd { font-size: 18px; line-height: 26px }
+    .global-locations dd p { padding-top: 20px }
+    .select-country { height: 699px; background: url(/Content/Img/whereToBuy_map.jpg) no-repeat center; }
+    .select-country .main-bd { height: 580px;}
+    .gl2 { padding-top: 120px; padding-bottom: 18px }
+    .gl2 dd p { padding-top: 5px }
+    .worldwide { padding-left: 35px; color: #fff }
+    .worldwide dt { font-family: 'acuminproextracondblod'; font-size: 48px; padding-top: 92px }
+    .worldwide dd { font-size: 20px; padding-top: 25px }
+    .selectCountry { padding-left: 35px; padding-top: 140px }
+    .selectCountry dt { color: #fff; font-family: 'acuminprosemicondblod'; font-size: 30px; padding-bottom: 13px }
+    .selectCountry select { width: 360px; height: 46px; font-size: 20px; color: #333; padding-left: 15px; border: 1px solid #b6bcc0 }
+</style>

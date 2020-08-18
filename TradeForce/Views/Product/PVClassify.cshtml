@@ -1,0 +1,25 @@
+﻿@using TradeForce.Models;
+@model List<classify>
+@using System.Configuration;
+
+@if (Model.Count() < 1)
+{
+    <h3 style="padding-top: 90px;font-size: 40px;text-align: center;">coming soon...</h3>
+}
+<ul class="pro-list clear" style="padding-bottom:135px">
+    @foreach (var c in Model)
+    {
+        <a href="/Product/Product?classify=@c.Id">
+            <li>
+                <img src="@ConfigurationManager.AppSettings["AdminUrl"]/Upload/Classify/@c.ImgUrl" />
+                <h3>@c.Name</h3>
+                <div class="detail">
+                    <h2>@c.LongName </h2>
+                    <p>@c.Describe</p>
+                    <h4><label><i></i></label></h4>
+                </div>
+            </li>
+        </a>
+        
+    }
+</ul>

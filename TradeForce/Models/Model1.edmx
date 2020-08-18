@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="tradeforceModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="8.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="classify">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="150" />
+          <Property Name="LongName" Type="varchar" MaxLength="200" />
+          <Property Name="Type" Type="varchar" MaxLength="150" />
+          <Property Name="ImgUrl" Type="varchar" MaxLength="300" />
+          <Property Name="ImgUrl2" Type="varchar" MaxLength="300" />
+          <Property Name="Describe" Type="varchar" MaxLength="500" />
+          <Property Name="IsDel" Type="int" />
+          <Property Name="InsertUser" Type="int" />
+          <Property Name="InsertDate" Type="datetime" Precision="0" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+          <Property Name="Classify" Type="int" />
+          <Property Name="ImgUrl" Type="varchar" MaxLength="500" />
+          <Property Name="Features" Type="varchar" MaxLength="400" />
+          <Property Name="Quality" Type="varchar" MaxLength="400" />
+          <Property Name="InsertUser" Type="int" />
+          <Property Name="InsertDate" Type="datetime" Precision="0" />
+          <Property Name="IsDel" Type="int" />
+          <Property Name="PDFSoureName" Type="varchar" MaxLength="200" />
+          <Property Name="Lang" Type="varchar" MaxLength="50" />
+          <Property Name="PDF" Type="varchar" MaxLength="200" />
+          <Property Name="Describe" Type="varchar" MaxLength="1000" />
+          <Property Name="ProductID" Type="varchar" MaxLength="50" />
+          <Property Name="ProductCode" Type="varchar" MaxLength="50" />
+          <Property Name="Index" Type="int" />
+        </EntityType>
+        <EntityType Name="productproperty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Value" Type="varchar" MaxLength="50" />
+          <Property Name="ProductId" Type="int" />
+        </EntityType>
+        <EntityType Name="question">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Company" Type="varchar" MaxLength="100" />
+          <Property Name="Country" Type="varchar" MaxLength="60" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="80" />
+          <Property Name="Phone" Type="varchar" MaxLength="45" />
+          <Property Name="Message" Type="varchar" MaxLength="2000" />
+          <Property Name="InsertUserId" Type="int" />
+          <Property Name="InsertDate" Type="datetime" Precision="0" />
+          <Property Name="IsDelete" Type="int" />
+          <Property Name="Lang" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="UserName" Type="varchar" MaxLength="145" />
+          <Property Name="Type" Type="int" />
+          <Property Name="Disabled" Type="int" />
+          <Property Name="InsertDate" Type="datetime" Precision="0" />
+          <Property Name="Lang" Type="varchar" MaxLength="45" />
+          <Property Name="PassWord" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityContainer Name="tradeforceModelStoreContainer">
+          <EntitySet Name="classify" EntityType="Self.classify" Schema="tradeforce" store:Type="Tables" />
+          <EntitySet Name="product" EntityType="Self.product" Schema="tradeforce" store:Type="Tables" />
+          <EntitySet Name="productproperty" EntityType="Self.productproperty" Schema="tradeforce" store:Type="Tables" />
+          <EntitySet Name="question" EntityType="Self.question" Schema="tradeforce" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="tradeforce" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="tradeforceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="classify">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="LongName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="ImgUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Describe" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IsDel" Type="Int32" />
+          <Property Name="InsertUser" Type="Int32" />
+          <Property Name="InsertDate" Type="DateTime" />
+          <Property Name="ImgUrl2" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Classify" Type="Int32" />
+          <Property Name="ImgUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Features" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="InsertUser" Type="Int32" />
+          <Property Name="InsertDate" Type="DateTime" />
+          <Property Name="IsDel" Type="Int32" />
+          <Property Name="PDFSoureName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Lang" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PDF" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Quality" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="Describe" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ProductID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProductCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Index" Type="Int32" />
+        </EntityType>
+        <EntityType Name="productproperty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Value" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProductId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="question">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Company" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Message" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="InsertUserId" Type="Int32" />
+          <Property Name="InsertDate" Type="DateTime" />
+          <Property Name="IsDelete" Type="Int32" />
+          <Property Name="Country" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="145" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="Disabled" Type="Int32" />
+          <Property Name="InsertDate" Type="DateTime" />
+          <Property Name="Lang" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="PassWord" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="tradeforceEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="classify" EntityType="Self.classify" />
+          <EntitySet Name="product" EntityType="Self.product" />
+          <EntitySet Name="productproperty" EntityType="Self.productproperty" />
+          <EntitySet Name="question" EntityType="Self.question" />
+          <EntitySet Name="user" EntityType="Self.user" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="tradeforceModelStoreContainer" CdmEntityContainer="tradeforceEntities">
+          <EntitySetMapping Name="classify">
+            <EntityTypeMapping TypeName="tradeforceModel.classify">
+              <MappingFragment StoreEntitySet="classify">
+                <ScalarProperty Name="ImgUrl2" ColumnName="ImgUrl2" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LongName" ColumnName="LongName" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
+                <ScalarProperty Name="Describe" ColumnName="Describe" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="InsertUser" ColumnName="InsertUser" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="product">
+            <EntityTypeMapping TypeName="tradeforceModel.product">
+              <MappingFragment StoreEntitySet="product">
+                <ScalarProperty Name="Index" ColumnName="Index" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Describe" ColumnName="Describe" />
+                <ScalarProperty Name="Quality" ColumnName="Quality" />
+                <ScalarProperty Name="PDF" ColumnName="PDF" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Classify" ColumnName="Classify" />
+                <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
+                <ScalarProperty Name="Features" ColumnName="Features" />
+                <ScalarProperty Name="InsertUser" ColumnName="InsertUser" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="PDFSoureName" ColumnName="PDFSoureName" />
+                <ScalarProperty Name="Lang" ColumnName="Lang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="productproperty">
+            <EntityTypeMapping TypeName="tradeforceModel.productproperty">
+              <MappingFragment StoreEntitySet="productproperty">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="question">
+            <EntityTypeMapping TypeName="tradeforceModel.question">
+              <MappingFragment StoreEntitySet="question">
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="InsertUserId" ColumnName="InsertUserId" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user">
+            <EntityTypeMapping TypeName="tradeforceModel.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Disabled" ColumnName="Disabled" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="Lang" ColumnName="Lang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,38 @@
+﻿.au-bg1 { position: absolute; left: 0; top: 0; right: 0; height: 100% }
+.au-bg1 .main-bd { height: 100% }
+.au-bg1 img { width: auto }
+.au-bg1 label { display: inline-block; background: rgba(54,55,59,.6); padding: 12px 20px; font-family: acuminproextracondblod; font-size: 66px; color: #00c4b3 }
+.au-bg1 .main-bd:after { display: inline-block; content: ''; height: 100%; vertical-align: middle }
+.brand-story { padding-bottom: 60px }
+.brand-story h2 { text-align: center; font-size: 60px; padding-top: 65px; font-family: acuminproextracondblod }
+.brand-story h3 { text-align: center }
+.brand-story h3:after { content: ''; display: inline-block; width: 70px; height: 3px; background: #00c4b3 }
+.brand-story p { padding: 0 18px; font-size: 26px; padding-top: 30px; line-height: 28px;color:#333;line-height:1.4em }
+.brand-story p label { font-size: 28px; padding-right:6px }
+.bs-img { display: flex; }
+.bs-img li { flex: 1; overflow: hidden; height: calc(31.25vw) }
+.bs-img li img { width: 100%; transition: all .4s; height: 100% }
+.our-vision { background: url(/Content/Img/About/aboutUs_b2.jpg); background-size: 100% 100%; padding-bottom: 60px; padding-top: 10px }
+.our-vision ul { display: flex }
+.our-vision ul li { flex: 1; background: #fff; margin: 0 9px }
+.our-vision ul li h3 { font-size: 42px; padding-left: 20px; line-height: 80px; padding-bottom: 26px; font-family: acuminproextracondblod }
+.our-vision ul li p { text-align: center; font-size: 15px; padding-bottom: 20px; font-family: acuminprosemicondblod }
+.our-vision ul li p a { color: #00c4b3 }
+.our-vision ul li img { width: 100% }
+.bg1 { height:1357px;background:url(../Img/About/newBg01.jpg) center}
+.life-easy { position: absolute; bottom: 0; width: 100%; padding-left: 170px; padding-right: 130px; background: #19c8b9 ;opacity:.9;color:#333;padding-bottom:75px}
+.life-easy dt { font-family: 'acuminproextracondblod';font-size:60px;padding-top:60px;}
+.bg1 .life-easy dt { text-align:center;padding-bottom:5px}
+.life-easy dd { font-size: 26px; padding-top: 30px; line-height: 1.3em; }
+.bg1 .main-bd { position: relative; height: 100% }
+.bg2 { height: 690px; background: url(../Img/About/newBg02.jpg) center }
+.bg2 .life-easy { position: static; background: #2d2a26 ;color:#fff;padding-bottom:35px}
+.bg2 .life-easy dt, .bg4 .life-easy dt { padding-top: 40px }
+.bg3 { height: 820px; background: url(../Img/About/newBg03.jpg) center;position:relative }
+.bg4 { height: 819px; background: url(../Img/About/newBg04.jpg) center; position: relative }
+.bg3 .life-easy { width:880px;padding-left:90px;padding-right:80px;right:7.81%;bottom:175px;}
+.bg4 .life-easy { width: 1000px; padding-left: 70px; padding-right: 55px; bottom: 60px; left: 4.166%; background: #2d2a26; color: #fff;padding-bottom:35px }
+.bg3 .life-easy dt { color:#fff}
+.bg4 .life-easy dt { color: #00c4b3 }
+.bg4 .life-easy dd { color: #fcfcfc }
+.ajspan {}

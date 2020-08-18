@@ -1,0 +1,75 @@
+﻿@using TradeForce.Models;
+@model List<classify>
+@{ 
+    var tools = Model.Where(w => w.Type == "0").ToList();
+    var safety = Model.Where(w => w.Type == "1").ToList();
+    var accessories = Model.Where(w => w.Type == "2").ToList();
+}
+<dl class="left-menu" style="display:none">
+    <dt>CATEGORY</dt>
+    <dd>
+        <div class="lm-item select">
+            <h3>tools</h3>
+            <ul>
+                @foreach (var c in tools)
+                {
+                    <li><a href="/Product/Product?classify=@c.Id">@c.Name</a></li>
+                }
+            </ul>
+        </div>
+        <div class="lm-item">
+            <h3>Safety</h3>
+            <ul>
+                @foreach (var c in safety)
+                {
+                    <li><a href="/Product/Product?classify=@c.Id">@c.Name</a></li>
+                }
+            </ul>
+        </div>
+        <div class="lm-item">
+            <h3>Accessories</h3>
+            <ul>
+                @foreach (var c in accessories)
+                {
+                    <li><a href="/Product/Product?classify=@c.Id">@c.Name</a></li>
+                }
+            </ul>
+        </div>
+    </dd>
+</dl>
+<style>
+    /*.left-menu { position:fixed;left:calc(25vw - 333px);top:160px;width:185px}*/
+    .left-menu { position: fixed; left: 73px; top: 220px; width: 185px }
+    .left-menu dt { background: #00c4b3; font-family: acuminprosemicondblod; font-size: 26px; line-height: 48px; text-align: center }
+    .left-menu dd { background: #423f3b; padding: 14px ;padding-bottom:36px}
+    .left-menu dd h3 { background: #00c4b3; padding-left: 10px; line-height: 28px; color: #2d2a26; font-family: acuminprosemicondblod; cursor: pointer; font-size: 14px; text-transform: uppercase; }
+    .left-menu dd h3:after { float: right; content: ''; border-top: 6px solid #333; border-left: 6px solid transparent; border-right: 6px solid transparent; margin-right: 10px; margin-top: 10px; }
+    .left-menu dd ul {padding-top:6px }
+    .left-menu dd li { border-top: 1px solid #d8e9e9; color: #fff; display: flex; padding: 6px 3px; font-size: 16px; padding-right: 5px; text-transform: capitalize; }
+    .left-menu dd li:first-child {border-top:0 }
+    .left-menu dd li:before { display: inline-block; content: ''; border-left: 5px solid #d8e9e9; border-top: 5px solid transparent; border-bottom: 5px solid transparent; margin-right: 6px; margin-left: 8px; height: 0; margin-top: 2px }
+    .lm-item {padding:8px 0}
+    /*.lm-item.select h3, .lm-item:hover h3 { background: #00c4b3; color: #fff }*/
+    /*.lm-item.select h3:after, .lm-item:hover h3:after { border-top-color: #fff }*/
+    /*.left-menu dd li a:hover { color: #00c4b3 }*/
+    .lm-item.select h3:after { transform: rotate(180deg)}
+    /**/
+@@media screen and (max-width: 1650px) {
+    .left-menu { left: 50px;}
+}
+@@media screen and (max-width: 1400px) {
+    .left-menu { left: 5px; width: 150px }
+    .left-menu dd {padding: 6px; padding-bottom: 30px }
+    .left-menu dd li:before {margin-right: 4px; margin-left: 3px; }
+}
+</style>
+<script>
+    $(window).scroll(function () {
+        var top =$(document).scrollTop();
+        if (top > 180) {
+            $(".left-menu").show();
+        } else {
+            $(".left-menu").hide();
+        }
+    })
+</script>

@@ -1,0 +1,70 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@using Admin.Models
+@using Newtonsoft.Json;
+@model List<ProductPage>
+<div class="login-content">
+    <form class="layui-form layui-form-pane">
+        <h2 style="line-height: 50px;text-align: center;padding-bottom: 20px;">用户注册</h2>
+        <div class="layui-form-item">
+            <label class="layui-form-label">账户</label>
+            <div class="layui-input-block">
+                <input type="text" name="email" lay-verify="title" autocomplete="off" placeholder="邮箱" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">昵称</label>
+            <div class="layui-input-block">
+                <input type="text" name="username" lay-verify="title" autocomplete="off" placeholder="昵称" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">密码</label>
+            <div class="layui-input-block">
+                <input type="password" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">国家</label>
+            <div class="layui-input-block">                
+                <select name="Lang">
+                    <option value="@((int)Lang.english)">Britain</option>
+                    <option value="@((int)Lang.english)">France</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <button type="submit"  lay-submit="" lay-filter="demo2" class="layui-btn layui-btn-fluid">注册</button>
+        </div>
+        <div>@ViewBag.err</div>
+    </form>
+</div>
+
+<style>
+    body { background:#f2f2f2; }
+    .login-content { width: 370px; margin: 0 auto; margin-top: calc(50vh - 200px); border: 1px solid #ddd; padding: 30px 30px; background: #fff; box-shadow: 0 3px 5px rgba(0,0,0,.1); }
+    .lang li .layui-icon-ok { margin-right: 8px; visibility: hidden; color: #009688 }
+    .lang li.select .layui-icon-ok {visibility: visible }
+    .lang li { line-height: 26px; border-bottom: 1px solid #ecebeb; cursor:pointer}
+</style>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    layui.use(['form'], function () {
+        var form = layui.form;        
+        //监听提交
+        form.on('submit(demo2)', function (data) {
+            $.post("/Account/RegSave", data.field, function (data) {
+                var res = JSON.parse(data);
+                if (res.success) {
+                    layer.alert("注册成功！");
+                }
+                else {
+                    
+                }
+            })
+            return false;
+        });
+
+    })
+</script>

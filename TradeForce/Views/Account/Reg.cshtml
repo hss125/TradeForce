@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "登录";
+}
+<div>Username：<input type="text" id="UserName" placeholder="Username" name="UserName" /></div>
+<div>Email：<input type="text" id="Email" placeholder="Email" name=""/></div>
+<div>Password：<input type="text" id="PassWord" name="password"/></div>
+<div><input type="button" onclick="reg()" value="Create account"/></div>
+<script>
+    function reg() {
+        var user = { Email: $("#Email").val(), PassWord: $("#PassWord").val(), UserName: $("#UserName").val() };
+        if (!user.Email.trim() || !user.PassWord.trim()) {
+            alert("用户名或密码不能为空！");
+            return;
+        }
+        $.post("/Account/Reg", user, function (res) {
+            res = JSON.parse(res);
+            if (res.Succ) {
+                alert("Registration successful! About to jump to the login page!");
+                location.href = "/Account/Login";
+            }
+            else {
+                alert(res.Msg);
+            }
+        })
+    }
+</script>

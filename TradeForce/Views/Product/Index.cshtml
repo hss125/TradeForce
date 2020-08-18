@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Product";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    ViewBag.NavIndex = 4;
+}
+
+<div class="ban01">
+    <img src="/Content/Img/Products/products_banner.jpg" />
+</div>
+<div class="main-bd">
+    <ul class="pro-type">
+        <li class="@(ViewBag.type==0?"select":"")" data-type="0"><label>Tools</label></li>
+        <li class="@(ViewBag.type==1?"select":"")" data-type="1"><label>Safety</label></li>
+        <li class="@(ViewBag.type==2?"select":"")" data-type="2"><label>Installation Accessories</label></li>
+    </ul>
+    <p class="pro-type-inst">High-performance hand tools are the staple of any contractor, and TRADEFROCE tools keep you safe on any job in any conditions. Our high-quality hand tools include everything from measuring tools, cutting tools and clamps to hammers, screwdrivers and wrenches.</p>
+</div>
+<div class="main-bd" id="classify">
+       
+</div>
+<script>
+    var getClassify = function (type) {
+        var load = layer.load(2);        
+        if (type == 0) {
+            $(".pro-type-inst").show();
+        } else {
+            $(".pro-type-inst").hide();
+        }
+        $.post("/Product/GetClassify", { type: type }, function (data) {
+            $("#classify").html(data);
+            layer.close(load);
+        })
+    }
+    $(".pro-type li").click(function () {
+        $(this).addClass("select").siblings().removeClass("select");
+        getClassify($(this).data("type"));
+    })
+    $(function () {
+        getClassify("@ViewBag.type");
+    })
+</script>
+<style>
+    body { background: #e8ecec }
+    .pro-type { text-align: center; font-size: 48px; color: #101820; padding: 58px }
+    .pro-type li { display: inline-block;text-align: center; font-family: acuminproextracondblod; padding: 0 10px; margin: 0 50px; }
+    .pro-type li label { display: inline-block; line-height: 66px; cursor: pointer }
+    .pro-type li.select label, .pro-type li:hover label { border-bottom: 3px solid #00c4b3 }
+    .pro-type li:hover label { color: #00c4b3 }
+    .pro-type-inst { font-size: 18px; padding: 0 42px; line-height: 26px }
+    .pro-list { padding: 35px 0; padding-top: 48px; }
+    .pro-list li { float: left; width: 299px; border: 1px solid #c7c7c7; background: #fff; padding: 12px; position: relative; margin: 8px; margin-bottom: 60px; height: 375px }
+    .pro-list li img { width: 274px; height: 304px }
+    .pro-list li h3 { color: #00c4b3; font-size: 24px; padding-top: 10px; font-family: acuminproextracondblod; text-transform: uppercase; }
+    .pro-list li .detail { position: absolute; left: 0; top: 0; right: 0; bottom: 0; background: rgba(0,196,179,.8); padding: 28px; color: #101820; display: none }
+    .pro-list li:hover .detail { display: block }
+    .pro-list li .detail h2 { font-size: 24px; height: 80px; font-family: acuminprosemicondblod; padding-top: 90px; text-align: center;text-transform:capitalize }
+    .pro-list li .detail p { font-size: 16px; line-height: 26px; height: 135px;visibility:hidden }
+    .pro-list li .detail h4 { text-align: center; }
+    .pro-list li .detail h4 label { display: inline-block; width: 46px; height: 46px; border-radius: 100%; background: #101820; padding-top: 13px; padding-right: 4px; cursor: pointer }
+    .pro-list li .detail h4 label i { display: inline-block; width: 15px; height: 15px; border-left: 3px solid #1db19d; border-bottom: 3px solid #1db19d; transform: rotate(225deg); }
+    @@media screen and (max-width:1500px) {
+        .pro-type { font-size: 40px; padding: 50px; }
+        .pro-type-inst { font-size: 16px; padding: 0 38px; line-height: 24px; }
+    }
+    @@media screen and (max-width:1400px) {
+
+    }
+</style>

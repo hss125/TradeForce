@@ -1,0 +1,211 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@using Admin.Models
+@using Newtonsoft.Json;
+@model List<ProductPage>
+@{
+    var Classify = ViewBag.Classify as List<classify>;
+}
+<div id="pro">
+    <div class="imain-content">
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+            <legend>Product Management</legend>
+        </fieldset>
+        <button type="button" @@click="open()" class="layui-btn btn-add">Add</button>
+        <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+            <ul class="layui-tab-title">
+                @foreach (var c in Classify)
+                {
+                    <li class="@(ViewBag.classifyId==c.Id?"layui-this":"")"><a href="/Product/index?classifyId=@c.Id">@c.Name</a></li>
+                }
+            </ul>
+        </div> 
+        <table class="layui-table" lay-even="" lay-skin="row">
+            <colgroup>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col width="160">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>Number</th>
+                    <th>Product Name</th>
+                    <th>Category</th>
+                    <th>PDF</th>
+                    <th>Operation</th>
+                </tr>
+            </thead>
+            <tbody id="sortTable">
+                @{
+                    var i = 0;
+                }
+                @foreach (var p in Model)
+                {
+                    i++;
+                    <tr data-id="@p.pro.Id" style="cursor: move;">
+                        <td>@i</td>
+                        <td>@p.pro.Name</td>
+                        <td>@p.classify</td>
+                        <td>@p.pro.PDFSoureName</td>
+                        <td>
+                            <button type="button" class="layui-btn layui-btn-xs" @@click="open(@JsonConvert.SerializeObject(p.pro),@JsonConvert.SerializeObject(p.pros))">Edit</button>
+                            <button type="button" class="layui-btn layui-btn-danger layui-btn-xs" onclick="del(@p.pro.Id)">Remove</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <label class="win-shade" v-show="IsEdit"></label>
+    <div class="layer-win" v-show="IsEdit" style="display:none">
+        <div class="lw-title">
+            产品编辑<label><i @@click="open()" class="layui-icon layui-icon-close"></i></label>
+        </div>
+        <div class="lw-body">
+            <form action="" lay-filter="example1">
+                <input type="hidden" name="Id" />
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">Product Name</label>
+                        <div class="layui-input-block">
+                            <input v-model="product.Name" type="text" name="Name" lay-verify="title" autocomplete="off" placeholder="Product Name" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">Product Category</label>
+                        <div class="layui-input-inline">
+                            <select v-model="product.Classify" style="height: 36px;">
+                                <option value=""></option>
+                                @foreach (var c in Classify)
+                                {
+                                    <option value="@c.Id">@c.Name</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">Picture</label>
+                    <div class="layui-input-block img-upload">
+                        <blockquote class="layui-elem-quote layui-quote-nm">
+                            <div class="layui-upload-list" id="demo2">
+                                <label v-for="(img,index) in product.ImgUrl1"><img :src="'/Upload/Product/'+img" class="layui-upload-img"><span @@click="featuresDel('ImgUrl1',index)"></span></label>
+                            </div>
+                        </blockquote>
+                        <button type="button" class="layui-btn" id="test2">Upload</button>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">Features</label>
+                    <div class="layui-input-block" style="padding-right:8px">
+                        <div class="property-list">
+                            <div class="property-item" v-for="(f,index) in product.Features1">
+                                <div class="pi-left pl2">
+                                    <input type="text" v-model="f.value" lay-verify="title" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="pi-do">
+                                    <i v-if="index==0" class="pi-add layui-icon layui-icon-add-circle" @@click="featuresAdd('Features1')"></i>
+                                    <i v-else class="layui-icon layui-icon-reduce-circle" @@click="featuresDel('Features1',index)"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">Quality assurance </label>
+                    <div class="layui-input-block" style="padding-right:8px">
+                        <div class="property-list">
+                            <div class="property-item" v-for="(q,index) in product.Quality1">
+                                <div class="pi-left pl2">
+                                    <input type="text" v-model="q.value" lay-verify="title" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="pi-do">
+                                    <i v-if="index==0" class="pi-add layui-icon layui-icon-add-circle"  @@click="featuresAdd('Quality1')"></i>
+                                    <i v-else class="layui-icon layui-icon-reduce-circle" @@click="featuresDel('Quality1',index)"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">PDF</label>
+                    <div class="layui-input-block">
+                        <button type="button" class="layui-btn" id="test3"><i class="layui-icon"></i>File Upload</button>
+                        <span class="pdf"></span>
+                        <input type="hidden" name="PDF" id="pdf" />
+                        <input type="hidden" name="PDFSoureName" id="PDFSoureName" />
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">Property</label>
+                    <div class="layui-input-block" style="padding-right:8px">
+                        <div class="property-list">
+                            <div class="property-item" v-for="(p,index) in product.props">
+                                <div class="pi-left">
+                                    <input type="text" v-model="p.Name" autocomplete="off" placeholder="property Name" class="layui-input">
+                                </div>
+                                <div class="pi-right">
+                                    <input type="text" v-model="p.Value" autocomplete="off" placeholder="property Value" class="layui-input">
+                                </div>
+                                <div class="pi-do">
+                                    <i v-if="index==0" class="pi-add layui-icon layui-icon-add-circle" @@click="featuresAdd('props')"></i>
+                                    <i v-else class="layui-icon layui-icon-reduce-circle" @@click="featuresDel('props',index)"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">Describe</label>
+                    <div class="layui-input-block" style="padding-right:8px">
+                        <textarea v-model="product.Describe" placeholder="Product Describe" class="layui-textarea"></textarea>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">Product ID</label>
+                    <div class="layui-input-block" style="padding-right:8px">
+                        <input type="text" v-model="product.ProductID" autocomplete="off" placeholder="Product Describe" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">Product Code</label>
+                    <div class="layui-input-block" style="padding-right:8px">
+                        <input type="text" v-model="product.ProductCode" autocomplete="off" placeholder="Product Describe" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-layer-btn layui-layer-btn-">
+                    <a class="layui-layer-btn0" @@click="save">Save</a>
+                    <a class="layui-layer-btn1" @@click="open()">Cancel</a>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+<style>
+    .img-upload .layui-quote-nm { border-width:1px;height:100px;width:550px;padding:10px }
+    .img-upload .layui-upload-list { margin:0}
+    .layui-upload-list img{width:100px;height:100px;vertical-align:middle }
+    .layui-upload-list label { display: inline-block; border: 1px solid #6abbac; margin-right: 8px;position:relative }
+    .layui-upload-list label span { position: absolute; top: -6px; right: -6px; background: orangered; display: none; width: 16px; height: 16px; border-radius: 100%; cursor: pointer }
+    .layui-upload-list label span:before { position: absolute; content: ''; border-bottom: 1px solid #fff; width: 8px; top: 7px; left: 4px; }
+    .layui-upload-list label:hover span {display:block }
+    .pdf { font-size: 12px; padding-left: 8px; color: #666; }
+    .property-list { border:1px solid #ddd;padding:10px}
+    .property-item { height:45px}
+    .property-item .pi-left, .property-item .pi-right { float: left; width: 200px }
+    .property-item .pi-right {margin-left:8px }
+    .pi-do { float: left; padding-top: 6px; padding-left: 10px; }
+    .pi-do i { font-size: 22px; color: #666;cursor:pointer }
+    .property-item .pl2 { width: 490px; }
+</style>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/Sortable.min.js"></script>
+<script src="~/Scripts/vue.js"></script>
+@*<script src="~/Scripts/wangEditor.min.js"></script>*@
+<script src="~/Scripts/Home/Product.js"></script>

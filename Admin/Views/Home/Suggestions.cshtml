@@ -1,0 +1,117 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@using Admin.Models
+@using Newtonsoft.Json;
+@model List<question>
+<div class="imain-content">
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+        <legend>Comments and Suggestions</legend>
+    </fieldset>
+    <button type="button" onclick="exportExcel()" class="layui-btn btn-add">Export</button>
+    <table class="layui-table" lay-even="" lay-skin="row">
+        <colgroup>
+            <col>
+            <col>
+            <col>
+            <col>
+            <col>
+            <col width="120">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>Number</th>
+                <th>Company</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Message</th>
+                <th>Operation</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{int i = 0; }
+            @foreach (var c in Model)
+            {
+                i++;
+                <tr>
+                    <td>@i</td>
+                    <td>@c.Company</td>
+                    <td>@c.Name</td>
+                    <td>@c.Email</td>
+                    <td>@c.Phone</td>
+                    <td>@c.Message</td>
+                    <td>
+                        <button type="button" class="layui-btn layui-btn-danger layui-btn-xs" onclick="del(@c.Id)">read</button>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+<div style="height:0;overflow:hidden">
+    <div id="proEdit" style="padding:12px">
+        <form class="layui-form" action="" lay-filter="example1">
+            <input type="hidden" name="Id" />
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">Category Name</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="Name" lay-verify="title" autocomplete="off" placeholder="Category Name" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">Category</label>
+                    <div class="layui-input-block">
+                        <select name="type" lay-filter="aihao">
+                            <option value=""></option>
+                            <option value="Tools">Tools</option>
+                            <option value="Safety" selected="">Safety</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">Title</label>
+                <div class="layui-input-block">
+                    <input type="text" name="LongName" lay-verify="title" autocomplete="off" placeholder="Product Title" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">Describe</label>
+                <div class="layui-input-block">
+                    <input type="text" name="describe" lay-verify="title" autocomplete="off" placeholder="Describe" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">Picture</label>
+                <div class="layui-input-block">
+                    <div class="layui-upload">
+                        <div class="layui-upload-list">
+                            <img class="layui-upload-img" id="demo1" style="width: 110px;height: 110px;">
+                            <p id="demoText"></p>
+                        </div>
+                        <button type="button" class="layui-btn" id="test1">Upload</button>
+                    </div>  
+                    <input type="hidden" id="ImgUrl" name="ImgUrl"/>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    function exportExcel() {
+        $.post("/Home/ExportExcel", {}, function (res) {
+            res = JSON.parse(res);
+            if (res.success) {
+                $("#Excelload").remove();
+                $("body").append('<a id="Excelload" style="visibility: hidden;" href="' + res.msg + '" download="">下载</a>');
+                $("#Excelload")[0].click();
+            }
+            
+        })
+    }
+</script>

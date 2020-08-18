@@ -1,0 +1,171 @@
+﻿@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    ViewBag.NavIndex = 1;
+}
+@section head
+{
+<link href="~/Content/Css/Home.css" rel="stylesheet" />
+<link href="~/Content/Lib/swiper/swiper.min.css" rel="stylesheet" />
+}
+<div id="home">
+    <div class="ban01">
+        <img src="/Content/Img/Index/home_b1.jpg" />
+        <dl>
+            <dt>
+                <img src="~/Content/Img/Index/banner_logo.png" />
+            </dt>
+            <dd v-text="lang.anyJob"></dd>
+        </dl>
+    </div>
+    <div class="ban02 ban0">
+        <div class="main-bd">
+            <h2 class="ban-title" v-text="lang.whoWeAre"></h2>
+            <div class="wwa clear">
+                <div class="w1">
+                    <div id="vStart"><img src="/Content/Img/Index/play.png" /></div>
+                </div>
+                <div class="w2 w11">
+                    <h3 v-text="lang.adventure"></h3>
+                    <p v-text="lang.adventureDetail"></p>
+                </div>
+                <div class="w3">
+                    <img src="/Content/Img/Index/wwa_02.jpg" />
+                </div>
+                <div class="w4 w3">
+                    <img src="/Content/Img/Index/wwa_03.jpg" />
+                </div>
+                <div class="w5 w11">
+                    <h3 v-text="lang.professional"></h3>
+                    <p v-text="lang.professionalDetail"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ban03 ban0">
+        <div class="main-bd">
+            <h2 class="ban-title" style="color:#fff">Products</h2>
+            <!-- Swiper -->
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="ban03-item">
+                            <img src="/Content/Img/Index/ban03_i1.jpg" />
+                            <dl>
+                                <dt>Tools</dt>
+                                <dd class="d1">From fastening tools to holding tools, hand tools to power tools, TRADEFORCE equip professionals with tools for various installation applications. </dd>
+                                <a href="/Product/Index?type=0"><dd class="d2">SHOW MORE<i></i></dd></a>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="ban03-item odd">
+                            <img src="/Content/Img/Index/ban03_i2.jpg" />
+                            <dl>
+                                <dt>Safety</dt>
+                                <dd class="d1">Equipment that can be used in harsh conditions, and normal working days, to get you ready for whatever work you take on.</dd>
+                                <a href="/Product/Index?type=1"><dd class="d2">SHOW MORE<i></i></dd></a>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="ban03-item">
+                            <img src="/Content/Img/Index/ban03_i3.jpg" />
+                            <dl>
+                                <dt>Installation Accessories</dt>
+                                <dd class="d1">Necessary materials and accessories support you completing the job, save time and maximize efficiency, keep you in control.</dd>
+                                <a href="/Product/Index?type=2"><dd class="d2">SHOW MORE<i></i></dd></a>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Add Arrows -->
+            <div class="swiper-button-bd">
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+
+        </div>
+    </div>
+    <div class="ban04 ban0">
+        <div class="main-bd">
+            <h2 class="ban-title">Latest News</h2>
+            <ul class="clear">
+                <li>
+                    <label><img src="/Content/Img/Index/news_01.jpg" /></label>
+                    <dl>
+                        <dt>Shanghai International Hardware Show 2020</dt>
+                        <dd>October 20-22, 2020  National Exhibition & Convention Center (Shanghai, China) ...</dd>
+                    </dl>
+                    <a>READ MORE</a>
+                </li>
+                <li>
+                    <label><img src="/Content/Img/Index/news_02.jpg" /></label>
+                    <dl>
+                        <dt>Robotic Process Automation 6 common misconceptions</dt>
+                        <dd>TU Boot sailed out on October 17 to inform and inspire Technische Unie customers throughout the Netherlands.</dd>
+                    </dl>
+                    <a>READ MORE</a>
+                </li>
+                <li>
+                    <label><img src="/Content/Img/Index/news_03.jpg" /></label>
+                    <dl>
+                        <dt>ElectraFK Supplies Hospitals for the Materials Needed to ...</dt>
+                        <dd>Sonepar Future Road, the zero-emissions tour of Italy, took place from 3 to 18 October.</dd>
+                    </dl>
+                    <a>READ MORE</a>
+                </li>
+                <li>
+                    <label><img src="/Content/Img/Index/news_04.jpg" /></label>
+                    <dl>
+                        <dt>Tool knowledge-the internal structure of the tape measure</dt>
+                        <dd>On October 10th, 2019, Marie-Christine Coisne-Roquette, Chairman of Sonepar, took part in Bpifrance Inno...</dd>
+                    </dl>
+                    <a>READ MORE</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="video-view" style="text-align:center;">
+        <div class="close"><img title="关闭" src="/Content/Img/close.png" /></div>
+        <video id="video" src="/Content/TradeForce.mov" controls="controls" poster="/Content/Img/Index/wwa_01.jpg" width="65%">
+            您的浏览器不支持 video 标签。
+        </video>
+    </div>
+</div>
+<script src="/Content/Lib/swiper/swiper.min.js"></script>
+<script>
+    var bTop = $(".ban03").offset().top;
+    var wHeigth = $(window).height();
+    $(function () {
+        $(window).scroll(function () {
+            var sTop = $(window).scrollTop()
+            if (wHeigth + sTop > bTop) {
+                $(".ban03").css("background-position-y", (sTop - (bTop - wHeigth)-500) / 1.5 + "px")
+            }            
+        })
+    })
+    new Vue({
+        el: '#home',
+        data: Store,
+        mounted: function () {
+            var video1 = document.getElementById("video");
+            $("#vStart").click(function () {
+                $(".video-view").addClass("play");
+                video1.play();
+            })
+            $(".video-view .close img").click(function () {
+                video1.pause();
+                $(".video-view").removeClass("play");
+            })
+            var swiper = new Swiper('.swiper-container', {
+                slidesPerView: 3,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            })
+        }
+    })
+</script>

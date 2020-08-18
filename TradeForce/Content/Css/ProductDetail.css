@@ -1,0 +1,52 @@
+﻿.pro-ms { }
+.pro-ms .pm-left { float: left }
+.pro-ms .pm-right { float: right; width: 540px }
+.wtb-bt { line-height: 45px; text-align: center; height: 45px; font-size: 20px; font-family: acuminprosemicondblod }
+.wtb-bt .l1 { margin-left: 15px;}
+.wtb-bt .l2 {  }
+.wtb-bt > div { cursor: pointer; background: #d8dfe1; float: left; width: 240px; color: #6c6c6c }
+.wtb-bt div.select { background: #00c4b3; color: #101820; }
+.wheretobuy p, .wtb0 pre{ padding-top: 42px; font-size: 16px; line-height: 25px; padding-left: 6px }
+.wtb0 pre { font-family: acuminprosemicond,arial; margin: 0; white-space: pre-line; }
+.wheretobuy h2 { padding: 18px 0; font-family: acuminprosemicondblod; font-size: 16px }
+.wheretobuy .p2 { padding-top: 5px }
+.wheretobuy .p2:before { display: inline-block; width: 6px; height: 6px; background: #00c4b3; content: ''; vertical-align: middle; margin-top: -2px; margin-right: 10px; border-radius: 100%; }
+.wtb1 { display: none }
+.wheretobuy { border-top: 1px solid #d8dfe1; border-bottom: 1px solid #d8dfe1; padding: 30px 0 }
+.pmr-con { padding-left: 18px }
+.pm-right h2 { font-family: 'acuminprosemicondblod'; font-size: 24px; padding-bottom: 20px; margin-top: -10px; }
+.pm-right h3 { font-family: 'acuminprosemicondblod'; font-size: 20px; padding-bottom: 10px; border-top: 1px solid #d8dfe1; margin-top: 15px;padding-top:15px;padding-left:6px }
+.pro-detail {padding-top:90px }
+.pro-detail h2 { line-height: 50px; padding-left: 15px; font-family: 'acuminprosemicondblod'; font-size: 22px; background: #00c4b3; height: 45px; }
+.pro-detail .pd-con { margin-bottom: 190px;font-size: 16px; }
+.file { padding-top: 35px; padding-bottom: 30px; padding-left: 7px;}
+.file img { vertical-align: middle; margin-top: -8px; margin-right: 12px }
+.file .format { font-family: 'acuminprosemicondblod'; font-size: 20px; color: #000 }
+.file .name { font-size: 18px; color: #333; padding-left: 18px; text-decoration: underline; cursor: pointer }
+.props { padding-top: 8px; color: #333 }
+.props table tr:nth-child(2n) { background: #edf2f2 }
+.props table td { height: 29px; line-height: 29px; white-space: nowrap; }
+.props .dot { padding-left:10px;padding-right:5px }
+.prop-item { height: 28px; line-height: 28px; padding-left: 6px; display: flex }
+.prop-item .name{width:70%}
+.prop-item .value { width: 30% }
+.prop-item:nth-child(2n) { background: #d0ebe8 }
+.pd-con > p { line-height: 24px; color: #333; padding-top: 20px; padding-bottom: 28px; }
+.code-id { text-align:right;line-height:28px }
+.code-id label { display: inline-block; width: 110px; text-align: left; margin-left: 60px; }
+.ci2 { background: #edf2f2 }
+.props table { margin-bottom:31px}
+/*放大镜相关样式*/
+#showbox { border: 1px solid #d8dfe1; box-sizing: content-box }
+#showbox span { background: url(/Content/Img/Products/whitebg.png) repeat; }
+#showsum {margin-top: 10px; }
+#showsum span { border: 2px solid #d6d6d6; }
+#showsum span.sel { border: 2px solid #00c4b3; }
+
+#showlast, #shownext { display: inline-block; width: 17px; height: 17px; border-left: 2px solid #aaabab; border-bottom: 2px solid #aaabab; transform: rotate(45deg);vertical-align:middle }
+a#shownext { left: 422px; right: 0; transform: rotate(-135deg); }
+#showlast:hover, #shownext:hover { opacity: .9 }
+#showsum { vertical-align: middle; margin-left: 2px; margin-right: 5px; }
+@media screen and (max-width:1500px) {
+    .pro-detail h2 { line-height: 44px;font-size: 18px; height: 40px; }
+}

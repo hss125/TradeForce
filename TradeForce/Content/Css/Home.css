@@ -1,0 +1,78 @@
+﻿
+
+.ban01 {position:relative }
+.ban01>img { width: 100% }
+.ban01 dl { position:absolute;top:196px;right:155px;}
+.ban01 dl img {}
+.ban01 dl dt { margin-bottom: 68px; }
+.ban01 dl dd { text-align:center; font-family: acuminproextracondblod; font-size: 78px; color: #fefefe }
+.ban02 { background: url(../Img/Index/home_b2.jpg);background-size:100% 100%}
+.ban-title { text-align: center; padding-top: 65px; padding-bottom: 38px; font-family: acuminproextracondblod; font-size: 36px; }
+.wwa >div{float:left;margin-left:9px;overflow:hidden}
+.wwa > div img { transition:all .4s }
+.wwa >div:hover img{transform:scale(1.08) }
+.wwa .w1 { width: 498px; height: 498px; margin-left: 0 }
+.wwa .w1 img, .wwa .w3 img{ width: 100%; height: 100% }
+.wwa .w11 { height: 244px; width: 498px;padding:25px }
+.wwa .w11 h3 { font-family: acuminproextracondblod; font-size: 24px; }
+.wwa .w11 p { font-size: 16px; line-height: 25px; padding-top: 18px; }
+.wwa .w2 { background: #00c3b3; color: #101820 }
+.wwa .w3 { width:244px;height:244px}
+.wwa .w4 { margin-top: 10px; }
+.wwa .w5 { background: #2b2a25; color: #fff; margin-top: 10px; }
+/*.ban03 { background: url(../Img/Index/home_b3.jpg); background-size: 100% 100% }*/
+.ban03 { background: url(../Img/Index/home_b3.jpg) center top;background-position-y: 2px; }
+.ban03-item {width:421px;height:443px;position:relative;overflow:hidden }
+.ban03-item img { width:100%;height:100%;transition:all .4s}
+.ban03-item:hover img { transform:scale(1.1) }
+.ban03-item dl { position: absolute; left: 0; top: 0; bottom: 0; width: 50%; background: rgba(0, 196, 179, .72); padding: 23px;  }
+.ban03-item dl dt { font-size: 30px; color: #fefefe; text-align: center; line-height: 26px; font-family: acuminproextracondblod; height: 60px; padding-top: 8px; }
+.ban03-item dl .d1 {font-size:16px;line-height:24px;padding-top:6px }
+.ban03-item dl .d2 { width: 140px; height: 32px; line-height: 36px; text-align: center; color: #00c4b3; background: #fff; position: absolute; left: 35px; bottom: 35px; cursor: pointer; font-family: acuminprosemicondblod }
+.ban03-item dl .d2 i { float:right;margin-right:10px;margin-top:11px}
+.ban03-item dl .d2 i:before { float: left; width: 20px; height: 2px; background: #4fd6cb; content: '';margin-top:4px }
+.ban03-item dl .d2 i:after { float: left; width: 8px; height: 8px; content: ''; border-left: 2px solid #4fd6cb; border-bottom: 2px solid #4fd6cb; transform: rotate(225deg);margin-left:-9px }
+.ban03-item.odd dl { background: rgba(16, 24, 32, .79) }
+.ban03-item.odd dl dt { color: #fefefe }
+.ban03-item.odd dl .d1 { color:#fff}
+.swiper-button-bd { position:relative}
+.swiper-button-bd .swiper-button-next, .swiper-button-bd .swiper-button-prev { top:-230px;color:#fff}
+.swiper-button-bd .swiper-button-next { right:-120px}
+.swiper-button-bd .swiper-button-prev {left:-120px }
+.ban0 {padding-bottom:90px }
+.ban04 { background: url(../Img/Index/home_b4.jpg); background-size: 100% 100%; padding-bottom: 140px; }
+.ban04 ul {}
+.ban04 ul li { float:left;background:#fff;width:308px;height:395px;margin-left:9px;position:relative;transition:all .3s;top:0;}
+.ban04 ul li:first-child { margin: 0 }
+.ban04 ul li label { width: 308px; height: 173px;overflow:hidden;display:block }
+.ban04 ul li img { width: 308px; height: 173px; transition: all .4s }
+.ban04 ul li:hover img{transform:scale(1.1)}
+.ban04 ul li dl { color: #101820;padding:0 18px;height:170px;overflow:hidden}
+.ban04 ul li dt { font-size: 18px; padding: 10px 0; font-family: acuminprosemicondblod }
+.ban04 ul li dd {font-size:16px;line-height:21px }
+.ban04 ul li a { font-size: 15px; color: #00c4b3; margin-left: 18px; display: block; margin-top: 5px; font-family: acuminprosemicondblod }
+#vStart { background: url(../Img/Index/wwa_01.jpg); height: 498px; height: 498px; cursor: pointer; text-align: center }
+.video-view { position: fixed; left: 0; top: 0; right: 0; bottom: 0; background: rgba(0,0,0,.8); z-index: 9; display: none }
+.video-view .close { text-align: right; padding-top: 12px; padding-right: 15px }
+.video-view .close img { cursor: pointer; opacity: .8 }
+.video-view.play { display: block }
+.video-view video { transform: scale(.3); transition: all .3s }
+.video-view.play video { transform: scale(1) }
+.video-view .close img:hover { opacity: 1 }
+#vStart img { width: 70px; height: 70px;margin-top:210px }
+@media screen and (max-width:1500px) {
+    .ban01>img { height: calc(100vh - 86px);min-height:600px }
+    .ban01 dl {top: 110px; right: 120px; }
+    .ban01 dt img { width:380px}
+    .ban01 dl dt { margin-bottom: 50px }
+    .ban01 dl dd { font-size: 62px }
+    .swiper-button-bd .swiper-button-next { right: -60px }
+    .swiper-button-bd .swiper-button-prev { left: -60px }
+}
+
+@media screen and (max-width:1400px) {
+    .ban01 > img { height: calc(100vh - 78px); min-height: 480px }
+    .swiper-button-bd .swiper-button-next { right: -40px }
+    .swiper-button-bd .swiper-button-prev { left: -40px }
+}
+

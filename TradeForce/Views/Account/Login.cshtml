@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "登录";
+}
+<form action="/Account/Login" method="post">
+    <input value="@ViewBag.UrlReferrer" type="hidden" name="url"/>
+    <div>Email：<input type="text" name="Email" placeholder="Email"/></div>
+    <div>Password：<input type="text" name="password"/></div>
+    <div><input type="submit" value="Login"/></div>
+    <div><a href="/Account/Reg">Create account</a></div>
+    <div>@ViewBag.Err</div>
+</form>
