@@ -30,7 +30,8 @@ namespace TradeForce.Controllers
         }
         public ActionResult Where()
         {
-            return View();
+            var model = ef.country.ToList();
+            return View(model);
         }
         public string AddQuestions(question ques)
         {

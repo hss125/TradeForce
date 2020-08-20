@@ -20,6 +20,15 @@
           <Property Name="InsertUser" Type="int" />
           <Property Name="InsertDate" Type="datetime" Precision="0" />
         </EntityType>
+        <EntityType Name="country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Country" Type="varchar" MaxLength="60" />
+          <Property Name="Url" Type="varchar" MaxLength="300" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+        </EntityType>
         <EntityType Name="news">
           <Key>
             <PropertyRef Name="Id" />
@@ -94,6 +103,7 @@
         </EntityType>
         <EntityContainer Name="tradeforceModelStoreContainer">
           <EntitySet Name="classify" EntityType="Self.classify" Schema="tradeforce" store:Type="Tables" />
+          <EntitySet Name="country" EntityType="Self.country" Schema="tradeforce" store:Type="Tables" />
           <EntitySet Name="news" EntityType="Self.news" Schema="tradeforce" store:Type="Tables" />
           <EntitySet Name="product" EntityType="Self.product" Schema="tradeforce" store:Type="Tables" />
           <EntitySet Name="productproperty" EntityType="Self.productproperty" Schema="tradeforce" store:Type="Tables" />
@@ -184,6 +194,7 @@
           <EntitySet Name="question" EntityType="Self.question" />
           <EntitySet Name="user" EntityType="Self.user" />
           <EntitySet Name="news" EntityType="tradeforceModel.news" />
+          <EntitySet Name="country" EntityType="tradeforceModel.country" />
         </EntityContainer>
         <EntityType Name="news">
           <Key>
@@ -198,6 +209,15 @@
           <Property Name="InsertDate" Type="DateTime" />
           <Property Name="IsDelete" Type="Int32" />
           <Property Name="Lang" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Country1" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Url" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -294,6 +314,16 @@
                 <ScalarProperty Name="Content" ColumnName="Content" />
                 <ScalarProperty Name="LangTitle" ColumnName="LangTitle" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="country">
+            <EntityTypeMapping TypeName="tradeforceModel.country">
+              <MappingFragment StoreEntitySet="country">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Country1" ColumnName="Country" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

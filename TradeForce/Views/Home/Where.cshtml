@@ -3,6 +3,8 @@
     Layout = "~/Views/Shared/_MainLayout.cshtml";
     ViewBag.NavIndex = 2;
 }
+@using TradeForce.Models;
+@model List<country>
 <div class="ban01">
     <img src="/Content/Img/whereToBuy_banner.jpg" />
 </div>
@@ -32,14 +34,18 @@
             <dd>
                 <select>
                     <option>Please Choose</option>
-                    <option>TU, Netherlands</option>
+                    @foreach (var it in Model)
+                    {
+                        <option onclick="window.open('@it.Url','_blank')">@it.Country1</option>
+                    }
+                    @*<option>TU, Netherlands</option>
                     <option>ESK Sweden, Sweden</option>
                     <option>Sonepar Norway</option>
                     <option>SLO, Finland</option>
                     <option>Sonepar Brazil</option>
                     <option>Sonepar France</option>
                     <option>Sonepar Italy</option>
-                    <option>Cebeo Belgium</option>
+                    <option>Cebeo Belgium</option>*@
                 </select>
             </dd>
         </dl>

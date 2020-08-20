@@ -20,6 +20,29 @@
           <Property Name="InsertUser" Type="int" />
           <Property Name="InsertDate" Type="datetime" Precision="0" />
         </EntityType>
+        <EntityType Name="country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Country" Type="varchar" MaxLength="60" />
+          <Property Name="Url" Type="varchar" MaxLength="300" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="news">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="255" />
+          <Property Name="LangTitle" Type="varchar" MaxLength="255" />
+          <Property Name="Content" Type="text" />
+          <Property Name="Img" Type="varchar" MaxLength="400" />
+          <Property Name="NewsDate" Type="datetime" Precision="0" />
+          <Property Name="InsertDate" Type="datetime" Precision="0" />
+          <Property Name="IsDelete" Type="int" />
+          <Property Name="Lang" Type="varchar" MaxLength="45" />
+        </EntityType>
         <EntityType Name="product">
           <Key>
             <PropertyRef Name="Id" />
@@ -64,7 +87,6 @@
           <Property Name="InsertUserId" Type="int" />
           <Property Name="InsertDate" Type="datetime" Precision="0" />
           <Property Name="IsDelete" Type="int" />
-          <Property Name="Lang" Type="varchar" MaxLength="45" />
         </EntityType>
         <EntityType Name="user">
           <Key>
@@ -81,6 +103,8 @@
         </EntityType>
         <EntityContainer Name="tradeforceModelStoreContainer">
           <EntitySet Name="classify" EntityType="Self.classify" Schema="tradeforce" store:Type="Tables" />
+          <EntitySet Name="country" EntityType="Self.country" Schema="tradeforce" store:Type="Tables" />
+          <EntitySet Name="news" EntityType="Self.news" Schema="tradeforce" store:Type="Tables" />
           <EntitySet Name="product" EntityType="Self.product" Schema="tradeforce" store:Type="Tables" />
           <EntitySet Name="productproperty" EntityType="Self.productproperty" Schema="tradeforce" store:Type="Tables" />
           <EntitySet Name="question" EntityType="Self.question" Schema="tradeforce" store:Type="Tables" />
@@ -169,7 +193,32 @@
           <EntitySet Name="productproperty" EntityType="Self.productproperty" />
           <EntitySet Name="question" EntityType="Self.question" />
           <EntitySet Name="user" EntityType="Self.user" />
+          <EntitySet Name="country" EntityType="tradeforceModel.country" />
+          <EntitySet Name="news" EntityType="tradeforceModel.news" />
         </EntityContainer>
+        <EntityType Name="country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Country1" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Url" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="news">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LangTitle" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Content" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="Img" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="NewsDate" Type="DateTime" />
+          <Property Name="InsertDate" Type="DateTime" />
+          <Property Name="IsDelete" Type="Int32" />
+          <Property Name="Lang" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -251,6 +300,31 @@
                 <ScalarProperty Name="Disabled" ColumnName="Disabled" />
                 <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
                 <ScalarProperty Name="Lang" ColumnName="Lang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="country">
+            <EntityTypeMapping TypeName="tradeforceModel.country">
+              <MappingFragment StoreEntitySet="country">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Country1" ColumnName="Country" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="news">
+            <EntityTypeMapping TypeName="tradeforceModel.news">
+              <MappingFragment StoreEntitySet="news">
+                <ScalarProperty Name="Lang" ColumnName="Lang" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="NewsDate" ColumnName="NewsDate" />
+                <ScalarProperty Name="Img" ColumnName="Img" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="LangTitle" ColumnName="LangTitle" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

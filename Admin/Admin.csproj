@@ -173,10 +173,14 @@
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\SettingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\classify.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\country.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Lang.cs" />
@@ -351,6 +355,7 @@
     </Content>
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Home\Country.js" />
     <Content Include="Scripts\Home\News.js" />
     <Content Include="Scripts\Home\Classify.js" />
     <Content Include="Scripts\Home\Product.js" />
@@ -379,6 +384,7 @@
     <Content Include="Views\Account\Reg.cshtml" />
     <Content Include="Views\Home\Suggestions.cshtml" />
     <Content Include="Views\Home\News.cshtml" />
+    <Content Include="Views\Setting\CountrySelect.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

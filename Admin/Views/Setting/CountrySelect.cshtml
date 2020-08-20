@@ -1,0 +1,59 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@using Admin.Models
+@using Newtonsoft.Json;
+@model List<country>
+<div class="imain-content">
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+        <legend>CountrySelect Management</legend>
+    </fieldset>
+    <button type="button" class="layui-btn btn-add">Add</button>
+    <table class="layui-table" lay-even="" lay-skin="row">
+        <thead>
+            <tr>
+                <th>Number</th>
+                <th>Country</th>
+                <th>Url</th>
+                <th style="width:120px">Operation</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{int i = 0; }
+            @foreach (var c in Model)
+            {
+                i++;
+                <tr>
+                    <td>@i</td>
+                    <td>@c.Country1</td>
+                    <td>@c.Url</td>
+                    <td>
+                        <button type="button" class="layui-btn layui-btn-xs" onclick="edit(@JsonConvert.SerializeObject(c))">Edit</button>
+                        <button type="button" class="layui-btn layui-btn-danger layui-btn-xs" onclick="del(@c.Id)">Remove</button>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+<div style="height:0;overflow:hidden">
+    <div id="proEdit" style="padding:12px">
+        <form class="layui-form" action="" lay-filter="example1">
+            <input type="hidden" name="Id" />
+            <div class="layui-form-item">
+                <label class="layui-form-label">Country</label>
+                <div class="layui-input-block">
+                    <input type="text" name="Country1"  autocomplete="off" placeholder="Title" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">Url</label>
+                <div class="layui-input-block">
+                    <input type="text" name="Url" autocomplete="off" placeholder="Url" class="layui-input">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="~/Scripts/Home/Country.js"></script>

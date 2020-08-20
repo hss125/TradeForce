@@ -31,5 +31,6 @@ namespace Admin.Models
         public virtual DbSet<question> question { get; set; }
         public virtual DbSet<user> user { get; set; }
         public virtual DbSet<news> news { get; set; }
+        public virtual DbSet<country> country { get; set; }
     }
 }
