@@ -26,7 +26,7 @@ layui.use(['layer', "form", 'upload'], function () {
     });
     upload.render({
         elem: '#test3'
-        , url: '/File/ImgUpload?Path=PDF'
+        , url: '/File/FileUpload?Path=PDF'
         , accept: 'file'
         , exts: 'PDF'
         , before: function (obj) {

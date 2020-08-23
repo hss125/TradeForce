@@ -91,7 +91,7 @@
                     <div class="menu-second">
                         <div class="ms-left">
                             <a href="/Media/News">News</a>
-                            <a href="#">Download</a>
+                            <a href="/Media/DownLoad">Download</a>
                         </div>
                         <div class="ms-right">
                             <img src="~/Content/Img/Media_Navimg.png" />
@@ -103,9 +103,9 @@
                     <a href="#" v-text="lang.support"></a>
                     <div class="menu-second ms-support">
                         <div class="ms-left">
-                            <a href="/Home/Where">Where to buy</a>
-                            <a href="#">Quality Assurance</a>
-                            <a href="/Home/Contact">Contact us</a>
+                            <a href="/Support/Where">Where to buy</a>
+                            <a href="/Support/Quality">Quality Assurance</a>
+                            <a href="/Support/Contact">Contact us</a>
                         </div>
                         <div class="ms-right">
                             <img src="~/Content/Img/Support_Navimg.png" />
@@ -248,8 +248,8 @@
                 //});
             },
             langSwitch: function (lang) {
-                setCookie("lang", lang);
-                location.reload();
+                //setCookie("lang", lang);
+                //location.reload();
             }
         }
     })

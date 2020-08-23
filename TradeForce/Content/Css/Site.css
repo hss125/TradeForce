@@ -12,6 +12,8 @@ table { width: 100%; border-collapse: collapse; }
 a { color:inherit;text-decoration:none}
 input, select, textarea { font-family: acuminprosemicond,arial; }
 .main-bd {width:1260px;margin:0 auto; }
+.main1120 { width: 1120px; margin: 0 auto; }
+.main1180 { width: 1180px; margin: 0 auto; }
 .clear { zoom:1}
 .clear:after { content:'';display:block;clear:both}
 /*头部*/

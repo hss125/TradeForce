@@ -1,0 +1,90 @@
+﻿@{
+    ViewBag.Title = "News";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    ViewBag.NavIndex = 5;
+}
+<link href="~/Content/Css/About.css" rel="stylesheet" />
+<div class="ban01">
+    <img src="~/Content/Img/News/DLbanner.jpg" />
+</div>
+<div class="brand-story">
+    <h2>DownLoad</h2>
+    <h3></h3>
+</div>
+<div class="main1180" id="download">
+    <div class="download">
+        <ul class="dl-menu">
+            <li :class="{select:curr==0}" @@click="typeTab(0)">Videos</li>
+            <li :class="{select:curr==1}" @@click="typeTab(1)">Documents</li>
+            <li :class="{select:curr==2}" @@click="typeTab(2)">Images</li>
+        </ul>
+        <ul class="dl-list">
+            <li v-for="it in files" v-show="curr==-1||curr==it.type" :class="'type'+it.type">
+                <dl>
+                    <dt>{{it.typeName}}</dt>
+                    <dd><a target="_blank" download :href="'@(ViewBag.AdminUrl)/Upload/DownLoad/'+it.Url"><img src="/Content/Img/Products/pro_ico.png">{{it.Name}}</a></dd>
+                    <dd>{{it.Describe}}</dd>
+                </dl>
+                <div class="view">
+                    <img v-if="it.type==0" src="/Content/Img/Index/play.png">
+                    <img v-if="it.type==1" src="~/Content/Img/News/pdf_ico.png">
+                    <img v-if="it.type==2" src="~/Content/Img/News/img_ico.png">
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<style>
+    .download { display: flex; border-top: 1px solid #c0c0c0;padding-bottom:180px }
+    .download .dl-menu { width: 300px; padding-right: 20px; font-family: 'acuminprosemicondblod';padding-top:5px }
+    .download .dl-menu li { border-bottom: 1px solid #c0c0c0;line-height:44px;font-size:18px;color:#333;padding-left:3px;padding-top:2px;cursor:pointer }
+    .download .dl-menu li:hover, .download .dl-menu li.select { color: #00c4b3 }
+    .download .dl-menu li:hover:after, .download .dl-menu li.select:after { border-color: #00c4b3 }
+    .download .dl-menu li:after { content: ''; float: right; border-bottom: 2px solid #231815; border-right: 2px solid #231815; width: 10px; height: 10px; transform: rotate(-45deg); margin-top:18px;margin-right:8px}
+    .download .dl-list { flex: 1; border-left: 1px solid #c0c0c0 }
+    .dl-list li { display: flex; border-bottom: 1px solid #c0c0c0; padding: 35px 0 50px 20px }
+    .dl-list li dl {width:650px;padding-right:60px }
+    .dl-list li .view { width: 192px; height: 108px; background: radial-gradient(#6cf1e5,#00c4b3);display:flex;justify-content:center;align-items:center }
+    .dl-list li dl dt { color: #000; font-family: 'acuminprosemicondblod' }
+    .dl-list li dl dd { font-size:18px;padding-top:12px }
+    .dl-list li dl dd a { font-family: 'acuminprosemicondblod'; color: #00c4b3 }
+    .dl-list li dl dd a img { width:19px;margin-right:10px}
+</style>
+<script src="http://localhost:64919/Scripts/jquery-1.10.2.min.js"></script>
+<script src="@(ViewBag.AdminUrl)/Scripts/Home/GetFileType.js"></script>
+<script>
+    new Vue({
+        el: '#download',
+        data: {
+            files: [],
+            curr:-1
+        },
+        mounted: function () {
+            var that = this;
+            $.get("/Media/GetDownLoad", function (data) {
+                data = JSON.parse(data);
+                for (var i = 0; i < data.length; i++) {
+                    var type = "doc";
+                    if (data[i].Url.indexOf(".") > -1) {
+                        type = data[i].Url.split('.')[1];
+                    }
+                    data[i].type = getFileType(type);
+                    if (data[i].type == 0) {
+                        data[i].typeName = "VIDEO";
+                    } else if (data[i].type == 2) {
+                        data[i].typeName = "IMAGE";
+                    }
+                    else {
+                        data[i].typeName = "DOCUMENT";
+                    }
+                }
+                that.files = data;
+            })
+        },
+        methods: {
+            typeTab: function(type) {
+                this.curr = type;
+            }
+        }
+    })
+</script>

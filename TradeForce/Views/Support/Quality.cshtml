@@ -1,0 +1,97 @@
+﻿@{
+    ViewBag.Title = "quality";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    ViewBag.NavIndex = 5;
+}
+@using TradeForce.Models;
+@model List<country>
+<link href="~/Content/Css/Customers.css" rel="stylesheet" />
+<div class="ban01">
+    <img src="~/Content/Img/Contact/qualitybanner.jpg" />
+</div>
+<div class="quality-bg1">
+    <div class="main-bd">
+        <div class="brand-story">
+            <h2>Quality Assurance</h2>
+            <h3></h3>
+            <p>
+                <label>TRADEFORCE </label>
+                commits to equipping professional contractors with high-quality, dependable tools and safety equipment, giving them the confidence to take on any job, anywhere.
+            </p>
+            <p>We only sell through professional trade channels, and our range is streamlined to provide only the essential tools needed for day-to-day professional use. This puts us in a unique position to ensure that our primary customer – the professional contractor – is the key influence behind everything that we do.</p>
+            <p>With high-quality, reliable tools and safety equipment for professionals, TRADEFORCE is here to be the trusted partner through the adventure of being a professional contractor. </p>
+        </div>
+    </div>
+</div>
+<ul class="quality-list">
+    <li>
+        <div class="main1120">
+            <label>
+                <img src="~/Content/Img/Contact/qualityimg01.jpg"/>
+            </label>
+            <dl>
+                <dt>High-quality material</dt>
+                <dd>
+                    <h2><span class="s1">TRADEFORCE</span> tools are built with high-quality materials for professional use in heavy-loaded tough working conditions.</h2>
+                    <p class="p1">Cr-V, industrial quality chrome vanadium steel, is used in TRADEFORCE tools as a minimum quality measure.</p>
+                    <p class="p1">S2 steel, tool steel generally requires impact resistance, strong torsion, high hardness, and low stress, these advantages make S2 steel the optimal choice for TRADEFORCE tools. </p>
+                </dd>
+            </dl>
+        </div>
+    </li>
+    <li>
+        <div class="main1120">
+            <dl>
+                <dt>Certification</dt>
+                <dd>
+                    <h2><span class="s1">TRADEFORCE</span> tools comply with international and local regulation, building codes and laws, that secures business trades in the long term and safeguard the health of the users. </h2>
+                </dd>
+            </dl>
+            <label>
+                <img src="~/Content/Img/Contact/qualityimg02.jpg" />
+            </label>
+        </div>
+    </li>
+    <li>
+        <div class="main1120">
+            <label>
+                <img src="~/Content/Img/Contact/qualityimg03.jpg" />
+            </label>
+            <dl>
+                <dt>Rigorous Test</dt>
+                <dd>
+                    <h2>TRADEFORCE tools are certified by well recognized worldwide laboratories, such as GS, VDE</h2>
+                    <p style="padding-top:45px"><img src="~/Content/Img/Contact/qualityimg03_02.jpg"/></p>
+                </dd>
+            </dl>
+        </div>
+    </li>
+    <li>
+        <div class="main1120">
+            <dl>
+                <dt>Laboratory tests:  </dt>
+                <dd>
+                    <h2>Rockwell hardness testing, full function torque testing, Microcomputer control electronic testing, and tensile testing, to guarantee quality and performance.</h2>
+                </dd>
+            </dl>
+            <label>
+                <img src="~/Content/Img/Contact/qualityimg04.jpg" />
+            </label>
+        </div>
+    </li>
+</ul>
+<style>
+    .quality-bg1 { background:url(/Content/Img/Contact/qualitybg.jpg) no-repeat center bottom;padding-bottom:50px}
+    .quality-list { }
+    .quality-list li{ padding:35px}
+    .quality-list li:nth-child(2n+1) { background: #e8ecec }
+    .quality-list .main1120 { display: flex }
+    .quality-list .main1120 > label { width: 495px }
+    .quality-list .main1120 > dl { flex: 1; margin-left: 40px; color: #333;padding-right:30px }
+    .quality-list .main1120 > dl dt { font-family: 'acuminproextracondblod';font-size:30px;line-height:58px;padding-bottom:18px}
+    .quality-list .main1120 > dl dd h2 { font-size: 18px; line-height: 1.4em; }
+    .quality-list .main1120 > dl dd .p1 { font-size: 18px; line-height: 1.4em; padding-top:23px}
+    .quality-list .main1120 > dl dd .p1:before { display: inline-block; content: ''; width: 7px; height: 7px; border-radius: 50%; background: #05c5b4; vertical-align: middle; margin-top: -2px; margin-right: 15px;margin-left:1px }
+    .quality-list li:nth-child(2n) .main1120 > dl { padding-top: 45px }
+    .quality-list .main1120 > dl dd h2 .s1 { font-family: 'acuminprosemicondblod' }
+</style>

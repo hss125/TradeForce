@@ -122,6 +122,58 @@ namespace Admin.Controllers
 
             return JsonConvert.SerializeObject(res);
         }
+        public ActionResult DownLoad(int type=0)
+        {
+            ViewBag.type = type;
+            string lang = ViewBag.Lang;
+            var model = tf.download.Where(w => w.Lang == lang && w.IsDelete != 0).OrderByDescending(o => o.Id).ToList();
+            return View(model);
+        }
+        public string DownLoadSave(download model)
+        {
+            string lang = ViewBag.Lang;
+            var res = new { success = true, msg = "" };
+            try
+            {
+                if (model.Id != 0)
+                {
+                    var cfy = tf.download.FirstOrDefault(f => f.Id == model.Id);
+                    cfy.UpdateDate = DateTime.Now;
+                    cfy.Name = model.Name;
+                    cfy.Url = model.Url;
+                    cfy.Describe = model.Describe;
+                }
+                else
+                {
+                    model.InsertDate = DateTime.Now;
+                    model.Lang = lang;
+                    tf.download.Add(model);
+                }
+                tf.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                res = new { success = false, msg = ex.Message };
+            }
+
+            return JsonConvert.SerializeObject(res);
+        }
+        public string DownLoadDel(int Id)
+        {
+            var res = new { success = true, msg = "" };
+            try
+            {
+                var cfy = tf.download.FirstOrDefault(f => f.Id == Id);
+                cfy.IsDelete = 0;
+                tf.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                res = new { success = false, msg = ex.Message };
+            }
+
+            return JsonConvert.SerializeObject(res);
+        }
         public ActionResult Suggestions()
         {
             string lang = ViewBag.Lang;

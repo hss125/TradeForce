@@ -32,5 +32,6 @@ namespace TradeForce.Models
         public virtual DbSet<user> user { get; set; }
         public virtual DbSet<country> country { get; set; }
         public virtual DbSet<news> news { get; set; }
+        public virtual DbSet<download> download { get; set; }
     }
 }

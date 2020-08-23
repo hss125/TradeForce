@@ -167,6 +167,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MediaController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\SupportController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -175,6 +176,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\country.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\download.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Lang.cs" />
@@ -230,6 +234,13 @@
     <Content Include="Content\Img\About\newBg02.jpg" />
     <Content Include="Content\Img\About\newBg03.jpg" />
     <Content Include="Content\Img\About\newBg04.jpg" />
+    <Content Include="Content\Img\Contact\qualitybanner.jpg" />
+    <Content Include="Content\Img\Contact\qualitybg.jpg" />
+    <Content Include="Content\Img\Contact\qualityimg01.jpg" />
+    <Content Include="Content\Img\Contact\qualityimg02.jpg" />
+    <Content Include="Content\Img\Contact\qualityimg03.jpg" />
+    <Content Include="Content\Img\Contact\qualityimg03_02.jpg" />
+    <Content Include="Content\Img\Contact\qualityimg04.jpg" />
     <Content Include="Content\Img\Customers\banner.jpg" />
     <Content Include="Content\Img\Customers\counton_01.jpg" />
     <Content Include="Content\Img\Customers\counton_02.jpg" />
@@ -267,6 +278,9 @@
     <Content Include="Content\Img\Media_Navimg.png" />
     <Content Include="Content\Img\News\banner.jpg" />
     <Content Include="Content\Img\News\bg01.jpg" />
+    <Content Include="Content\Img\News\DLbanner.jpg" />
+    <Content Include="Content\Img\News\img_ico.png" />
+    <Content Include="Content\Img\News\pdf_ico.png" />
     <Content Include="Content\Img\Products\products_pro_01.png" />
     <Content Include="Content\Img\Products\products_pro_02.png" />
     <Content Include="Content\Img\Products\products_pro_03.png" />
@@ -340,6 +354,7 @@
     </Content>
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\axios.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
@@ -356,19 +371,25 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Support\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_MainLayout.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Product\Product.cshtml" />
     <Content Include="Views\Product\Detail.cshtml" />
-    <Content Include="Views\Home\Where.cshtml" />
+    <Content Include="Views\Support\Where.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Product\PVClassify.cshtml" />
     <Content Include="Views\Account\Reg.cshtml" />
     <Content Include="Views\Product\LeftMenu.cshtml" />
     <Content Include="Views\Home\Customers.cshtml" />
     <Content Include="Views\Media\News.cshtml" />
+    <Content Include="Views\Support\Quality.cshtml" />
+    <Content Include="Views\Media\DownLoad.cshtml" />
+    <Content Include="Views\Media\NewsDetail.cshtml" />
+    <Content Include="Views\Media\NewsDetail2.cshtml" />
+    <Content Include="Views\Media\NewsDetail4.cshtml" />
+    <Content Include="Views\Media\NewsDetail3.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

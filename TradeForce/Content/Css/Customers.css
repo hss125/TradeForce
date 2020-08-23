@@ -39,9 +39,14 @@
 .cod2 { background:#fff}
 .cod2 .count-on .describe { width: 585px; margin-left: 0; margin-right: 38px; }
 .count-on-bd .title { text-align: center; font-family: acuminproextracondblod; color: #2d2a26;font-size:48px;line-height:260px }
+.win-detail {display:flex}
+.win-detail .img {width:470px;text-align:center;padding-top:30px }
+.win-detail .img img {width:400px }
+.win-detail dl { flex: 1; background: #d8dfdf ;min-height:610px;padding:0 45px}
+.win-detail dl dt{ font-family: acuminprosemicondblod; font-size: 24px; color: #2d2a26;line-height: 1.1em;padding-top:22px;padding-bottom:30px }
+.win-detail dl dd { font-size: 18px; color: #333; line-height: 1.5em; margin-bottom: 38px; }
 /**/
-@media screen and (max-width: 1500px) { 
-    .au-bg1 { font-size: 60px }
+@media screen and (max-width: 1500px) { .au-bg1 { font-size: 60px }
     .brand-story h2 { font-size: 50px; padding-top: 55px; }
     .brand-story p {font-size: 20px; padding-top: 46px; line-height: 26px; }
     .cus-h3 { font-size: 30px;padding-bottom: 36px;}

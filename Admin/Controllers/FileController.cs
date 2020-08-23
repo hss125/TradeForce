@@ -13,18 +13,18 @@ namespace Admin.Controllers
     public class FileController : Controller
     {
         // GET: File
-        //public string ImgUpload(string Path)
-        //{
-        //    HttpPostedFileBase file = Request.Files[0];
-        //    var filename = DateTime.Now.ToString("yyyyMMddHHmmss") + file.FileName.Substring(file.FileName.LastIndexOf("."));
-        //    string savePath = AppDomain.CurrentDomain.BaseDirectory + "Upload/"+Path+"/";
-        //    if (Directory.Exists(savePath) == false)
-        //    {
-        //        Directory.CreateDirectory(savePath);
-        //    }
-        //    file.SaveAs(savePath+filename);
-        //    return JsonConvert.SerializeObject(new { code = 0,msg="",data=new { src= filename } });
-        //}
+        public string FileUpload(string Path)
+        {
+            HttpPostedFileBase file = Request.Files[0];
+            var filename = DateTime.Now.ToString("yyyyMMddHHmmss") + file.FileName.Substring(file.FileName.LastIndexOf("."));
+            string savePath = AppDomain.CurrentDomain.BaseDirectory + "Upload/" + Path + "/";
+            if (Directory.Exists(savePath) == false)
+            {
+                Directory.CreateDirectory(savePath);
+            }
+            file.SaveAs(savePath + filename);
+            return JsonConvert.SerializeObject(new { code = 0, msg = "", data = new { src = filename } });
+        }
         public string ImgUpload(string Path)
         {
             HttpPostedFileBase file = Request.Files[0];

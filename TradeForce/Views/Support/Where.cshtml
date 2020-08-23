@@ -36,7 +36,7 @@
                     <option>Please Choose</option>
                     @foreach (var it in Model)
                     {
-                        <option value="@it.Country1" onclick="window.open('@it.Url','_blank')">@it.Country1</option>
+                        <option value="@it.Url" onclick="window.open('@it.Url','_blank')">@it.Country1</option>
                     }
                     @*<option>TU, Netherlands</option>
                     <option>ESK Sweden, Sweden</option>
@@ -72,7 +72,7 @@
     .selectCountry select { width: 360px; height: 46px; font-size: 20px; color: #333; padding-left: 15px; border: 1px solid #b6bcc0 }
 </style>
 <script>
-    //$("#selectCountry").select(function () {
-    //    console.log($("#selectCountry").val());
-    //})
+    $("#selectCountry").change(function () {
+        window.open($("#selectCountry").val(),'_blank')
+    })
 </script>

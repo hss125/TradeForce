@@ -24,15 +24,6 @@ namespace TradeForce.Controllers
         {
             return View();
         }
-        public ActionResult Contact()
-        {
-            return View();
-        }
-        public ActionResult Where()
-        {
-            var model = ef.country.ToList();
-            return View(model);
-        }
         public string AddQuestions(question ques)
         {
             Result res = new Result();

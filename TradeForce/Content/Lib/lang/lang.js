@@ -10,7 +10,7 @@
         "mediaCenter": "Media Center",
         "support": "Support",
         //首页
-        "anyJob": "Any job any where.",
+        "anyJob": "Any job, any where.",
         "whoWeAre": "Who We Are",
         "adventure": "Adventure Spirit",
         "adventureDetail": "Born in the Australian outback in 2005, our love of adventure has been with us from the start, we’ve grown to handle the extreme challenges.",

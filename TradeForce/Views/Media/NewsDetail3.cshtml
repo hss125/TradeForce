@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "News";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    ViewBag.NavIndex = 5;
+}
+<link href="~/Content/Css/About.css" rel="stylesheet" />
+<div class="main-bd">
+    <h2 class="crumbs">PRODUCTS  &gt; <a style="color: #101820;" href="javascript:">MEDIA CENTER</a>  &gt;  <a style="color: #101820;" href="/Media/News">NEWS</a> </h2>
+</div>
+<div class="newsBg">
+    <div class="news-detail">
+        <dl class="nd-title">
+            <dt>ElectraFK Supplies Hospitals for the Materials Needed to Manufacture Mechnaical Ventilators</dt>
+            <dd>18.07.2020</dd>
+        </dl>
+        <div class="nd-con">
+            <img class="img" src="/Content/Img/Index/news_03.jpg"/>
+            <dl>
+                <dd>ElectraFK in Chile has shown tremendous resilience throughout the past several months, especially in their service to their customers in the Healthcare industry.</dd>
+                <dd>Though there are some countries around the world which are starting to emerge from the COVID-19 pandemic, there are those which are still fighting tirelessly to combat the virus. ElectraFK in Chile has shown tremendous resilience throughout the past several months, especially in their service to their customers in the Healthcare industry. By supplying the necessary electrical materials needed for the manufacturing and automation of mechanical ventilators, they have played a vital role in helping those in need.</dd>
+            </dl>
+            <dl>
+                <dt>About Sonepar Electra FK</dt>
+                <dd>ElectraFK is one of the largest and most consolidated distributors of electrical materials in Chile. The company develops its commercial activities through two main business areas; the distribution of electrical equipment, and value-added services to serve the industrial, residential, commercial and mining sectors. ElectraFK is the result of the merge of the previous FloresYKersting and Electra companies, both acquired by Sonepar in 2015.</dd>
+                
+            </dl>
+        </div>
+    </div>
+</div>
+
+<style>
+    .newsBg { padding-bottom: 265px; background: url(/Content/Img/News/bg01.jpg) no-repeat center bottom; }
+    .news-detail { width: 940px; margin: 0 auto; }
+    .nd-title dt { color: #2d2a26 ;font-size:48px;padding:30px 0}
+    .nd-title dd { color: #888; font-size: 16px; line-height: 52px; border-bottom: 1px solid #d8dfe1 }
+    .nd-con { width: 780px; margin: 0 auto;padding-top:70px }
+    .nd-con img { height:290px;width:555px}
+    .nd-con dl {color:#333;padding-top:65px;padding-bottom:15px }
+    .nd-con dl dt { font-size: 24px; font-family: 'acuminprosemicondblod'; padding-bottom: 2px; }
+    .nd-con dl dd { font-size: 18px; padding-top: 24px; line-height: 24px; }
+</style>

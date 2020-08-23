@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using TradeForce.Models;
 
 namespace TradeForce.Controllers
 {
@@ -12,7 +13,8 @@ namespace TradeForce.Controllers
     {
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            ViewBag.lang=Request.Cookies["lang"] == null?"en":Request.Cookies["lang"].Value;
+            var defLang = (int)Lang.english;
+            ViewBag.lang=Request.Cookies["lang"] == null? defLang.ToString() : Request.Cookies["lang"].Value;
             string cookieName = FormsAuthentication.FormsCookieName;
             HttpCookie authCookie = HttpContext.Request.Cookies[cookieName];
             if (authCookie != null)

@@ -29,6 +29,20 @@
           <Property Name="Url" Type="varchar" MaxLength="300" />
           <Property Name="Name" Type="varchar" MaxLength="100" />
         </EntityType>
+        <EntityType Name="download">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Url" Type="varchar" MaxLength="200" />
+          <Property Name="Describe" Type="varchar" MaxLength="300" />
+          <Property Name="Type" Type="varchar" MaxLength="50" />
+          <Property Name="Lang" Type="varchar" MaxLength="30" />
+          <Property Name="IsDelete" Type="int" />
+          <Property Name="InsertDate" Type="datetime" Precision="0" />
+          <Property Name="UpdateDate" Type="datetime" Precision="0" />
+        </EntityType>
         <EntityType Name="news">
           <Key>
             <PropertyRef Name="Id" />
@@ -104,6 +118,7 @@
         <EntityContainer Name="tradeforceModelStoreContainer">
           <EntitySet Name="classify" EntityType="Self.classify" Schema="tradeforce" store:Type="Tables" />
           <EntitySet Name="country" EntityType="Self.country" Schema="tradeforce" store:Type="Tables" />
+          <EntitySet Name="download" EntityType="Self.download" Schema="tradeforce" store:Type="Tables" />
           <EntitySet Name="news" EntityType="Self.news" Schema="tradeforce" store:Type="Tables" />
           <EntitySet Name="product" EntityType="Self.product" Schema="tradeforce" store:Type="Tables" />
           <EntitySet Name="productproperty" EntityType="Self.productproperty" Schema="tradeforce" store:Type="Tables" />
@@ -195,6 +210,7 @@
           <EntitySet Name="user" EntityType="Self.user" />
           <EntitySet Name="country" EntityType="tradeforceModel.country" />
           <EntitySet Name="news" EntityType="tradeforceModel.news" />
+          <EntitySet Name="download" EntityType="tradeforceModel.download" />
         </EntityContainer>
         <EntityType Name="country">
           <Key>
@@ -218,6 +234,20 @@
           <Property Name="InsertDate" Type="DateTime" />
           <Property Name="IsDelete" Type="Int32" />
           <Property Name="Lang" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="download">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Url" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Describe" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Lang" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="IsDelete" Type="Int32" />
+          <Property Name="InsertDate" Type="DateTime" />
+          <Property Name="UpdateDate" Type="DateTime" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -324,6 +354,21 @@
                 <ScalarProperty Name="Content" ColumnName="Content" />
                 <ScalarProperty Name="LangTitle" ColumnName="LangTitle" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="download">
+            <EntityTypeMapping TypeName="tradeforceModel.download">
+              <MappingFragment StoreEntitySet="download">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="Lang" ColumnName="Lang" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Describe" ColumnName="Describe" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

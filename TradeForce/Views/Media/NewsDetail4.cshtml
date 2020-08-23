@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "News";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    ViewBag.NavIndex = 5;
+}
+<link href="~/Content/Css/About.css" rel="stylesheet" />
+<div class="main-bd">
+    <h2 class="crumbs">PRODUCTS  &gt; <a style="color: #101820;" href="javascript:">MEDIA CENTER</a>  &gt;  <a style="color: #101820;" href="/Media/News">NEWS</a> </h2>
+</div>
+<div class="newsBg">
+    <div class="news-detail">
+        <dl class="nd-title">
+            <dt>Tool knowledge-the internal structure of the tape measure</dt>
+            <dd>18.07.2020</dd>
+        </dl>
+        <div class="nd-con">
+            <img class="img" src="/Content/Img/Index/news_04.jpg"/>
+            <dl>
+                <dd>Internal structure of tape measure<br />
+Under the hard plastic shell of the tape measure, 26 parts work together. The tightening coil spring can make the tape measure the data accurately.</dd>
+                <dd>The sleeve hook can hook the metal sheet without breaking the metal sheet, and the tightened coil spring can absorb the metal sheet at the moment of friction.</dd>
+            </dl>
+            <dl>
+                <dd>As the metal strip is wound around the central axle shaft, it becomes a powerful spring. The more the tape measure is pulled out, the greater the pressure of the spring will be. As soon as the buckle lock is released and the spring needs to return to its original position, the leaf of the tape measure will be taken in immediately.</dd>
+                
+            </dl>
+        </div>
+    </div>
+</div>
+
+<style>
+    .newsBg { padding-bottom: 265px; background: url(/Content/Img/News/bg01.jpg) no-repeat center bottom; }
+    .news-detail { width: 940px; margin: 0 auto; }
+    .nd-title dt { color: #2d2a26 ;font-size:48px;padding:30px 0}
+    .nd-title dd { color: #888; font-size: 16px; line-height: 52px; border-bottom: 1px solid #d8dfe1 }
+    .nd-con { width: 780px; margin: 0 auto;padding-top:70px }
+    .nd-con img { height:290px;width:555px}
+    .nd-con dl {color:#333;padding-top:65px;padding-bottom:15px }
+    .nd-con dl dt { font-size: 24px; font-family: 'acuminprosemicondblod'; padding-bottom: 2px; }
+    .nd-con dl dd { font-size: 18px; padding-top: 24px; line-height: 24px; }
+</style>

@@ -85,7 +85,7 @@
         <div class="describe">
             <h3>Maximize Efficiency and Minimize Injury with TRADEFORCE’s Professional Design and Build</h3>
             <p>As professionals, having the right set of tools and equipment isn’t simply about preparing yourself to deliver the best work possible – it’s about doing so in a way that ensures the long-term health of both you and your business. It goes without saying that no job should be rushed, but it can be equally important that no job be held-up or delayed because of inefficiencies caused by poorly performing gear...</p>
-            <a>Learn More</a>
+            <a href="javascript:" onclick="openWin(1)">Learn More</a>
         </div>
     </div>
 </div>
@@ -94,7 +94,7 @@
         <div class="describe">
             <h3>TRADEFORCE as One-Stop Shop for Essential Professional Equipment (e.g. Young Contractor)</h3>
             <p>For those just setting out on their adventure in the world of construction, one of the first hurdles can be making sure you’re kitted out for the challenges that lie ahead. Choosing which equipment to put your trust in for this milestone can be daunting in itself, with so much available on the market and a sense of unknown about what type of work could be around the corner...</p>
-            <a>Learn More</a>
+            <a href="javascript:" onclick="openWin(2)">Learn More</a>
         </div>
         <div class="img">
             <img src="~/Content/Img/Customers/counton_02.jpg" />
@@ -109,7 +109,53 @@
         <div class="describe">
             <h3>Extreme Conditions  (Born in Australia, TRADEFORCE is Made to Take on Any Challenge)</h3>
             <p>Working in professional situations rather than a home or DIY environment is guaranteed to introduce you to some of the most extreme working environments imaginable. Intense weather conditions, fire and electrical hazards – these are par for the course for professional contractors. Being ill-equipped in these type of scenarios means at the very minimum having to do more work than necessary to get the job done...</p>
-            <a>Learn More</a>
+            <a href="javascript:" onclick="openWin(3)">Learn More</a>
         </div>
     </div>
 </div>
+<div class="win-detail layer1" style="display:none">
+    <div class="img">
+        <img src="~/Content/Img/Customers/counton_01.jpg" />
+    </div>
+    <dl>
+        <dt>Maximize Efficiency and Minimize Injury with TRADEFORCE’s Professional Design and Build</dt>
+        <dd>As professionals, having the right set of tools and equipment isn’t simply about preparing yourself to deliver the best work possible – it’s about doing so in a way that ensures the long-term health of both you and your business. It goes without saying that no job should be rushed, but it can be equally important that no job be held-up or delayed because of inefficiencies caused by poorly performing gear. Likewise, no professional should be exposing themself to unnecessary injury because they are not properly equipped for the job. Taking risks is intrinsic to the spirit of life as a contractor, but the best contractors always know how to minimize unnecessary risk so they can keep safe and stay focused on the job.</dd>
+        <dd>TRADEFORCE understands that some risks are worth taking and others not. Our professional tools are designed based on the needs of those who put their trust in their equipment to perform each day, from sunrise to sunset. As such, TRADEFORCE offers a range of ergonomic and durable products that minimize the risks of damage and injury – to yourself and your gear. From comfort grips and weight-balanced hand tools, to protective gear you can wear throughout the day without irritation, our products are made to stand up to rigors of the professional world, giving you the confidence to tackle any job, anywhere.</dd>
+    </dl>
+</div>
+<div class="win-detail layer2" style="display:none">
+    <div class="img">
+        <img src="~/Content/Img/Customers/counton_02.jpg" />
+    </div>
+    <dl>
+        <dt>TRADEFORCE as One-Stop Shop for Essential Professional Equipment (e.g. Young Contractor)</dt>
+        <dd>For those just setting out on their adventure in the world of construction, one of the first hurdles can be making sure you’re kitted out for the challenges that lie ahead. Choosing which equipment to put your trust in for this milestone can be daunting in itself, with so much available on the market and a sense of unknown about what type of work could be around the corner. One of the most rewarding and exciting aspects of contracting work is the freedom to choose which jobs and which challenges to take on, but without the right equipment in hand, you may end up missing out on certain opportunities even if you do have the right skills and knowledge needed to perform.</dd>
+        <dd>That’s why TRADEFORCE prides itself in being able to equip professionals to take on any job, anywhere. With our dedicated selection of tools and safety equipment, you can find all the essentials for your personal needs, safe in the knowledge that they will all perform to the professional standards you expect. So whether you’re just starting out and looking to pick up your first set of professional tools, or you’re an industry veteran looking to refresh some core pieces of equipment, TRADEFORCE is here to make sure you have what it takes to tackle any job, anywhere.</dd>
+    </dl>
+</div>
+<div class="win-detail layer3" style="display:none">
+    <div class="img">
+        <img src="~/Content/Img/Customers/counton_03.jpg" />
+    </div>
+    <dl>
+        <dt>Extreme Conditions  (Born in Australia, TRADEFORCE is Made to Take on Any Challenge)</dt>
+        <dd>Working in professional situations rather than a home or DIY environment is guaranteed to introduce you to some of the most extreme working environments imaginable. Intense weather conditions, fire and electrical hazards – these are par for the course for professional contractors. Being ill-equipped in these type of scenarios means at the very minimum having to do more work than necessary to get the job done, whereas on the other end of the spectrum it could be a matter of life and death.</dd>
+        <dd>TRADEFORCE started its life serving professional contractors in Australia working in some of the most challenging and varied conditions on the planet. By developing and refining our products to perform to the extreme demands of the Australian market, we’ve created a range of professional products that can perform on any job, anywhere.</dd>
+        <dd>Our VDE-certified products are designed and tested so that you can operate safely around live electricity. Likewise, our fire-resistant tools and equipment not only prepare you to work with high temperature fittings, they help keep you safe in the case of fires and other accidents. For day-to-day safety onsite, TRADEFORCE offers a comprehensive range of core safety equipment, including hard hats, respirators, safety gloves and safety boots – protecting you from head to toe, day in and day out.</dd>
+    </dl>
+</div>
+<script src="~/Content/Lib/layer/layer.js"></script>
+<script>
+    function openWin(index) {
+        layer.open({
+            type: 1,
+            shade: false,
+            area: ['1250px', '610px'],
+            shade: 0.7,
+            title: false, //不显示标题
+            content: $('.layer' + index), //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素所影响
+            cancel: function () {
+            }
+        });
+    }
+</script>

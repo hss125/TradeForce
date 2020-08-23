@@ -1,0 +1,92 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@using Admin.Models
+@using Newtonsoft.Json;
+@model List<download>
+<div class="imain-content">
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+        <legend>DownLoad Management</legend>
+    </fieldset>
+    <button type="button" class="layui-btn btn-add">Add</button>
+    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+        <ul class="layui-tab-title">
+            <li class="@(ViewBag.type == 0?"layui-this":"")"><a href="/Home/DownLoad?type=0">Videos</a></li>
+            <li class="@(ViewBag.type == 1?"layui-this":"")"><a href="/Home/DownLoad?type=1">Documents</a></li>
+            <li class="@(ViewBag.type == 2?"layui-this":"")"><a href="/Home/DownLoad?type=2">Images</a></li>
+        </ul>
+    </div>
+    
+    <table class="layui-table" lay-skin="row">
+        <thead>
+            <tr>
+                <th>Number</th>
+                <th>Name</th>
+                <th>Url</th>
+                <th>Describe</th>
+                <th style="width:120px">Operation</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{int i = 0; }
+            @foreach (var c in Model)
+            {
+                i++;
+                var type = "doc";
+                if (c.Url.Contains("."))
+                {
+                    type=c.Url.Split('.')[1];
+                }
+                <tr style="display:none" data-type="@type">
+                    <td>@i</td>
+                    <td>@c.Name</td>
+                    <td>@c.Url</td>
+                    <td>@c.Describe</td>
+                    <td>
+                        <button type="button" class="layui-btn layui-btn-xs" onclick="edit(@JsonConvert.SerializeObject(c))">Edit</button>
+                        <button type="button" class="layui-btn layui-btn-danger layui-btn-xs" onclick="del(@c.Id)">Remove</button>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+<div style="height:0;overflow:hidden">
+    <div id="proEdit" style="padding:12px">
+        <form class="layui-form" action="" lay-filter="example1">
+            <input type="hidden" name="Id" />
+            <div class="layui-form-item">
+                <label class="layui-form-label">Name</label>
+                <div class="layui-input-block">
+                    <input type="text" name="Name"  autocomplete="off" placeholder="Name" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">File</label>
+                <div class="layui-input-block">
+                    <button type="button" class="layui-btn" id="test3"><i class="layui-icon"></i>上传文件</button>
+                    <label id="fileName"></label>
+                    <input type="hidden" id="url" name="Url"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">Describe</label>
+                <div class="layui-input-block">
+                    <input type="text" name="Describe" autocomplete="off" placeholder="Describe" class="layui-input">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/Home/DownLoad.js"></script>
+<script src="~/Scripts/Home/GetFileType.js"></script>
+<script>
+    $("[data-type]").each(function () {
+        var type = $(this).data("type");
+        if (getFileType(type) ==@ViewBag.type){
+            $(this).show();
+        }
+    })
+</script>
