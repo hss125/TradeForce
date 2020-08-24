@@ -47,7 +47,7 @@ namespace TradeForce.Controllers
                 ViewBag.Err = "用户名或密码错误！";
                 return View();
             }
-            if (string.IsNullOrEmpty(url)|| url.Contains("Account/Login"))
+            if (string.IsNullOrEmpty(url)|| url.Contains("Account/Login") || url.Contains("Account/Reg"))
             {
                 return RedirectToAction("Index", "Home");
             }

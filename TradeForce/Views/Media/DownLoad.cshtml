@@ -22,7 +22,7 @@
             <li v-for="it in files" v-show="curr==-1||curr==it.type" :class="'type'+it.type">
                 <dl>
                     <dt>{{it.typeName}}</dt>
-                    <dd><a target="_blank" download :href="'@(ViewBag.AdminUrl)/Upload/DownLoad/'+it.Url"><img src="/Content/Img/Products/pro_ico.png">{{it.Name}}</a></dd>
+                    <dd><a @@click="downloadFile(it.Id)" href="javascript:"><img src="/Content/Img/Products/pro_ico.png">{{it.Name}}</a></dd>
                     <dd>{{it.Describe}}</dd>
                 </dl>
                 <div class="view">
@@ -50,7 +50,7 @@
     .dl-list li dl dd a { font-family: 'acuminprosemicondblod'; color: #00c4b3 }
     .dl-list li dl dd a img { width:19px;margin-right:10px}
 </style>
-<script src="http://localhost:64919/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="@(ViewBag.AdminUrl)/Scripts/Home/GetFileType.js"></script>
 <script>
     new Vue({
@@ -84,6 +84,19 @@
         methods: {
             typeTab: function(type) {
                 this.curr = type;
+            },
+            downloadFile: function (id) {
+                $.post("/Support/DownloadFile", { id: id }, function (data) {
+                    var res = JSON.parse(data);
+                    if (res.isLogin) {
+                        $("#pdfdl").remove();
+                        $("body").append('<a id="pdfdl" href="@(ViewBag.AdminUrl)/Upload/DownLoad/' + res.url + '" download=""></a>');
+                        $("#pdfdl")[0].click();
+                    }
+                    else {
+                        alert("未登录或登录信息已过期！");
+                    }
+                })
             }
         }
     })
