@@ -24,10 +24,6 @@
         <dl>
             <dt>Do you have questions or<br />  suggestions? </dt>
             <dd>Simply fill up the form and send it to us.
-                @if (ViewData["User"]==null)
-                {
-                    <a href="/Account/Login">Login</a>
-                }
             </dd>
         </dl>
         <div class="send-from">
@@ -54,11 +50,7 @@
             <span><input name="Phone" type="text" /></span>
             <label>Message *</label>
             <span><textarea name="Message"></textarea></span>
-            @if (ViewData["User"] != null)
-            {
-                <span class="send"><input type="button" onclick="send()" value="SEND" /></span>
-            }
-            
+            <span class="send"><input type="button" onclick="send()" value="SEND" /></span>
         </div>
     </div>
 </div>
