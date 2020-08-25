@@ -16,6 +16,8 @@ input, select, textarea { font-family: acuminprosemicond,arial; }
 .main1180 { width: 1180px; margin: 0 auto; }
 .clear { zoom:1}
 .clear:after { content:'';display:block;clear:both}
+.wtb-bt > div, .ban03-item dl .d2, .describe a { transition: all .3s }
+.wtb-bt > div:hover, .ban03-item dl .d2:hover, .describe a:hover { opacity: .9; box-shadow: 0 1px 2px rgba(0,0,0,.2) }
 /*头部*/
 #head { position: fixed; top: 0; z-index: 2; left: 0; right: 0; }
 .head-user { height: 30px; background: #101820 }
@@ -67,6 +69,7 @@ input, select, textarea { font-family: acuminprosemicond,arial; }
 .foot .f-right .i3 { background-position: -82px -41px }
 .foot .f-right .i4 { background-position: -125px -41px }
 .foot .f-left { line-height: 120px; float: left; color: #fff }
+.foot .f-left a:hover { color: #00c4b3 }
 .foot .f-left label { margin: 0 12px; opacity: .5 }
 .h-icon { display: inline-block; vertical-align: middle; background: url(../Img/Index/home_ico.png) }
 /*网站地图*/

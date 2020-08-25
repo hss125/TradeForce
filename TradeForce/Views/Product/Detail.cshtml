@@ -44,7 +44,7 @@
         <div class="pm-right">
             <h2>@Model.Name</h2>
             <div class="pmr-con">
-                <div style="min-height: 335px;">
+                <div style="min-height: 285px;">
                     <div class="wheretobuy">
                         <div class="wtb-bt">
                             <div class="l2 select">Product Description</div>
@@ -78,8 +78,13 @@
                         </div>
                     </div>
                 </div>
-                
                 <div class="file">
+                    <img src="~/Content/Img/Products/print_ico.png" />
+                    <span class="name">
+                        <a href="javascript:" onclick="print()">Print Product Datasheet</a>
+                    </span>
+                </div>
+                <div class="file" style="padding-top: 0;">
                     <img src="/Content/Img/Products/pro_ico.png" />
                     <span class="format">PDF</span>
                     <span class="name">
@@ -116,6 +121,9 @@
             </div>
         </div>
     </div>
+</div>
+<div style="position:absolute;z-index:-1">
+    <iframe id="print" src="~/Content/File/catalog.pdf"></iframe>
 </div>
 @Html.Action("LeftMenu", "Product")
 <script src="/Content/Js/jqzoom.js"></script>
@@ -154,5 +162,8 @@
                 alert("未登录或登录信息已过期！");
             }
         })
+    }
+    function print() {
+        document.getElementById('print').contentWindow.print();
     }
 </script>

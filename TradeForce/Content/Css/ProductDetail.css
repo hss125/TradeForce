@@ -20,8 +20,8 @@
 .pro-detail h2 { line-height: 50px; padding-left: 15px; font-family: 'acuminprosemicondblod'; font-size: 22px; background: #00c4b3; height: 45px; }
 .pro-detail .pd-con { margin-bottom: 190px;font-size: 16px; }
 .file { padding-top: 35px; padding-bottom: 30px; padding-left: 7px;}
-.file img { vertical-align: middle; margin-top: -8px; margin-right: 12px }
-.file .format { font-family: 'acuminprosemicondblod'; font-size: 20px; color: #000 }
+.file img { vertical-align: middle; margin-top: -8px; }
+.file .format { font-family: 'acuminprosemicondblod'; font-size: 20px; color: #000; margin-left: 18px; }
 .file .name { font-size: 18px; color: #333; padding-left: 18px; text-decoration: underline; cursor: pointer }
 .props { padding-top: 8px; color: #333 }
 .props table tr:nth-child(2n) { background: #edf2f2 }

@@ -281,6 +281,7 @@
     <Content Include="Content\Img\News\DLbanner.jpg" />
     <Content Include="Content\Img\News\img_ico.png" />
     <Content Include="Content\Img\News\pdf_ico.png" />
+    <Content Include="Content\Img\Products\print_ico.png" />
     <Content Include="Content\Img\Products\products_pro_01.png" />
     <Content Include="Content\Img\Products\products_pro_02.png" />
     <Content Include="Content\Img\Products\products_pro_03.png" />
@@ -352,6 +353,7 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="Content\File\catalog.pdf" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\axios.min.js" />
