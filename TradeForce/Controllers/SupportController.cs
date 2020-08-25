@@ -23,7 +23,7 @@ namespace TradeForce.Controllers
         }
         public ActionResult Where()
         {
-            var model = ef.country.ToList();
+            var model = ef.country.OrderBy(o=>o.Country1).ToList();
             return View(model);
         }
         public string DownloadFile(int id)
