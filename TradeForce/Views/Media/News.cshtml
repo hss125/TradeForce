@@ -3,6 +3,8 @@
     Layout = "~/Views/Shared/_MainLayout.cshtml";
     ViewBag.NavIndex = 5;
 }
+@using TradeForce.Models;
+@model List<news>
 <link href="~/Content/Css/About.css" rel="stylesheet" />
 <div class="ban01">
     <img src="~/Content/Img/News/banner.jpg" />
@@ -13,60 +15,54 @@
 </div>
 <div class="newsBg">
     <div class="news-content">
-        <div class="news-top1">
-            <div class="img">
-                <img src="/Content/Img/Index/news_01.jpg">
-            </div>
-            <div class="con">
-                <div class="date">18.07.2020</div>
-                <div class="con-bottom">
-                    <h2>Shanghai International  Hardware Show 2020</h2>
-                    <h3>October 20-22, 2020  National Exhibition & Convention Center (Shanghai, China) </h3>
+        @if (Model.Count > 0)
+        {
+            <div class="news-top1">
+                <div class="img">
+                    <img src="@(ViewBag.AdminUrl)/Upload/News/@(Model[0].Img)">
                 </div>
-                <div class="a">
-                    <a href="/Media/Newsdetail">Read More</a>
+                <div class="con">
+                    <div class="date">@(Model[0].InsertDate?.ToString("dd.MM.yyyy"))</div>
+                    <div class="con-bottom">
+                        <h2>@Model[0].Title</h2>
+                        <h3>@Model[0].LangTitle</h3>
+                    </div>
+                    <div class="a">
+                        <a href="/Media/Newsdetail?id=@(Model[0].Id)">Read More</a>
+                    </div>
                 </div>
             </div>
-        </div>
+        }        
         <ul>
-            <li>
-                <img src="/Content/Img/Index/news_02.jpg">
-                <div class="date">18.07.2020</div>
-                <p>Robotic Process Automation 6 common  misconceptions</p>
-                <a href="/Media/Newsdetail2">Read More</a>
-            </li>
-            <li>
-                <img src="/Content/Img/Index/news_03.jpg">
-                <div class="date">18.07.2020</div>
-                <p>ElectraFK Supplies Hospitals for the Materials Needed to ...</p>
-                <a href="/Media/Newsdetail3">Read More</a>
-            </li>
-            <li>
-                <img src="/Content/Img/Index/news_04.jpg">
-                <div class="date">18.07.2020</div>
-                <p>Tool knowledge-the internal structure of the tape measure</p>
-                <a href="/Media/Newsdetail4">Read More</a>
-            </li>
+            @for (var i = 1; i < Model.Count; i++)
+            {
+                <li>
+                    <img src="@(ViewBag.AdminUrl)/Upload/News/@(Model[i].Img)">
+                    <div class="date">@(Model[i].InsertDate?.ToString("dd.MM.yyyy"))</div>
+                    <p>@Model[i].Title</p>
+                    <a href="/Media/Newsdetail?id=@(Model[i].Id)">Read More</a>
+                </li>
+            }
         </ul>
     </div>
 </div>
 
 <style>
-    .newsBg { padding-bottom: 265px; background: url(/Content/Img/News/bg01.jpg) no-repeat center bottom; }
+    .newsBg { padding-bottom: 180px; background: url(/Content/Img/News/bg01.jpg) no-repeat center bottom; }
     .news-content { width: 1140px; margin: 0 auto; }
     .news-top1 { display:flex;margin-bottom:50px}
     .news-top1 .img { width: 555px }
     .news-top1 .img img{ height:290px;width:100%}
     .news-top1 .con { flex: 1;padding-left:26px;padding-right:50px }
     .con .date, .news-content > ul li .date { color: #888; font-size: 16px }
-    .con h2 { color: #2d2a26; font-size: 48px; line-height: 1.1em;padding-top:19px }
-    .con h3 { color: #333; font-size: 20px; line-height: 1.1em; padding-top: 25px }
+    .con h2 { color: #2d2a26; font-size: 46px; line-height: 1.05em; padding-top: 19px; max-height: 175px;overflow:hidden }
+    .con h3 { color: #333; font-size: 20px; line-height: 1.1em; padding-top: 25px; max-height: 69px;overflow:hidden }
     .con-bottom { padding-left: 9px; height: 252px; }
     .con a, .news-content > ul li a { font-family: 'acuminprosemicondblod'; color: #00c4b3; font-size: 16px; text-transform: uppercase }
     .con .a {padding-left:14px }
-    .news-content > ul { display: flex; justify-content: space-between; }
-    .news-content > ul li { width:360px}
+    .news-content > ul {}
+    .news-content > ul li { width: 360px; margin-bottom: 50px; display: inline-block; margin-right: 17px }
     .news-content > ul li img { width:100%;height:189px}
-    .news-content > ul li p { color:#333;font-size:20px;height:90px}
+    .news-content > ul li p { color: #333; font-size: 20px; height: 90px; overflow: hidden; }
     .news-content > ul li .date { line-height:40px}
 </style>

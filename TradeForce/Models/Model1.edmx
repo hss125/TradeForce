@@ -228,7 +228,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="LangTitle" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Content" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="Content" Type="String" MaxLength="6000" FixedLength="false" Unicode="false" />
           <Property Name="Img" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
           <Property Name="NewsDate" Type="DateTime" />
           <Property Name="InsertDate" Type="DateTime" />

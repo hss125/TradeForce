@@ -154,5 +154,37 @@ namespace Admin.Controllers
                 ob.Dispose();
             }
         }
+        public string ImgUpload2()
+        {
+            string Path = "News";
+            HttpPostedFileBase file = Request.Files[0];
+            var filename = DateTime.Now.ToString("yyyyMMddHHmmss") + file.FileName.Substring(file.FileName.LastIndexOf("."));
+            string savePath = AppDomain.CurrentDomain.BaseDirectory + "Upload/Temp/";
+            if (Directory.Exists(savePath) == false)
+            {
+                Directory.CreateDirectory(savePath);
+            }
+            file.SaveAs(savePath + filename);
+            string savePath2 = AppDomain.CurrentDomain.BaseDirectory + "Upload/" + Path + "/" + filename;
+            if (Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + "Upload/" + Path) == false)
+            {
+                Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "Upload/" + Path);
+            }
+            try
+            {
+                if (CompressImage(savePath + filename, savePath2, 100, 600, true))
+                {
+                    List<string> files = new List<string>();
+                    
+                    files.Add(Request.Url.Scheme+"://" + Request.Url.Authority+"/Upload/" + Path + "/" + filename);
+                    return JsonConvert.SerializeObject(new { errno = 0, data = files });
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return JsonConvert.SerializeObject(new { errno = 1, msg = "保存失败！" });
+        }
     }
 }

@@ -13,7 +13,8 @@ namespace TradeForce.Controllers
         tradeforceEntities ef = new tradeforceEntities();
         public ActionResult Index()
         {
-            return View();
+            var news = ef.news.Where(w=>w.IsDelete!=0).Take(4).ToList();
+            return View(news);
         }
 
         public ActionResult About()

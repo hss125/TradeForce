@@ -78,6 +78,7 @@ namespace Admin.Controllers
             var model = tf.news.Where(w => w.Lang == lang && w.IsDelete != 0).OrderByDescending(o=>o.Id).ToList();
             return View(model);
         }
+        [ValidateInput(false)]
         public string NewsSave(news model)
         {
             string lang = ViewBag.Lang;
@@ -89,6 +90,7 @@ namespace Admin.Controllers
                 {
                     var cfy = tf.news.FirstOrDefault(f => f.Id == model.Id);
                     cfy.Title = model.Title;
+                    cfy.LangTitle = model.LangTitle;
                     cfy.Content = model.Content;
                     cfy.Img = model.Img;
                 }

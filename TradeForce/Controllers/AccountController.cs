@@ -21,9 +21,9 @@ namespace TradeForce.Controllers
             ViewBag.UrlReferrer = Request.UrlReferrer;
             return View();
         }
-        [HttpPost]
-        public ActionResult Login(string Email, string password,string url)
+        public string Login(string Email, string password)
         {
+            var res = new { success = true, msg = "" };
             password = Md5Hash(password);
             var user = tf.user.FirstOrDefault(w => w.Email == Email && w.PassWord == password);
             if (user != null)
@@ -44,18 +44,10 @@ namespace TradeForce.Controllers
             }
             else
             {
-                ViewBag.Err = "用户名或密码错误！";
-                return View();
+                FormsAuthentication.SignOut();
+                res = new { success = false, msg = "用户名或密码错误！" };
             }
-            if (string.IsNullOrEmpty(url)|| url.Contains("Account/Login") || url.Contains("Account/Reg"))
-            {
-                return RedirectToAction("Index", "Home");
-            }
-            else
-            {
-                return Redirect(url);
-            }
-            
+            return JsonConvert.SerializeObject(res);
         }
         public ActionResult LogOut()
         {

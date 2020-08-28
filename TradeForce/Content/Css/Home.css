@@ -48,8 +48,8 @@
 .ban04 ul li img { width: 308px; height: 173px; transition: all .4s }
 .ban04 ul li:hover img{transform:scale(1.1)}
 .ban04 ul li dl { color: #101820;padding:0 18px;height:170px;overflow:hidden}
-.ban04 ul li dt { font-size: 18px; padding: 10px 0; font-family: acuminprosemicondblod }
-.ban04 ul li dd {font-size:16px;line-height:21px }
+.ban04 ul li dt { font-size: 18px; padding: 10px 0; font-family: acuminprosemicondblod; height: 64px;overflow:hidden }
+.ban04 ul li dd { font-size: 16px; line-height: 21px; height: 63px; overflow: hidden }
 .ban04 ul li a { font-size: 15px; color: #00c4b3; margin-left: 18px; display: block; margin-top: 5px; font-family: acuminprosemicondblod }
 #vStart { background: url(../Img/Index/wwa_01.jpg); height: 498px; height: 498px; cursor: pointer; text-align: center }
 .video-view { position: fixed; left: 0; top: 0; right: 0; bottom: 0; background: rgba(0,0,0,.8); z-index: 9; display: none }

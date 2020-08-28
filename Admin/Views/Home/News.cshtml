@@ -14,7 +14,7 @@
             <tr>
                 <th>Number</th>
                 <th>Title</th>
-                <th>Content</th>
+                <th>LangTitle</th>
                 <th>Date</th>
                 <th style="width:120px">Operation</th>
             </tr>
@@ -27,7 +27,7 @@
                 <tr>
                     <td>@i</td>
                     <td>@c.Title</td>
-                    <td>@c.Content</td>
+                    <td>@c.LangTitle</td>
                     <td>@c.InsertDate</td>
                     <td>
                         <button type="button" class="layui-btn layui-btn-xs" onclick="edit(@JsonConvert.SerializeObject(c))">Edit</button>
@@ -50,9 +50,9 @@
                 </div>
             </div>
             <div class="layui-form-item">
-                <label class="layui-form-label">Detail</label>
+                <label class="layui-form-label">LangTitle</label>
                 <div class="layui-input-block">
-                    <textarea name="Content" placeholder="Content" class="layui-textarea"></textarea>
+                    <textarea name="LangTitle" placeholder="LangTitle" class="layui-textarea"></textarea>
                 </div>
             </div>
             <div class="layui-form-item">
@@ -67,9 +67,15 @@
                     </div>  
                     <input type="hidden" id="ImgUrl" name="Img"/>
                 </div>
-
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">Content</label>
+                <div class="layui-input-block">
+                    <div id="div3"></div>
+                </div>
             </div>
         </form>
     </div>
 </div>
+<script src="~/Scripts/wangEditor.min.js"></script>
 <script src="~/Scripts/Home/News.js"></script>

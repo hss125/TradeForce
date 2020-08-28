@@ -49,8 +49,8 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="varchar" MaxLength="255" />
-          <Property Name="LangTitle" Type="varchar" MaxLength="255" />
-          <Property Name="Content" Type="text" />
+          <Property Name="LangTitle" Type="varchar" MaxLength="400" />
+          <Property Name="Content" Type="varchar" MaxLength="5000" />
           <Property Name="Img" Type="varchar" MaxLength="400" />
           <Property Name="NewsDate" Type="datetime" Precision="0" />
           <Property Name="InsertDate" Type="datetime" Precision="0" />
@@ -219,7 +219,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="LangTitle" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Content" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="Content" Type="String" MaxLength="6000" FixedLength="false" Unicode="false" />
           <Property Name="Img" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
           <Property Name="NewsDate" Type="DateTime" />
           <Property Name="InsertDate" Type="DateTime" />

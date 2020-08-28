@@ -3,6 +3,8 @@
     Layout = "~/Views/Shared/_MainLayout.cshtml";
     ViewBag.NavIndex = 5;
 }
+@using TradeForce.Models;
+@model news
 <link href="~/Content/Css/About.css" rel="stylesheet" />
 <div class="main-bd">
     <h2 class="crumbs">PRODUCTS  &gt; <a style="color: #101820;" href="javascript:">MEDIA CENTER</a>  &gt;  <a style="color: #101820;" href="/Media/News">NEWS</a> </h2>
@@ -10,24 +12,14 @@
 <div class="newsBg">
     <div class="news-detail">
         <dl class="nd-title">
-            <dt>Shanghai International Hardware Show 2020</dt>
-            <dd>18.07.2020</dd>
+            <dt>@Model.Title</dt>
+            <dd>@(Model.InsertDate?.ToString("dd.MM.yyyy"))</dd>
         </dl>
         <div class="nd-con">
-            <img class="img" src="/Content/Img/Index/news_01.jpg"/>
-            <dl>
-                <dt>About SIHS</dt>
-                <dd>——Two functions:</dd>
-                <dd style="padding-left:16px">Sourcing hardware from China</dd>
-                <dd style="padding-left:16px">Marketing hardware to China</dd>
-                <dd>Shanghai International Hardware Show (SIHS) is one of the largest and high end hardware show in China with its show space 90,000 sqm, 1,500 exhibitors and 25,000 professional visitors/buyers worldwide. The Show features manufacturer concentrated, complete product category, improved quality products with reasonable price as its main goal catering for all hardware buyers in the world.</dd>
-                <dd>Welcome to SIHS'20 on October 20-22, 2020 in Shanghai !</dd>
-            </dl>
-            <dl>
-                <dt>Range of Exhibits</dt>
-                <dd>All kinds of hand tools, power tools, pneumatic tools, hydraulic tools, labor safety products, abrasive and diamond tools, staplers and nails, garden tools, vehicle maintenance tools, welding/cutting machines and kits, Painting tools, ring and hooks, chain slings, flashlights and lanterns, barrel trucks, wheels and casters, small compressors, gas generators, marking machines, industrial cleaners, high pressure cleaning machines, bench drill machines and other small machinery, robot & tool manufacturing equipment and accessories, tool media & webs.</dd>
-                <dd>All kinds of hardware including building hardware, decorating hardware, furniture hardware, door & window hardware, bath & kitchen hardware, all kinds of wire mesh, fasteners, hose clamps, looks & keys, safes, security system, handles, sliding rails, pumps & valves.</dd>
-            </dl>
+            <img class="img" src="@(ViewBag.AdminUrl)/Upload/News/@(Model.Img)"/>
+            <div style="padding-top:30px">
+                @Html.Raw(Model.Content)
+            </div>
         </div>
     </div>
 </div>

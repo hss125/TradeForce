@@ -1,0 +1,26 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section head
+{
+    @RenderSection("head", false)
+}
+<link href="~/Content/Lib/layui/css/layui.css" rel="stylesheet" />
+<script src="~/Content/Lib/layui/layui.js"></script>
+<script>
+    var isLoad = null;
+    window.loadding = function (open) {        
+        if (open == false) {
+            layer.close(isLoad);
+        } else {
+            isLoad = layer.load(1, {
+                shade: [0.2, '#fff'] //0.1透明度的白色背景
+            });
+        }
+    }
+</script>
+@RenderBody()
+@section foot
+{
+    @RenderSection("foot", false)
+}

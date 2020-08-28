@@ -10,25 +10,27 @@ namespace TradeForce.Controllers
 {
     public class MediaController : BaseController
     {
+        tradeforceEntities tf = new tradeforceEntities();
         // GET: Media
         public ActionResult News()
         {
-            return View();
+            var news = tf.news.Where(w => w.IsDelete != 0).OrderByDescending(o=>o.InsertDate).Take(9).ToList();
+            return View(news);
         }
         public ActionResult DownLoad()
         {
             return View();
         }
-        tradeforceEntities tf = new tradeforceEntities();
         public string GetDownLoad()
         {
             string lang = ViewBag.lang;
             var model = tf.download.Where(w => w.IsDelete != 0 && w.Lang == lang).OrderByDescending(o => o.Id).ToList();
             return JsonConvert.SerializeObject(model);
         }
-        public ActionResult NewsDetail()
+        public ActionResult NewsDetail(int id=0)
         {
-            return View();
+            var news=tf.news.FirstOrDefault(f => f.Id == id);
+            return View(news);
         }
         public ActionResult NewsDetail2()
         {

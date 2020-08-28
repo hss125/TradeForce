@@ -1,8 +1,10 @@
 ﻿@{
-    ViewBag.Title = "Home";
+    ViewBag.Title = "news";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
     ViewBag.NavIndex = 1;
 }
+@using TradeForce.Models;
+@model List<news>
 @section head
 {
 <link href="~/Content/Css/Home.css" rel="stylesheet" />
@@ -92,38 +94,17 @@
         <div class="main-bd">
             <h2 class="ban-title">Latest News</h2>
             <ul class="clear">
-                <li>
-                    <label><img src="/Content/Img/Index/news_01.jpg" /></label>
-                    <dl>
-                        <dt>Shanghai International Hardware Show 2020</dt>
-                        <dd>October 20-22, 2020  National Exhibition & Convention Center (Shanghai, China) ...</dd>
-                    </dl>
-                    <a href="/Media/Newsdetail">READ MORE</a>
-                </li>
-                <li>
-                    <label><img src="/Content/Img/Index/news_02.jpg" /></label>
-                    <dl>
-                        <dt>Robotic Process Automation 6 common misconceptions</dt>
-                        <dd>TU Boot sailed out on October 17 to inform and inspire Technische Unie customers throughout the Netherlands.</dd>
-                    </dl>
-                    <a href="/Media/Newsdetail2">READ MORE</a>
-                </li>
-                <li>
-                    <label><img src="/Content/Img/Index/news_03.jpg" /></label>
-                    <dl>
-                        <dt>ElectraFK Supplies Hospitals for the Materials Needed to ...</dt>
-                        <dd>Sonepar Future Road, the zero-emissions tour of Italy, took place from 3 to 18 October.</dd>
-                    </dl>
-                    <a href="/Media/Newsdetail3">READ MORE</a>
-                </li>
-                <li>
-                    <label><img src="/Content/Img/Index/news_04.jpg" /></label>
-                    <dl>
-                        <dt>Tool knowledge-the internal structure of the tape measure</dt>
-                        <dd>On October 10th, 2019, Marie-Christine Coisne-Roquette, Chairman of Sonepar, took part in Bpifrance Inno...</dd>
-                    </dl>
-                    <a href="/Media/Newsdetail4">READ MORE</a>
-                </li>
+                @foreach (var it in Model)
+                {
+                    <li>
+                        <label><img src="@(ViewBag.AdminUrl)/Upload/News/@(it.Img)" /></label>
+                        <dl>
+                            <dt>@it.Title</dt>
+                            <dd>@it.LangTitle</dd>
+                        </dl>
+                        <a href="/Media/Newsdetail?id=@(it.Id)">READ MORE</a>
+                    </li>
+                }
             </ul>
         </div>
     </div>

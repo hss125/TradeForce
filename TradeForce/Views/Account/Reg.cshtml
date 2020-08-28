@@ -1,15 +1,63 @@
 ﻿@{
-    ViewBag.Title = "登录";
+    ViewBag.Title = "New user registration";
+    Layout = "~/Views/Account/_AccountLayout.cshtml";
 }
-<div>Username：<input type="text" id="UserName" placeholder="Username" name="UserName" /></div>
+@*<div>Username：<input type="text" id="UserName" placeholder="Username" name="UserName" /></div>
 <div>Email：<input type="text" id="Email" placeholder="Email" name=""/></div>
 <div>Password：<input type="text" id="PassWord" name="password"/></div>
-<div><input type="button" onclick="reg()" value="Create account"/></div>
+<div><input type="button" onclick="reg()" value="Create account"/></div>*@
+<div class="login-content">
+    <div style="position:relative">
+        <div style="position:absolute;top:-180px;text-align:center;width:100%">
+            <img style="width:250px" src="~/Content/Img/login_logo.png" />
+        </div>
+    </div>
+    <form class="layui-form layui-form-pane">
+        <h2 style="line-height: 50px;text-align: center;padding-bottom: 20px;">New user registration</h2>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><i class="layui-icon layui-icon-username"></i>UserName</label>
+            <div class="layui-input-block">
+                <input type="text" name="UserName" id="UserName" lay-verify="title" autocomplete="off" placeholder="UserName" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><i class="layui-icon layui-icon-email"></i>Email</label>
+            <div class="layui-input-block">
+                <input type="text" name="email" id="Email" lay-verify="title" autocomplete="off" placeholder="Email" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><i class="layui-icon layui-icon-password"></i>Password</label>
+            <div class="layui-input-block">
+                <input type="password" id="PassWord" name="password" placeholder="Password" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div>
+            <button type="button"  onclick="reg()" class="layui-btn layui-btn-fluid">Create account</button>
+        </div>
+        <div class="new-user"><a href="/Account/Login">Login if you have an account</a></div>
+    </form>
+</div>
+<style>
+    body { background: #00c4b3; }
+    .login-content { width: 420px; margin: 0 auto; margin-top: calc(50vh - 105px); border: 1px solid #ddd; padding: 30px 30px; background: #fff; box-shadow: 0 3px 5px rgba(0,0,0,.1); }
+    .lang li .layui-icon-ok { margin-right: 8px; visibility: hidden; color: #009688 }
+    .lang li.select .layui-icon-ok { visibility: visible }
+    .lang li { line-height: 26px; border-bottom: 1px solid #ecebeb; cursor: pointer }
+    .new-user { text-align: center; padding-top: 20px }
+    .new-user a { text-decoration: underline; }
+    .layui-btn-fluid { background: #00c4b3; color: #333 }
+    .layui-btn:hover { color: #333 }
+    .layui-form-pane .layui-form-label { width:118px}
+    .layui-form-pane .layui-input-block { margin-left:118px}
+</style>
+<link href="~/Content/Lib/layer/theme/default/layer.css" rel="stylesheet" />
+<script src="~/Content/Lib/layer/layer.js"></script>
 <script>
     function reg() {
         var user = { Email: $("#Email").val(), PassWord: $("#PassWord").val(), UserName: $("#UserName").val() };
         if (!user.Email.trim() || !user.PassWord.trim()) {
-            alert("用户名或密码不能为空！");
+            layer.alert("User name or password cannot be empty！");
             return;
         }
         $.post("/Account/Reg", user, function (res) {
@@ -19,7 +67,7 @@
                 location.href = "/Account/Login";
             }
             else {
-                alert(res.Msg);
+                layer.alert(res.Msg);
             }
         })
     }
