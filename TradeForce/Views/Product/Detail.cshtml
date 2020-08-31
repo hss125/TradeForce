@@ -44,7 +44,7 @@
         <div class="pm-right">
             <h2>@Model.Name</h2>
             <div class="pmr-con">
-                <div style="min-height: 285px;">
+                <div style="min-height: 285px;min-height:332px">
                     <div class="wheretobuy">
                         <div class="wtb-bt">
                             <div class="l2 select">Product Description</div>
@@ -81,16 +81,16 @@
                 <div class="file">
                     <img src="~/Content/Img/Products/print_ico.png" />
                     <span class="name">
-                        <a href="javascript:" onclick="print()">Print Product Datasheet</a>
+                        <a href="javascript:" onclick="printPage()">Print Product Datasheet</a>
                     </span>
                 </div>
-                <div class="file" style="padding-top: 0;">
+                @*<div class="file" style="padding-top: 0;">
                     <img src="/Content/Img/Products/pro_ico.png" />
                     <span class="format">PDF</span>
                     <span class="name">
                         <a href="http://localhost:64919/Upload/PDF/@Model.PDF" download="">Product Datasheet</a>
                     </span>
-                </div>
+                </div>*@
             </div>
         </div>
     </div>
@@ -122,10 +122,23 @@
         </div>
     </div>
 </div>
-<div style="position:absolute;z-index:-1">
+@*<div style="position:absolute;z-index:-1">
     <iframe id="print" src="~/Content/File/catalog.pdf"></iframe>
-</div>
+</div>*@
 @Html.Action("LeftMenu", "Product")
+<style>
+    @@media print {
+        .left-menu { display:none}
+        #head { position:static}
+        .menu-bd.mb-s { background-color: rgba(1, 196, 180,1);  }
+        .head-placehoder { display:none}
+        .menu-bd, .pro-detail h2, .wtb-bt > div, .ws-navigation, .foot { -webkit-print-color-adjust: exact; }
+        .main-bd { width:930px}
+        .menu-bd .menu-first { padding-left:60px}
+        .menu-bd .menu-first li { margin-left:8px}
+        .menu-bd .menu-first li > a { font-size:16px}
+    }
+</style>
 <script src="/Content/Js/jqzoom.js"></script>
 <script type="text/javascript">
     $(".wtb-bt>div").click(function () {
@@ -133,23 +146,11 @@
         $(".wtb0,.wtb1").hide();
         $(".wtb" + $(this).index()).show();
     })
-    $(document).ready(function () {
-        var showproduct = {
-            "boxid": "showbox",
-            "sumid": "showsum",
-            "boxw": 440,
-            "boxh": 440,
-            "sumw": 60,
-            "sumh": 60,
-            "sumi": 7,
-            "sums": 5,
-            "sumsel": "sel",
-            "sumborder": 1,
-            "lastid": "showlast",
-            "nextid": "shownext"
-        };
-        $.ljsGlasses.pcGlasses(showproduct);
-    });
+    function printPage() {
+        //document.getElementById('print').contentWindow.print();
+        window.print();
+    }
+    
     function downloadPdf(id) {
         $.post("/Product/DownloadPdf", { id: id }, function (data) {
             var res = JSON.parse(data);
@@ -163,7 +164,28 @@
             }
         })
     }
-    function print() {
-        document.getElementById('print').contentWindow.print();
-    }
 </script>
+@{
+    if (!string.IsNullOrEmpty(Model.ImgUrl))
+    {
+        <script>
+            $(document).ready(function () {
+                var showproduct = {
+                    "boxid": "showbox",
+                    "sumid": "showsum",
+                    "boxw": 440,
+                    "boxh": 440,
+                    "sumw": 60,
+                    "sumh": 60,
+                    "sumi": 7,
+                    "sums": 5,
+                    "sumsel": "sel",
+                    "sumborder": 1,
+                    "lastid": "showlast",
+                    "nextid": "shownext"
+                };
+                $.ljsGlasses.pcGlasses(showproduct);
+            });
+        </script>
+    }
+}
