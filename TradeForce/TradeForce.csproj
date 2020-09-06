@@ -166,6 +166,8 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MediaController.cs" />
+    <Compile Include="Controllers\Mobile\MHomeController.cs" />
+    <Compile Include="Controllers\Mobile\MProductController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\SupportController.cs" />
     <Compile Include="Global.asax.cs">
@@ -221,6 +223,7 @@
     <Content Include="Content\Css\Customers.css" />
     <Content Include="Content\Css\Home.css" />
     <Content Include="Content\Css\ProductDetail.css" />
+    <Content Include="Content\Css\site_mobile.css" />
     <Content Include="Content\Img\About\AboutUs_01.jpg" />
     <Content Include="Content\Img\About\AboutUs_02.jpg" />
     <Content Include="Content\Img\About\AboutUs_03.jpg" />
@@ -429,6 +432,37 @@
     <Content Include="Content\Lib\layui\lay\modules\util.js" />
     <Content Include="Content\Lib\swiper\swiper.min.css" />
     <Content Include="Content\Lib\swiper\swiper.min.js" />
+    <Content Include="Content\MImg\close.png" />
+    <Content Include="Content\MImg\home_ico.png" />
+    <Content Include="Content\MImg\index\ban03_i1.jpg" />
+    <Content Include="Content\MImg\index\ban03_i2.jpg" />
+    <Content Include="Content\MImg\index\ban03_i3.jpg" />
+    <Content Include="Content\MImg\index\banner.jpg" />
+    <Content Include="Content\MImg\index\bg01.jpg" />
+    <Content Include="Content\MImg\index\bg02.jpg" />
+    <Content Include="Content\MImg\index\news_01.jpg" />
+    <Content Include="Content\MImg\index\news_02.jpg" />
+    <Content Include="Content\MImg\index\news_03.jpg" />
+    <Content Include="Content\MImg\index\news_04.jpg" />
+    <Content Include="Content\MImg\index\play.png" />
+    <Content Include="Content\MImg\index\wwa_01.jpg" />
+    <Content Include="Content\MImg\index\wwa_02.jpg" />
+    <Content Include="Content\MImg\index\wwa_03.jpg" />
+    <Content Include="Content\MImg\lang_ico.png" />
+    <Content Include="Content\MImg\logo.png" />
+    <Content Include="Content\MImg\menu.png" />
+    <Content Include="Content\MImg\product\banner.jpg" />
+    <Content Include="Content\MImg\product\print_ico.png" />
+    <Content Include="Content\MImg\product\temp\0.jpg" />
+    <Content Include="Content\MImg\product\temp\1.jpg" />
+    <Content Include="Content\MImg\product\temp\2.jpg" />
+    <Content Include="Content\MImg\product\temp\products_pro_01.png" />
+    <Content Include="Content\MImg\product\temp\products_pro_02.png" />
+    <Content Include="Content\MImg\support\about01.jpg" />
+    <Content Include="Content\MImg\support\about02.jpg" />
+    <Content Include="Content\MImg\support\about03.jpg" />
+    <Content Include="Content\MImg\support\weAre.jpg" />
+    <Content Include="Content\MImg\user.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Css\Site.css" />
@@ -503,6 +537,12 @@
     <Content Include="Views\Media\NewsDetail4.cshtml" />
     <Content Include="Views\Media\NewsDetail3.cshtml" />
     <Content Include="Views\Account\_AccountLayout.cshtml" />
+    <Content Include="Views\Mobile\_Layout.cshtml" />
+    <Content Include="Views\Mobile\Index.cshtml" />
+    <Content Include="Views\Mobile\About.cshtml" />
+    <Content Include="Views\Mobile\Product.cshtml" />
+    <Content Include="Views\Mobile\ProductType.cshtml" />
+    <Content Include="Views\Mobile\ProductDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

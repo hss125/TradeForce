@@ -42,7 +42,7 @@ namespace TradeForce.Controllers
                 string toMailAddress = "457361398@qq.com";
                 string fromMailAddress = "274852493@qq.com";
                 string subjectInfo = "TradeForce questions or suggestions";
-                string bodyInfo = $"Company:{ques.Company}<br/>Country:{ques.Country}<br/>Name:{ques.Name}<br/>Email:{ques.Email}<br/>Phone:{ques.Phone}<br/>Content:{ques.Message}<br/>" ;
+                string bodyInfo = $"Company:{ques.Company}<br/>Country:{ques.Country}<br/>Name:{ques.Name}<br/>Email:{ques.Email}<br/>Phone:{ques.Phone}<br/>Content:{ques.Message}<br/>";
                 string mailUsername = "274852493@qq.com";
                 string mailPassword = "ugxypxsdsykmbgba"; //发送邮箱的密码（）
                 string mailPort = "25";
@@ -52,11 +52,11 @@ namespace TradeForce.Controllers
                 var u = new Account().GetUser();
                 if (!string.IsNullOrEmpty(u.Email))
                 {
-                    ques.InsertDate = DateTime.Now;
                     ques.InsertUserId = u.Id;
-                    ef.question.Add(ques);
-                    ef.SaveChanges();
                 }
+                ques.InsertDate = DateTime.Now;
+                ef.question.Add(ques);
+                ef.SaveChanges();
                 res.Succ = true;
             }
             catch (Exception ex)

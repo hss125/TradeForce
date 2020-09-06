@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "Where";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
-    ViewBag.NavIndex = 2;
+    ViewBag.NavIndex = 6;
 }
 @using TradeForce.Models;
 @model List<country>
@@ -16,7 +16,7 @@
             <p>Headquartered in Switzerland, TRADEFROCE’s global reach and presence enable a better service to the customers. Besides manufacturing, marketing, logistics, services, research and development (R&D) and related facilities, TRADEFORCE collaborate with professional dealers all around the world. </p>
         </dd>
     </dl>
-    <dl class="global-locations gl2">
+    <dl class="global-locations gl2" id="map">
         <dt>Where to buy</dt>
         <dd>
             <p>Reach out to TRADEFORCE distribution partners to purchase.</p>
@@ -32,21 +32,27 @@
         <dl class="selectCountry">
             <dt>Select country</dt>
             <dd>
-                <select id="selectCountry">
+                <div class="select-box">
+                    <label>Please Choose</label>
+                    <ul>
+                        <li data-country="Please Choose">Please Choose</li>
+                        @foreach (var it in Model)
+                        {
+                            var li = it.Country1.Split(',');
+                            if (li.Length == 2)
+                            {
+                                <li data-country="@it.Country1"><a href="@it.Url" target="_blank"><span>@li[0]</span>@li[1]</a></li>
+                            }
+                        }
+                    </ul>
+                </div>
+                @*<select id="selectCountry">
                     <option>Please Choose</option>
                     @foreach (var it in Model)
                     {
                         <option value="@it.Url" onclick="window.open('@it.Url','_blank')">@it.Country1</option>
                     }
-                    @*<option>TU, Netherlands</option>
-                    <option>ESK Sweden, Sweden</option>
-                    <option>Sonepar Norway</option>
-                    <option>SLO, Finland</option>
-                    <option>Sonepar Brazil</option>
-                    <option>Sonepar France</option>
-                    <option>Sonepar Italy</option>
-                    <option>Cebeo Belgium</option>*@
-                </select>
+                </select>*@
             </dd>
         </dl>
     </div>
@@ -70,9 +76,27 @@
     .selectCountry { padding-left: 35px; padding-top: 140px }
     .selectCountry dt { color: #fff; font-family: 'acuminprosemicondblod'; font-size: 30px; padding-bottom: 13px }
     .selectCountry select { width: 360px; height: 46px; font-size: 20px; color: #333; padding-left: 15px; border: 1px solid #b6bcc0 }
+    .select-box { width: 360px; height: 46px; line-height: 46px; font-size: 20px; color: #333; padding-left: 12px; border: 1px solid #b6bcc0; background: #fff; position: relative }
+    .select-box:hover { border-color: #00c4b3 }
+    .select-box > label { display: block; cursor: pointer }
+    .select-box > label:after { content: ''; float: right; border-top: 6px solid #666; border-left: 6px solid transparent; border-right: 6px solid transparent; margin-top: 18px; margin-right: 8px; transition: all .3s }
+    .select-box.open > label:after { transform: rotate(180deg); }
+    .select-box > ul { position: absolute; left: 0; right: 0; top: 46px; background: #fff; display: none }
+    .select-box > ul li { padding-left: 12px; line-height: 34px; }
+    .select-box > ul li a { display: block; }
+    .select-box > ul li a > span { display: inline-block; width: 140px }
+    .select-box > ul li a:hover { color: #00c4b3 }
 </style>
 <script>
     $("#selectCountry").change(function () {
         window.open($("#selectCountry").val(),'_blank')
+    })
+    $(".select-box>label").click(function () {
+        $(".select-box>ul").slideToggle();
+        $(".select-box").toggleClass("open");
+    })
+    $(".select-box > ul li").click(function () {
+        $(".select-box>label").text($(this).data("country"));
+        $(".select-box>ul").slideUp();
     })
 </script>

@@ -179,7 +179,7 @@ namespace Admin.Controllers
         public ActionResult Suggestions()
         {
             string lang = ViewBag.Lang;
-            var model=tf.question.Where(w=>w.Country==lang&&w.IsDelete!=0).ToList();
+            var model=tf.question.Where(w=>w.IsDelete!=0).OrderByDescending(o=>o.Id).ToList();
             return View(model);
         }
         public string ExportExcel()

@@ -1,6 +1,7 @@
 ﻿@{
     ViewBag.Title = "Contact";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
+    ViewBag.NavIndex = 6;
 }
 @using TradeForce.Models
 <div class="ban01">
@@ -14,8 +15,9 @@
             <dt>Sonepar International Services</dt>
             <dd>
                 <p>Geneva Business Centre</p>
-                <p>Avenue des Morgines, 12</p>
-                <p>CH-1213 Petit Lancy, Switzerland</p>
+                <p>Avenue des Morgines 12</p>
+                <p>CH-1213 Petit Lancy</p>
+                <p>Switzerland</p>
                 @*<p>Office: +41 22 879 11 40</p>*@
             </dd>
         </dl>
@@ -27,21 +29,45 @@
             </dd>
         </dl>
         <div class="send-from">
-            <label>Company *</label>
+            <label>Company Name *</label>
             <span><input name="Company" type="text" /></span>
             <label>Country *</label>
             <span>
                 <select name="Country">
                     <option>Please Choose</option>
-                    <option value="@((int)Lang.english)">Britain</option>
-                    <option value="@((int)Lang.French)">France</option>
-                    <option>Italia</option>
-                    <option>Nederland</option>
-                    <option>Norway</option>
-                    <option>Sweden</option>
-                    <option>Finland</option>
+                    <option value="Australia">Australia</option>
+                    <option value="Belgium">Belgium</option>
+                    <option value="Brazil">Brazil</option>
+                    <option value="Canada">Canada</option>
+                    <option value="China">China</option>
+                    <option value="Colombia">Colombia</option>
+                    <option value="Czech Republic">Czech Republic</option>
+                    <option value="Finland">Finland</option>
+                    <option value="France">France</option>
+                    <option value="Germany">Germany</option>
+                    <option value="Hungary">Hungary</option>
+                    <option value="India">India</option>
+                    <option value="Italy">Italy</option>
+                    <option value="Luxemburg">Luxemburg</option>
+                    <option value="Malaysia">Malaysia</option>
+                    <option value="Mexico">Mexico</option>
+                    <option value="Netherlands">Netherlands</option>
+                    <option value="New Zealand">New Zealand</option>
+                    <option value="Norway">Norway</option>
+                    <option value="Poland">Poland</option>
+                    <option value="Romania">Romania</option>
+                    <option value="Singapore">Singapore</option>
+                    <option value="Spain">Spain</option>
+                    <option value="Sweden">Sweden</option>
+                    <option value="Switzerland">Switzerland</option>
+                    <option value="Thailand">Thailand</option>
+                    <option value="United Kingdom">United Kingdom</option>
+                    <option value="United States of America">United States of America</option>
+                    <option value="0">Others</option>
                 </select>
             </span>
+            <label class="oc">Other Country *</label>
+            <span class="oc"><input id="Other" type="text" /></span>
             <label>Name *</label>
             <span><input name="Name" type="text" /></span>
             <label>Email *</label>
@@ -79,19 +105,34 @@
     .send input:hover { opacity: .8 }
     .contact-foot { margin-top: -30px; z-index: -1; position: relative; }
     .contact-foot img { width: 100%; vertical-align: middle; }
+    .suggestions-form > div .oc { display: none }
 </style>
 <script>
+    $("[name=Country]").change(function () {
+        if ($(this).val() == "0") {
+            $(".oc").show();
+        } else {
+            $(".oc").hide();
+        }
+    })
     function send() {
         var data = {};
         var ok = true;
+        if ($("[name=Country]").val() == "0" && !$("#Other").val().trim()) {
+            alert("Other Country cannot be empty!");
+            return;
+        }
         $(".send-from [name]").each(function () {
-            if (!$(this).val().trim()) {
+            if (!$(this).val().trim() || $(this).val()=="Please Choose") {
                 alert($(this).attr("name") + " cannot be empty!");
                 ok = false;
                 return false;
             }
             data[$(this).attr("name")] = $(this).val();
         })
+        if ($("[name=Country]").val() == "0" ) {
+            data["Country"] = $("#Other").val();
+        }
         if (ok) {
             $.post("/Home/AddQuestions", data, function (res) {
                 res = JSON.parse(res);

@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Mobile/_Layout.cshtml";
+}
+@using TradeForce.Models;
+@model List<product>
+<div class="banner">
+    <img src="/Content/MImg/product/banner.jpg">
+</div>
+@{
+    var cla = ViewBag.classify as classify;
+    string name = "Tools";
+    if (ViewBag.type == "1")
+    {
+        name = "Safety";
+    }
+    else if (ViewBag.type == "2")
+    {
+        name = "Accessories";
+    }
+
+}
+<div class="pro-body">
+    <dl class="type2-title">
+        <dt>@cla.Name</dt>
+        <dd>
+            <img src="@ViewBag.AdminUrl/Upload/Classify/@cla.ImgUrl2">
+        </dd>
+    </dl>
+    <ul class="pro-type1 pro-type2">
+        @foreach (var pro in Model)
+        {
+            var img = pro.ImgUrl == null ? "" : pro.ImgUrl.Split('|')[0];
+            <li>
+                <img src="@ViewBag.AdminUrl/Upload/Product/@img">
+                <h4>
+                    <label>@pro.Name</label>                 
+                </h4>
+                <h5><a href="/mProduct/Detail?id=@pro.Id">Learn More</a></h5>
+            </li>
+        }
+    </ul>
+</div>

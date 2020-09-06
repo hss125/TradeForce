@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Mobile/_Layout.cshtml";
+}
+@using TradeForce.Models;
+@model List<classify>
+<div class="banner">
+    <img src="/Content/MImg/product/banner.jpg">
+</div>
+<div class="pro-body">
+    <dl class="pro-type-des">
+        @{
+            var type = "Tools";
+            if (ViewBag.type == "1")
+            {
+                type = "Safety";
+            }
+            else if (ViewBag.type == "2")
+            {
+                type = "Installation Accessories";
+            }
+        }
+        <dt><label>@type</label></dt>
+        @if (ViewBag.type == "0")
+        {
+        <dd>
+            High-performance hand tools are the staple of any contractor, and TRADEFROCE tools keep you safe on any job in any conditions. Our high-quality hand tools include everything from measuring tools, cutting tools and clamps to hammers, screwdrivers and wrenches.
+        </dd>
+        }
+        
+    </dl>
+    <ul class="pro-type1">
+        @foreach (var it in Model)
+        {
+            
+            <li onclick="location.href='/mProduct/Type?classify=@it.Id'">
+                <img src="@(ViewBag.AdminUrl)/Upload/Classify/@it.ImgUrl">
+                <h3>@it.Name</h3>
+            </li>
+        }
+    </ul>
+</div>

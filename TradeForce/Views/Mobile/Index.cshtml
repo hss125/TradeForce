@@ -1,0 +1,120 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Mobile/_Layout.cshtml";
+}
+@using TradeForce.Models;
+@model List<news>
+<div class="banner">
+    <img src="/Content/MImg/index/banner.jpg">
+</div>
+<div class="bg1">
+    <h2 class="h1">Who we are</h2>
+    <div class="video">
+        <img src="/Content/MImg/index/play.png">
+    </div>
+</div>
+<dl class="adventure-dl">
+    <dt>Adventure Spirit  </dt>
+    <dd>Born in the Australian outback in 2005, our love of adventure has been with us from the start., we’ve grown to handle the extreme challenges.             </dd>
+</dl>
+<div class="adventure-img">
+    <img src="/Content/MImg/index/wwa_02.jpg">
+    <img src="/Content/MImg/index/wwa_03.jpg">
+</div>
+<dl class="adventure-dl ad2">
+    <dt>For Professional </dt>
+    <dd>TRADEFORCE designs and manufactures tools and safety equipment exclusively for professionals., covering everything from large-scale infrastructure to daily maintenance and installation.             </dd>
+</dl>
+<div class="bg1 pro-bd">
+    <h2 class="h1">Our Products</h2>
+    <div class="pro-warp">
+        <div class="btn">
+        </div>
+        <div class="pro-item">
+            <img src="/Content/MImg/index/ban03_i1.jpg">
+            <dl>
+                <dt>Hand Tools</dt>
+                <dd>
+                    From fastening tools to holding tools, hand tools to power tools, TRADEFORCE equip professionals with tools for various...
+                </dd>
+                <dd class="d2"><a href="/mProduct/Index?type=0" class="a">SHOW MORE<i></i></a></dd>
+            </dl>
+        </div>
+        <div class="pro-item pi2">
+            <img src="/Content/MImg/index/ban03_i2.jpg">
+            <dl>
+                <dt>Safety</dt>
+                <dd>
+                    Equipment that can be used in harsh conditions, and normal working days, to get you ready for whatever work you take on.
+                </dd>
+                <dd class="d2"><a href="/mProduct/Index?type=1" class="a">SHOW MORE<i></i></a></dd>
+            </dl>
+        </div>
+        <div class="pro-item">
+            <img src="/Content/MImg/index/ban03_i3.jpg">
+            <dl>
+                <dt>Installation<br> Accessories</dt>
+                <dd>
+                    Necessary materials and accessories support you completing the job, save time and maximize...
+                </dd>
+                <dd class="d2"><a href="/mProduct/Index?type=2" class="a">SHOW MORE<i></i></a></dd>
+            </dl>
+        </div>
+        <div class="btn btn2">
+        </div>
+    </div>
+</div>
+<div class="home-news">
+    <h2 class="h1">Latest News</h2>
+    <!-- Swiper -->
+    <div class="swiper-container2">
+        <div class="swiper-wrapper">
+            @foreach (var it in Model)
+            {
+                <div class="swiper-slide">
+                    <div class="news-item">
+                        <div class="ni-box">
+                            <img src="@(ViewBag.AdminUrl)/Upload/News/@(it.Img)">
+                            <h2>@it.Title</h2>
+                            <p><a href="#">READ MORE</a></p>
+                        </div>
+                    </div>
+                </div>
+            }            
+            @*<div class="swiper-slide">
+                <div class="news-item">
+                    <div class="ni-box">
+                        <img src="/Content/MImg/index/news_02.jpg">
+                        <h2>Tool knowledge-the internal structure of the tape measure</h2>
+                        <p><a href="#">READ MORE</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="news-item">
+                    <div class="ni-box">
+                        <img src="/Content/MImg/index/news_03.jpg">
+                        <h2>Tool knowledge-the internal structure of the tape measure</h2>
+                        <p><a href="#">READ MORE</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="news-item">
+                    <div class="ni-box">
+                        <img src="/Content/MImg/index/news_04.jpg">
+                        <h2>Tool knowledge-the internal structure of the tape measure</h2>
+                        <p><a href="#">READ MORE</a></p>
+                    </div>
+                </div>
+            </div>*@
+        </div>
+    </div>
+</div>
+<link href="~/Content/Lib/swiper/swiper.min.css" rel="stylesheet" />
+<script src="~/Content/Lib/swiper/swiper.min.js"></script>
+<script>
+    var swiper = new Swiper('.swiper-container2', {
+        slidesPerView: 2.2
+    });
+</script>

@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>@ViewBag.Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="~/Content/Css/site_mobile.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <a href="/mHome/index"><img class="logo" src="/Content/MImg/logo.png"></a>        
+        <div class="right">
+            <img class="img0" src="/Content/MImg/lang_ico.png">
+            <img class="img1" src="/Content/MImg/user.png">
+            <img class="img2" src="/Content/MImg/menu.png">
+            <img class="img2" style="display: none;" src="/Content/MImg/close.png">
+        </div>
+    </header>
+    <div class="menu menu0">
+        <dl>
+            <dt><a href="/mHome/About">About<i></i></a></dt>
+        </dl>
+        <dl>
+            <dt><a href="#">Our Customers<i></i></a></dt>
+        </dl>
+        <dl>
+            <dt>Products<i></i></dt>
+            <dd>
+                <h4><a href="/mProduct/Index?type=0">Tools</a></h4>
+                <h4><a href="/mProduct/Index?type=1">Safety</a></h4>
+                <h4><a href="/mProduct/Index?type=2">Installation Accessories</a></h4>
+            </dd>
+        </dl>
+        <dl>
+            <dt>Media Center<i></i></dt>
+            <dd>
+                <h4><a href="#">News</a></h4>
+                <h4><a href="#">Download</a></h4>
+            </dd>
+        </dl>
+        <dl>
+            <dt>Support<i></i></dt>
+            <dd>
+                <h4><a href="#">Where to buy</a></h4>
+                <h4><a href="#">Quality Assurance</a></h4>
+                <h4><a href="#">Contact us</a></h4>
+            </dd>
+        </dl>
+    </div>
+    <div class="menu-mask"></div>
+    @RenderBody()
+    <div class="menu menu2">
+        <dl>
+            <dt><a href="#">About</a></dt>
+        </dl>
+        <dl>
+            <dt><a href="#">Our Customers</a></dt>
+        </dl>
+        <dl>
+            <dt>Products<i></i></dt>
+            <dd>
+                <h4><a href="#">Tools</a></h4>
+                <h4><a href="#">Safety</a></h4>
+                <h4><a href="#">Installation Accessories</a></h4>
+            </dd>
+        </dl>
+        <dl>
+            <dt>Media Center<i></i></dt>
+            <dd>
+                <h4><a href="#">News</a></h4>
+                <h4><a href="#">Download</a></h4>
+            </dd>
+        </dl>
+        <dl>
+            <dt>Support<i></i></dt>
+            <dd>
+                <h4><a href="#">Where to buy</a></h4>
+                <h4><a href="#">Quality Assurance</a></h4>
+                <h4><a href="#">Contact us</a></h4>
+            </dd>
+        </dl>
+    </div>
+    <footer>
+        © Copyright  2019 TradeForce. All rights reserved
+        <div><a href="/Support/Contact">Contact</a> <label>|</label> Terms of Use <label>|</label> Privacy</div>
+        <div class="facebook">
+            <a href="#" class="h-icon i1"></a> <a href="#" class="h-icon i3"></a>
+        </div>
+    </footer>
+</body>
+</html>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    $(".menu dt").click(function(){
+        if(!$(this).parent().hasClass("more")){
+            $(".more").removeClass("more");
+        }
+        $(this).parent().toggleClass("more");
+    })
+    $("header .right .img2").click(function(){
+        $("header .right .img2").toggle();
+        $(".menu0").slideToggle();
+        $(".menu-mask").toggle();
+    })
+</script>

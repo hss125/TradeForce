@@ -141,10 +141,13 @@
 </style>
 <script src="/Content/Js/jqzoom.js"></script>
 <script type="text/javascript">
-    $(".wtb-bt>div").click(function () {
-        $(this).addClass("select").siblings().removeClass("select");
-        $(".wtb0,.wtb1").hide();
-        $(".wtb" + $(this).index()).show();
+    //$(".wtb-bt>div").click(function () {
+        //$(this).addClass("select").siblings().removeClass("select");
+        //$(".wtb0,.wtb1").hide();
+        //$(".wtb" + $(this).index()).show();
+    //})
+    $(".wtb-bt .l1").click(function () {
+        location.href = "/Support/Where?#map";
     })
     function printPage() {
         //document.getElementById('print').contentWindow.print();

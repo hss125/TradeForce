@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Mobile/_Layout.cshtml";
+}
+@using TradeForce.Models;
+@model product
+
+<div class="banner">
+    <img src="/Content/MImg/product/banner.jpg">
+</div>
+<div class="mbody">
+    <h2 class="pro-title">@Model.Name</h2>
+    @if (!string.IsNullOrEmpty(Model.ImgUrl))
+    {
+        var imgs = Model.ImgUrl.Split('|');
+        <div class="pro-img"><img src="@ViewBag.AdminUrl/Upload/Product/@imgs[0]"></div>
+    }
+    
+    <div class="wtb-bt">
+        <div class="l2 select">Product Description</div>
+        <div class="l1">Where to buy</div>
+    </div>
+    <p class="wtb-bt-des">
+        @Model.Describe
+    </p>
+    <!-- <div class="print-link"><img src="/Content/MImg/product/print_ico.png">Print Product Datasheet</div> -->
+    <dl class="pro-contenet">
+        <dt>Specification</dt>
+        <dd>
+            @{
+                var props = ViewBag.Props as List<productproperty>;
+            }
+            <ul>
+                @foreach (var p in props)
+                {
+                    <li>
+                        <span>• @p.Name:   </span>
+                        <label>@p.Value</label>
+                    </li>
+                }
+            </ul>
+            <ul class="u2">
+                <li>
+                    <span>Product code</span>
+                    <label>ID</label>
+                </li>
+                <li>
+                    <span>@Model.ProductCode</span>
+                    <label>@Model.ProductID</label>
+                </li>
+            </ul>
+        </dd>
+    </dl>
+</div>
