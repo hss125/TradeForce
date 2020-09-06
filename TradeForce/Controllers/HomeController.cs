@@ -13,6 +13,10 @@ namespace TradeForce.Controllers
         tradeforceEntities ef = new tradeforceEntities();
         public ActionResult Index()
         {
+            if (Agent.CheckAgent())
+            {
+                return Redirect("/mHome/Index");
+            }
             var news = ef.news.Where(w=>w.IsDelete!=0).Take(4).ToList();
             return View(news);
         }
