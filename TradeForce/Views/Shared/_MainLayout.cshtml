@@ -197,6 +197,19 @@
         </div>
     </div>
 </div>
+<div style="width:0;height:0;overflow:hidden">
+    <div class="privacy-statement">
+        <dl>
+            <dt>Acceptance on the use of cookie</dt>
+            <dd>I agree that this site uses cookies for the provision and optimization of the service. By using our services you agree that we use cookies. </dd>
+            <dd>For further information, or wish to change your cookie setting, click <a href="#" style="text-decoration:underline">Terms of Use</a>. </dd>
+            <dd class="d3">
+                <label for="agreen"><span><input type="radio" id="agreen" name="agreen" /><i></i></span> I agree</label>
+                <label for="disagree"><span><input type="radio" id="disagree" name="agreen" /><i></i></span>  Disagree</label>
+            </dd>
+        </dl>
+    </div>
+</div>
 
 @RenderSection("foot", false)
 <script>
@@ -267,4 +280,20 @@
             }
         })
     })
+</script>
+<script>
+    if (!localStorage.userPrivacy) {
+        var privacy = layer.open({
+            type: 1,
+            closeBtn: 0, //不显示关闭按钮
+            shade: 0.8,
+            title: false, //不显示标题
+            content: $('.privacy-statement'),
+            area: ['800px', '460px'],
+        });
+        localStorage.userPrivacy = true;
+        $("#agreen").click(function () {
+            layer.close(privacy);
+        })
+    }
 </script>

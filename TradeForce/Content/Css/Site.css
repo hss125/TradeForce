@@ -72,6 +72,16 @@ input, select, textarea { font-family: acuminprosemicond,arial; }
 .foot .f-left a:hover { color: #00c4b3 }
 .foot .f-left label { margin: 0 12px; opacity: .5 }
 .h-icon { display: inline-block; vertical-align: middle; background: url(../Img/Index/home_ico.png) }
+/*yinsi*/
+.privacy-statement {background: #00c4b3;height:100%;padding:65px 72px;color:#333 }
+.privacy-statement dt { font-size: 30px; font-family: 'acuminprosemicondblod';text-align:center }
+.privacy-statement dd { font-size: 24px; padding-top: 1.2em; line-height: 1.3em; }
+.privacy-statement .d3 { text-align:center;padding-top:50px}
+.privacy-statement .d3 label { display: inline-block; margin: 0 45px;cursor:pointer }
+.privacy-statement .d3 input {visibility:hidden}
+.privacy-statement .d3 label span { display: inline-block; border: 1px solid #333; width: 24px; height: 24px; vertical-align: middle; margin-top: -4px; margin-right: 4px;position:relative;border-radius:3px }
+.privacy-statement .d3 label span i {content:'';position:absolute;width:15px;height:10px;border-bottom:2px solid #333;border-left:2px solid #333;transform:rotate(-45deg);left:3px;top:2px;display:none }
+.privacy-statement .d3 input:checked + i { display:block}
 /*网站地图*/
 .ws-navigation { background: #101820; padding-top: 30px; padding-bottom: 40px }
 .ws-navigation ul { display: flex }
