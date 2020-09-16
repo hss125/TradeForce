@@ -57,7 +57,7 @@
         el: '#download',
         data: {
             files: [],
-            curr:-1
+            curr:0
         },
         mounted: function () {
             var that = this;
@@ -65,7 +65,7 @@
                 data = JSON.parse(data);
                 for (var i = 0; i < data.length; i++) {
                     var type = "doc";
-                    if (data[i].Url.indexOf(".") > -1) {
+                    if (data[i].Url &&data[i].Url.indexOf(".") > -1) {
                         type = data[i].Url.split('.')[1];
                     }
                     data[i].type = getFileType(type);
@@ -94,10 +94,20 @@
                         $("#pdfdl")[0].click();
                     }
                     else {
-                        alert("未登录或登录信息已过期！");
+                        layer.open({
+                            type: 1,
+                            title: false,
+                            btn: false,
+                            area: ['450px', '170px'], //宽高
+                            content: '<div class="message">Not logged in or login information has expired!  <br><a href="/Account/Login">Go to login<a/></div>'
+                        })
                     }
                 })
             }
         }
     })
 </script>
+<style>
+    .message { font-size: 16px; height: 100%; background: #00c4b3; color: #333; padding: 55px; line-height: 1.8em; }
+    .message a { text-decoration:underline;}
+</style>

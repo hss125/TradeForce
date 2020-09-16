@@ -291,9 +291,13 @@
             content: $('.privacy-statement'),
             area: ['800px', '460px'],
         });
-        localStorage.userPrivacy = true;
         $("#agreen").click(function () {
             layer.close(privacy);
+            localStorage.userPrivacy = true;
+        })
+        $("#disagree").click(function () {
+            layer.close(privacy);
+            localStorage.userPrivacy = "";
         })
     }
 </script>

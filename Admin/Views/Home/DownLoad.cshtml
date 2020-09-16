@@ -33,7 +33,7 @@
             {
                 i++;
                 var type = "doc";
-                if (c.Url.Contains("."))
+                if (!string.IsNullOrEmpty(c.Url) &&c.Url.Contains("."))
                 {
                     type=c.Url.Split('.')[1];
                 }
