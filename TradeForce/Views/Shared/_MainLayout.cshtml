@@ -197,7 +197,7 @@
         </div>
     </div>
 </div>
-<div style="width:0;height:0;overflow:hidden">
+@*<div style="width:0;height:0;overflow:hidden">
     <div class="privacy-statement">
         <dl>
             <dt>Acceptance on the use of cookie</dt>
@@ -209,8 +209,40 @@
             </dd>
         </dl>
     </div>
+</div>*@
+<div class="cookie-banner" style="display:none">
+    <div class="main-bd">
+        <div class="privacy-statement">
+            <dl class="statement1">
+                <dt>Cookies Preferences</dt>
+                <dd>We use cookies to offer you services and features of the website, personalize your experience on this website and to analyze website traffic (including the region from where this website is used). Please express your choices as regards cookies by clicking on one of the options below.</dd>
+                <dd>Please note that by clicking on “Allow all cookies” you agree to the use of all cookies (including Google Analytics and position location). You may modify your cookies preferences at any time. For more information, please consult our <a href="#">Cookie Policy</a>  and our <a href="#">Privacy policy</a>.</dd>
+                <dd class="d3">
+                    <label for="allow"><span><input type="radio" id="allow" name="allow" /><i></i></span>Allow all cookies </label>
+                    <label for="allowPart"><span><input type="radio" id="allowPart" name="allow" /><i></i></span>Allow selection</label>
+                    <label for="noAllow"><span><input type="radio" id="noAllow" name="allow" /><i></i></span>Allow necessary cookies only</label>
+                    <button onclick="saveCooikeBannerSelect()">OK</button>
+                </dd>
+            </dl>
+            <dl style="display:none" class="statement2">
+                <dt>Allow selection</dt>
+                <dd class="d3">
+                    <label>1. Analytics</label>
+                    <label for="accept1"><span><input type="radio" id="accept1" name="allow1" value="1"/><i></i></span>Accept</label>
+                    <label for="refuse1"><span><input type="radio" id="refuse1" name="allow1"  value="2"/><i></i></span>Refuse</label>    
+                </dd>
+                <dd class="d3">
+                    <label>2. Position </label>
+                    <label for="accept2"><span><input type="radio" id="accept2" name="allow2"  value="1"/><i></i></span>Accept</label>
+                    <label for="refuse2"><span><input type="radio" id="refuse2" name="allow2"  value="2"/><i></i></span>Refuse</label>        
+                </dd>
+                <dd class="d3">
+                    <button onclick="saveCooikeBannerSelectPart()">OK</button>
+                </dd>
+            </dl>
+        </div>
+    </div>
 </div>
-
 @RenderSection("foot", false)
 <script>
     //$(".head-search .h-icon").click(function () {
@@ -282,22 +314,69 @@
     })
 </script>
 <script>
-    if (!localStorage.userPrivacy) {
-        var privacy = layer.open({
-            type: 1,
-            closeBtn: 0, //不显示关闭按钮
-            shade: 0.8,
-            title: false, //不显示标题
-            content: $('.privacy-statement'),
-            area: ['800px', '460px'],
-        });
-        $("#agreen").click(function () {
-            layer.close(privacy);
-            localStorage.userPrivacy = true;
-        })
-        $("#disagree").click(function () {
-            layer.close(privacy);
-            localStorage.userPrivacy = "";
-        })
+    //if (!localStorage.accrecord) {
+    //    var privacy = layer.open({
+    //        type: 1,
+    //        closeBtn: 0,
+    //        shade: 0.8,
+    //        title: false, 
+    //        content: $('.privacy-statement'),
+    //        area: ['800px', '460px'],
+    //    });
+    //    $("#agreen").click(function () {
+    //        layer.close(privacy);
+    //        localStorage.accrecord = true;
+    //    })
+    //    $("#disagree").click(function () {
+    //        layer.close(privacy);
+    //        localStorage.accrecord = "";
+    //    })
+    //}
+</script>
+<script>
+    var myStorage = {
+        set: function (key, value, expires) {
+            expires += new Date().getTime();
+            var data = { value: value, expirse: new Date(expires).getTime() };
+            localStorage.setItem(key, JSON.stringify(data));
+        },
+        get: function (key) {
+            var data = JSON.parse(localStorage.getItem(key));
+            if (data !== null) {
+                if (data.expirse != null && data.expirse < new Date().getTime()) {
+                    localStorage.removeItem(key);
+                } else {
+                    return data.value;
+                }
+            }
+            return null;
+        }
+    }
+    if (!myStorage.get("accrecord")) {
+        $(".cookie-banner").show();
+    }
+    var cooikeExpires = 365*24*60*60 * 1000;
+    function saveCooikeBannerSelect() {
+        if ($("#allow").is(':checked')) {
+            myStorage.set("accrecord", "1", cooikeExpires);
+            $(".cookie-banner").hide();
+        }
+        if ($("#allowPart").is(':checked')) {
+            $(".statement1").hide();
+            $(".statement2").show();
+        }
+    }
+    function saveCooikeBannerSelectPart() {
+        var allow = [];
+        if ($("[name=allow1]:checked").val() == "1") {
+            allow.push("Analytics");
+        }
+        if ($("[name=allow2]:checked").val() == "1") {
+            allow.push("Position");
+        }
+        if (allow.length > 0) {
+            myStorage.set("accrecord", "2_" + allow.join(","), cooikeExpires);
+            $(".cookie-banner").hide();
+        }
     }
 </script>

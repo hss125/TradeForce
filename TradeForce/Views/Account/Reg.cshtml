@@ -2,17 +2,15 @@
     ViewBag.Title = "New user registration";
     Layout = "~/Views/Account/_AccountLayout.cshtml";
 }
-@*<div>Username：<input type="text" id="UserName" placeholder="Username" name="UserName" /></div>
-<div>Email：<input type="text" id="Email" placeholder="Email" name=""/></div>
-<div>Password：<input type="text" id="PassWord" name="password"/></div>
-<div><input type="button" onclick="reg()" value="Create account"/></div>*@
+@using TradeForce.Models;
+@model List<country>
 <div class="login-content">
     <div style="position:relative">
         <div style="position:absolute;top:-180px;text-align:center;width:100%">
             <img style="width:250px" src="~/Content/Img/login_logo.png" />
         </div>
     </div>
-    <form class="layui-form layui-form-pane">
+    <form class="layui-form layui-form-pane" lay-filter="example">
         <h2 style="line-height: 50px;text-align: center;padding-bottom: 20px;">New user registration</h2>
         <div class="layui-form-item">
             <label class="layui-form-label"><i class="layui-icon layui-icon-username"></i>UserName</label>
@@ -23,7 +21,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label"><i class="layui-icon layui-icon-email"></i>Email</label>
             <div class="layui-input-block">
-                <input type="text" name="email" id="Email" lay-verify="title" autocomplete="off" placeholder="Email" class="layui-input">
+                <input type="text" name="Email" id="Email" lay-verify="title" autocomplete="off" placeholder="Email" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
@@ -32,15 +30,66 @@
                 <input type="password" id="PassWord" name="password" placeholder="Password" autocomplete="off" class="layui-input">
             </div>
         </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">Title</label>
+            <div class="layui-input-block">
+                <div class="Sex">
+                    <input type="radio" name="Sex" value="Mr." title="Mr." checked="">
+                    <input type="radio" name="Sex" value="Mrs." title="Mrs.">
+                </div>                
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">Name</label>
+            <div class="layui-input-block">
+                <input type="text" name="Name" lay-verify="title" autocomplete="off" placeholder="Name" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">Country and City</label>
+            <div class="layui-input-block">
+                <div class="selectCountry">
+                    <input type="hidden" name="City" id="City"/>
+                    <label>Please Choose</label>
+                    <ul style="display:none">
+                        @foreach (var it in Model)
+                        {
+                            var li = it.Country1.Split(',');
+                            if (li.Length == 2)
+                            {
+                                <li data-country="@it.Country1">
+                                    <span>@li[0]</span>
+                                    <label>@li[1]</label>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">Profession</label>
+            <div class="layui-input-block">
+                <input type="text" name="Profession" id="Profession" autocomplete="off" placeholder="Profession" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item" style="color:#666">
+            <input type="checkbox" name="Agree" lay-skin="primary" title="">
+            I agree to be contacted by Trade Force distributors and representatives for commercial and marketing purposes
+        </div>
+        <div class="layui-form-item" style="color:#666">
+            <input type="checkbox" name="Agree2" lay-skin="primary" title="">
+            I agree to the processing of my personal data as described in the privacy policy 
+        </div>
         <div>
-            <button type="button"  onclick="reg()" class="layui-btn layui-btn-fluid">Create account</button>
+            <button type="button" id="submit"  class="layui-btn layui-btn-fluid">Create account</button>
         </div>
         <div class="new-user"><a href="/Account/Login">Login if you have an account</a></div>
     </form>
 </div>
 <style>
     body { background: #00c4b3; }
-    .login-content { width: 420px; margin: 0 auto; margin-top: calc(50vh - 105px); border: 1px solid #ddd; padding: 30px 30px; background: #fff; box-shadow: 0 3px 5px rgba(0,0,0,.1); }
+    .login-content { width: 500px; margin: 0 auto; margin-top: calc(50vh - 230px); border: 1px solid #ddd; padding: 30px 30px; background: #fff; box-shadow: 0 3px 5px rgba(0,0,0,.1); }
     .lang li .layui-icon-ok { margin-right: 8px; visibility: hidden; color: #009688 }
     .lang li.select .layui-icon-ok { visibility: visible }
     .lang li { line-height: 26px; border-bottom: 1px solid #ecebeb; cursor: pointer }
@@ -50,11 +99,69 @@
     .layui-btn:hover { color: #333 }
     .layui-form-pane .layui-form-label { width:118px}
     .layui-form-pane .layui-input-block { margin-left:118px}
+    .layui-form-pane .layui-form-label { width: 140px; }
+    .layui-form-pane .layui-input-block { margin-left: 140px; }
+    .layui-form-select dl dd.layui-this { background-color: #62c5b5;}
+    .layui-nav .layui-nav-item { position: relative;vertical-align: middle; line-height: 38px;display:block }
+    .layui-nav {  padding: 0px;  background-color: #fff; }
+    .layui-nav .layui-nav-item a:hover, .layui-nav .layui-this a { color: #444; }
+    .selectCountry { height: 38px; border: 1px solid #e6e6e6;position:relative }
+    .selectCountry > label { display: block; line-height: 36px; padding-left: 10px; color: #444;cursor:pointer }
+    .selectCountry > label:after { content: ''; margin-top: 14px; float: right; border-top: 6px solid #c2c2c2; border-left: 6px solid transparent; border-right: 6px solid transparent; margin-right: 9px;transition:all .3s }
+    .selectCountry.open > label:after { transform:rotate(180deg)}
+    .selectCountry > ul { position: absolute; top: 37px; left: 0; right: 0; background: #fff; z-index: 2; box-shadow: 0 3px 7px rgba(0,0,0,.2); background-color: white; border: 1px solid #e6e6e6; }
+    .selectCountry > ul li { line-height: 32px; cursor: pointer;display:flex }
+    .selectCountry > ul li span { width: 118px; padding-left: 6px; }
+    .selectCountry > ul li label { flex: 1; cursor: pointer; }     .selectCountry > ul li:hover { color: #01c4b4 }
+    .Sex { border: 1px solid #e6e6e6; height: 38px; }
+    .layui-form-item .layui-form-checkbox[lay-skin=primary] { margin-top:0}
+    .layui-form-checked[lay-skin=primary] i { border-color: #00c4b3 !important; background-color: #00c4b3; }
+    .layui-form-radio > i:hover, .layui-form-radioed > i { color: #00c4b3; }
 </style>
-<link href="~/Content/Lib/layer/theme/default/layer.css" rel="stylesheet" />
-<script src="~/Content/Lib/layer/layer.js"></script>
+<script src="~/Content/Lib/layui/layui.js"></script>
 <script>
-    function reg() {
+    layui.use(['form', 'layedit'], function () {
+        var form = layui.form
+            , layer = layui.layer
+        layui.$('#submit').on('click', function () {
+            var data = form.val('example');
+            if (!data.Agree2) {
+                layer.open({
+                    content: "You need to agree to the privacy policy！",
+                    title: "message",
+                    btn: false,
+                })
+                return;
+            }
+            if (!data.Email || !data.password) {
+                layer.open({
+                    content: "Email or password cannot be empty！",
+                    title: "message",
+                    btn: false,
+                })
+                return;
+            }
+            data.Agree = data.Agree ? "YES" : "NO";
+            $.post("/Account/Reg", data, function (res) {
+                res = JSON.parse(res);
+                if (res.Succ) {
+                    layer.open({
+                        content: "Registration successful! About to jump to the login page!",
+                        title: "message",
+                        end: function () {
+                            location.href = "/Account/Login";
+                        }
+                    })
+                    
+                }
+                else {
+                    layer.alert(res.Msg);
+                }
+            })
+            //console.log(data);
+        });
+    })
+    function reg1() {
         var user = { Email: $("#Email").val(), PassWord: $("#PassWord").val(), UserName: $("#UserName").val() };
         if (!user.Email.trim() || !user.PassWord.trim()) {
             layer.alert("User name or password cannot be empty！");
@@ -71,4 +178,14 @@
             }
         })
     }
+    $(".selectCountry > label").click(function () {
+        $(".selectCountry > ul").slideToggle();
+        $(".selectCountry").toggleClass("open");
+    })
+    $(".selectCountry > ul li").click(function () {
+        $(".selectCountry > label").text($(this).data("country"));
+        $("#City").val($(this).data("country"));
+        $(".selectCountry > ul").slideToggle();
+        $(".selectCountry").toggleClass("open");
+    })
 </script>

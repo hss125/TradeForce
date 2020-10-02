@@ -65,7 +65,8 @@ namespace TradeForce.Controllers
         [HttpGet]
         public ActionResult Reg()
         {
-            return View();
+            var model = tf.country.OrderBy(o => o.Country1).ToList();
+            return View(model);
         }
         public string Reg(user user)
         {

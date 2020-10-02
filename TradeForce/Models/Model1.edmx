@@ -49,8 +49,8 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="varchar" MaxLength="255" />
-          <Property Name="LangTitle" Type="varchar" MaxLength="255" />
-          <Property Name="Content" Type="text" />
+          <Property Name="LangTitle" Type="varchar" MaxLength="400" />
+          <Property Name="Content" Type="varchar" MaxLength="5000" />
           <Property Name="Img" Type="varchar" MaxLength="400" />
           <Property Name="NewsDate" Type="datetime" Precision="0" />
           <Property Name="InsertDate" Type="datetime" Precision="0" />
@@ -114,6 +114,11 @@
           <Property Name="InsertDate" Type="datetime" Precision="0" />
           <Property Name="Lang" Type="varchar" MaxLength="45" />
           <Property Name="PassWord" Type="varchar" MaxLength="45" />
+          <Property Name="Sex" Type="varchar" MaxLength="50" />
+          <Property Name="City" Type="varchar" MaxLength="80" />
+          <Property Name="Profession" Type="varchar" MaxLength="100" />
+          <Property Name="Name" Type="varchar" MaxLength="60" />
+          <Property Name="Agree" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityContainer Name="tradeforceModelStoreContainer">
           <EntitySet Name="classify" EntityType="Self.classify" Schema="tradeforce" store:Type="Tables" />
@@ -189,28 +194,15 @@
           <Property Name="IsDelete" Type="Int32" />
           <Property Name="Country" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="user">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="UserName" Type="String" MaxLength="145" FixedLength="false" Unicode="false" />
-          <Property Name="Type" Type="Int32" />
-          <Property Name="Disabled" Type="Int32" />
-          <Property Name="InsertDate" Type="DateTime" />
-          <Property Name="Lang" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-          <Property Name="PassWord" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityContainer Name="tradeforceEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="classify" EntityType="Self.classify" />
           <EntitySet Name="product" EntityType="Self.product" />
           <EntitySet Name="productproperty" EntityType="Self.productproperty" />
           <EntitySet Name="question" EntityType="Self.question" />
-          <EntitySet Name="user" EntityType="Self.user" />
           <EntitySet Name="country" EntityType="tradeforceModel.country" />
           <EntitySet Name="news" EntityType="tradeforceModel.news" />
           <EntitySet Name="download" EntityType="tradeforceModel.download" />
+          <EntitySet Name="user" EntityType="tradeforceModel.user" />
         </EntityContainer>
         <EntityType Name="country">
           <Key>
@@ -248,6 +240,24 @@
           <Property Name="IsDelete" Type="Int32" />
           <Property Name="InsertDate" Type="DateTime" />
           <Property Name="UpdateDate" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="145" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="Disabled" Type="Int32" />
+          <Property Name="InsertDate" Type="DateTime" />
+          <Property Name="Lang" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="PassWord" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Sex" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Profession" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Agree" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -319,20 +329,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="user">
-            <EntityTypeMapping TypeName="tradeforceModel.user">
-              <MappingFragment StoreEntitySet="user">
-                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="Disabled" ColumnName="Disabled" />
-                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
-                <ScalarProperty Name="Lang" ColumnName="Lang" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="country">
             <EntityTypeMapping TypeName="tradeforceModel.country">
               <MappingFragment StoreEntitySet="country">
@@ -369,6 +365,25 @@
                 <ScalarProperty Name="Describe" ColumnName="Describe" />
                 <ScalarProperty Name="Url" ColumnName="Url" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user">
+            <EntityTypeMapping TypeName="tradeforceModel.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="Agree" ColumnName="Agree" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Profession" ColumnName="Profession" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+                <ScalarProperty Name="Lang" ColumnName="Lang" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="Disabled" ColumnName="Disabled" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

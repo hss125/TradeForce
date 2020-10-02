@@ -22,5 +22,10 @@ namespace TradeForce.Models
         public Nullable<System.DateTime> InsertDate { get; set; }
         public string Lang { get; set; }
         public string PassWord { get; set; }
+        public string Sex { get; set; }
+        public string City { get; set; }
+        public string Profession { get; set; }
+        public string Name { get; set; }
+        public string Agree { get; set; }
     }
 }

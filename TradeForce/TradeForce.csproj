@@ -244,6 +244,8 @@
     <Content Include="Content\Img\Contact\qualityimg02.jpg" />
     <Content Include="Content\Img\Contact\qualityimg03.jpg" />
     <Content Include="Content\Img\Contact\qualityimg03_02.jpg" />
+    <Content Include="Content\Img\Contact\qualityimg03_02_01.png" />
+    <Content Include="Content\Img\Contact\qualityimg03_02_02.png" />
     <Content Include="Content\Img\Contact\qualityimg04.jpg" />
     <Content Include="Content\Img\Customers\banner.jpg" />
     <Content Include="Content\Img\Customers\counton_01.jpg" />

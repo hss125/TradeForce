@@ -26,7 +26,7 @@ input, select, textarea { font-family: acuminprosemicond,arial; }
 .user-bd .split-line { display: inline-block; height: 18px; width: 1px;margin: 0 11px; vertical-align: middle; margin-top: -4px }
 .lang-ico { width: 27px; height: 26px; margin-top: -4px }
 .user-bd > dl { display: inline-block; margin-left: 5px ;position:relative}
-.user-bd > dl dt:after { display: inline-block; border-top: 5.5px solid #fff; border-left: 5.5px solid transparent; border-right: 5.5px solid transparent; content: ''; margin-left: 7px; vertical-align: middle; margin-top: 1px; }
+.user-bd > dl dt:after { display: inline-block; border-top: 5.5px solid #fff; border-left: 5.5px solid transparent; border-right: 5.5px solid transparent; content: ''; margin-left: 7px; vertical-align: middle; margin-top: 1px;display:none }
 .user-bd dd { position: absolute; background: #101820; padding: 22px; z-index: 3; left: -50px; top: 30px; width: 243px;padding-bottom:26px;display:none }
 .user-bd dl:hover dd{display:block }
 .user-bd > dl dt {cursor:pointer }
@@ -74,14 +74,28 @@ input, select, textarea { font-family: acuminprosemicond,arial; }
 .h-icon { display: inline-block; vertical-align: middle; background: url(../Img/Index/home_ico.png) }
 /*yinsi*/
 .privacy-statement {background: #00c4b3;height:100%;padding:65px 72px;color:#333 }
-.privacy-statement dt { font-size: 30px; font-family: 'acuminprosemicondblod';text-align:center }
-.privacy-statement dd { font-size: 24px; padding-top: 1.2em; line-height: 1.3em; }
-.privacy-statement .d3 { text-align:center;padding-top:50px}
+.privacy-statement dt { font-size: 30px; font-family: 'acuminprosemicondblod';text-align:center;padding-bottom:22px }
+.privacy-statement dd { font-size: 24px; line-height: 1.7em; }
+.privacy-statement .d3 { text-align:center;padding-top:30px}
 .privacy-statement .d3 label { display: inline-block; margin: 0 45px;cursor:pointer }
 .privacy-statement .d3 input {visibility:hidden}
-.privacy-statement .d3 label span { display: inline-block; border: 1px solid #333; width: 24px; height: 24px; vertical-align: middle; margin-top: -4px; margin-right: 4px;position:relative;border-radius:3px }
-.privacy-statement .d3 label span i {content:'';position:absolute;width:15px;height:10px;border-bottom:2px solid #333;border-left:2px solid #333;transform:rotate(-45deg);left:3px;top:2px;display:none }
+.privacy-statement .d3 label span { display: inline-block; border: 1px solid #fff; width: 20px; height: 20px; vertical-align: middle; margin-top: -4px; margin-right: 4px;position:relative;border-radius:3px }
+.privacy-statement .d3 label span i {content:'';position:absolute;width:14px;height:9px;border-bottom:2px solid #fff;border-left:2px solid #fff;transform:rotate(-45deg);left:3px;top:2px;display:none }
 .privacy-statement .d3 input:checked + i { display:block}
+/*cooike banner*/
+.cookie-banner { position: fixed; left: 0; right: 0; bottom: 0; background: #2d2a26; z-index: 10; box-shadow: 0 -4px 4px rgba(0,0,0,.3); }
+.cookie-banner .privacy-statement { background: #2d2a26; color: #fff; padding: 25px 0; }
+.cookie-banner .privacy-statement dd {font-size:18px }
+.cookie-banner .privacy-statement button { background: #00c4b3; color: #000; font-size: 18px; font-family: 'acuminprosemicondblod'; border: 0; width: 130px; height: 34px; line-height: 36px; margin-left: 40px;cursor:pointer }
+.cookie-banner .privacy-statement button:hover { opacity:.9}
+.privacy-statement dd a { text-decoration:underline}
+/**/
+.my-checkbox { text-align: center; padding-top: 50px; display: inline-block }
+.my-checkbox label { display: inline-block; margin: 0 45px; cursor: pointer }
+.my-checkbox input { visibility: hidden }
+.my-checkbox label span { display: inline-block; border: 1px solid #333; width: 24px; height: 24px; vertical-align: middle; margin-top: -4px; margin-right: 4px; position: relative; border-radius: 3px }
+.my-checkbox label span i { content: ''; position: absolute; width: 15px; height: 10px; border-bottom: 2px solid #333; border-left: 2px solid #333; transform: rotate(-45deg); left: 3px; top: 2px; display: none }
+.my-checkbox input:checked + i { display: block }
 /*网站地图*/
 .ws-navigation { background: #101820; padding-top: 30px; padding-bottom: 40px }
 .ws-navigation ul { display: flex }
