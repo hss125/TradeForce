@@ -26,6 +26,10 @@ namespace TradeForce.Controllers
             var model = ef.country.OrderBy(o=>o.Country1).ToList();
             return View(model);
         }
+        public ActionResult Warranty()
+        {
+            return View();
+        }
         public string DownloadFile(int id)
         {
             string cookieName = FormsAuthentication.FormsCookieName;

@@ -247,6 +247,10 @@
     <Content Include="Content\Img\Contact\qualityimg03_02_01.png" />
     <Content Include="Content\Img\Contact\qualityimg03_02_02.png" />
     <Content Include="Content\Img\Contact\qualityimg04.jpg" />
+    <Content Include="Content\Img\Contact\warranty.png" />
+    <Content Include="Content\Img\Contact\Warranty_01.jpg" />
+    <Content Include="Content\Img\Contact\Warranty_02.jpg" />
+    <Content Include="Content\Img\Contact\warranty_ico.png" />
     <Content Include="Content\Img\Customers\banner.jpg" />
     <Content Include="Content\Img\Customers\counton_01.jpg" />
     <Content Include="Content\Img\Customers\counton_02.jpg" />
@@ -536,9 +540,6 @@
     <Content Include="Views\Support\Quality.cshtml" />
     <Content Include="Views\Media\DownLoad.cshtml" />
     <Content Include="Views\Media\NewsDetail.cshtml" />
-    <Content Include="Views\Media\NewsDetail2.cshtml" />
-    <Content Include="Views\Media\NewsDetail4.cshtml" />
-    <Content Include="Views\Media\NewsDetail3.cshtml" />
     <Content Include="Views\Account\_AccountLayout.cshtml" />
     <Content Include="Views\Mobile\_Layout.cshtml" />
     <Content Include="Views\Mobile\Index.cshtml" />
@@ -546,6 +547,9 @@
     <Content Include="Views\Mobile\Product.cshtml" />
     <Content Include="Views\Mobile\ProductType.cshtml" />
     <Content Include="Views\Mobile\ProductDetail.cshtml" />
+    <Content Include="Views\Media\Terms.cshtml" />
+    <Content Include="Views\Media\Privacy.cshtml" />
+    <Content Include="Views\Support\Warranty.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

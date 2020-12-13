@@ -21,6 +21,14 @@ namespace TradeForce.Controllers
         {
             return View();
         }
+        public ActionResult Terms()
+        {
+            return View();
+        }
+        public ActionResult Privacy()
+        {
+            return View();
+        }
         public string GetDownLoad()
         {
             string lang = ViewBag.lang;

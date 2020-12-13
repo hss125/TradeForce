@@ -105,6 +105,7 @@
                         <div class="ms-left">
                             <a href="/Support/Where">Where to buy</a>
                             <a href="/Support/Quality">Quality Assurance</a>
+                            <a href="/Support/Warranty">Lifetime Warranty</a>
                             <a href="/Support/Contact">Contact us</a>
                         </div>
                         <div class="ms-right">
@@ -186,7 +187,8 @@
     <div class="foot">
         <div class="main-bd">
             <div class="f-left">
-                © Copyright  2019 TradeForce. All rights reserved <label>|</label> <a href="/Support/Contact">Contact</a> <label>|</label> Terms of Use <label>|</label> Privacy
+                © Copyright  2019 TradeForce. All rights reserved <label>|</label> <a href="/Support/Contact">Contact</a> <label>|</label> <a href="/Media/Terms">Terms of Use</a> 
+                <label>|</label> <a href="/Media/Privacy">Privacy Policy</a><label>|</label> <a href="/Media/Terms#choices">Modify Your Cookie Choices</a>
             </div>
             <div class="f-right">
                 <a href="#" class="h-icon i1"></a>
@@ -216,7 +218,7 @@
             <dl class="statement1">
                 <dt>Cookies Preferences</dt>
                 <dd>We use cookies to offer you services and features of the website, personalize your experience on this website and to analyze website traffic (including the region from where this website is used). Please express your choices as regards cookies by clicking on one of the options below.</dd>
-                <dd>Please note that by clicking on “Allow all cookies” you agree to the use of all cookies (including Google Analytics and position location). You may modify your cookies preferences at any time. For more information, please consult our <a href="#">Cookie Policy</a>  and our <a href="#">Privacy policy</a>.</dd>
+                <dd>Please note that by clicking on “Allow all cookies” you agree to the use of all cookies (including Google Analytics and position location). You may <a href="/Media/Terms#choices">modify your cookies</a> preferences at any time. For more information, please consult our <a href="/Media/Terms#cookies">Cookie Policy</a>  and our <a href="/Media/Privacy#privacy">Privacy policy</a>.</dd>
                 <dd class="d3">
                     <label for="allow"><span><input type="radio" id="allow" name="allow" /><i></i></span>Allow all cookies </label>
                     <label for="allowPart"><span><input type="radio" id="allowPart" name="allow" /><i></i></span>Allow selection</label>
@@ -243,6 +245,7 @@
         </div>
     </div>
 </div>
+<div class="cb-ph" style="height:290px;display:none"></div>
 @RenderSection("foot", false)
 <script>
     //$(".head-search .h-icon").click(function () {
@@ -341,7 +344,9 @@
             localStorage.setItem(key, JSON.stringify(data));
         },
         get: function (key) {
-            var data = JSON.parse(localStorage.getItem(key));
+            var cItem = localStorage.getItem(key);
+            if (!cItem) { return null;}
+            var data = JSON.parse(cItem);
             if (data !== null) {
                 if (data.expirse != null && data.expirse < new Date().getTime()) {
                     localStorage.removeItem(key);
@@ -353,13 +358,13 @@
         }
     }
     if (!myStorage.get("accrecord")) {
-        $(".cookie-banner").show();
+        $(".cookie-banner,.cb-ph").show();
     }
     var cooikeExpires = 365*24*60*60 * 1000;
     function saveCooikeBannerSelect() {
         if ($("#allow").is(':checked')) {
             myStorage.set("accrecord", "1", cooikeExpires);
-            $(".cookie-banner").hide();
+            $(".cookie-banner,.cb-ph").hide();
         }
         if ($("#allowPart").is(':checked')) {
             $(".statement1").hide();
@@ -376,7 +381,16 @@
         }
         if (allow.length > 0) {
             myStorage.set("accrecord", "2_" + allow.join(","), cooikeExpires);
-            $(".cookie-banner").hide();
+            $(".cookie-banner,.cb-ph").hide();
+        } else {
+            $(".statement1").show();
+            $(".statement2").hide();
         }
+    }
+    function ModifyCookie() {
+        localStorage.accrecord = "";
+        $(".cookie-banner,.cb-ph").show();
+        $(".statement1").show();
+        $(".statement2").hide();
     }
 </script>

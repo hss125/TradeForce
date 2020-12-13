@@ -99,8 +99,8 @@
                     <li>
                         <label><img src="@(ViewBag.AdminUrl)/Upload/News/@(it.Img)" /></label>
                         <dl>
-                            <dt>@it.Title</dt>
-                            <dd>@it.LangTitle</dd>
+                            <dt>@(it.Title.Length > 78 ? it.Title.Substring(0, 78) + "..." : it.Title)</dt>
+                            <dd>@(it.LangTitle.Length>142? it.LangTitle.Substring(0,142)+"...": it.LangTitle)</dd>
                         </dl>
                         <a href="/Media/Newsdetail?id=@(it.Id)">READ MORE</a>
                     </li>

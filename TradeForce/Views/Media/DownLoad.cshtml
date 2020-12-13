@@ -23,12 +23,19 @@
                 <dl>
                     <dt>{{it.typeName}}</dt>
                     <dd><a @@click="downloadFile(it.Id)" href="javascript:"><img src="/Content/Img/Products/pro_ico.png">{{it.Name}}</a></dd>
-                    <dd>{{it.Describe}}</dd>
+                    <dd>{{it.Describe}}{{it.thumUrl}}
+                    <div  v-if="it.type==2" style="display:none"><img @@load="loadImage(it.Id)" :id="'soureImg_'+it.Id" :src="'@(ViewBag.AdminUrl)/Upload/DownLoad/'+it.Url"/></div>    
+                    </dd>
                 </dl>
                 <div class="view">
                     <img v-if="it.type==0" src="/Content/Img/Index/play.png">
                     <img v-if="it.type==1" src="~/Content/Img/News/pdf_ico.png">
-                    <img v-if="it.type==2" src="~/Content/Img/News/img_ico.png">
+                    @*<img src="~/Content/Img/News/img_ico.png">*@
+                    <label v-if="it.type==2" style="display:inline-block;width:56px;height:45px;border:1px solid #ddd">
+                        <canvas :id="'canvas_'+it.Id" width="56" height="45">
+                            Your browser does not support the HTML5 canvas tag.
+                        </canvas>
+                    </label>
                 </div>
             </li>
         </ul>
@@ -57,7 +64,7 @@
         el: '#download',
         data: {
             files: [],
-            curr:0
+            curr:-1
         },
         mounted: function () {
             var that = this;
@@ -103,6 +110,13 @@
                         })
                     }
                 })
+            },
+            loadImage: function (id) {
+                console.log(id);
+                var c = document.getElementById("canvas_"+id);
+                var ctx = c.getContext("2d");
+                var img = document.getElementById("soureImg_" + id);
+                ctx.drawImage(img, 0, 0, 56, 45);
             }
         }
     })
@@ -111,3 +125,6 @@
     .message { font-size: 16px; height: 100%; background: #00c4b3; color: #333; padding: 55px; line-height: 1.8em; }
     .message a { text-decoration:underline;}
 </style>
+<script>
+
+</script>

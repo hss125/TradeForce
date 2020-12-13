@@ -176,7 +176,7 @@ namespace Admin.Controllers
                 {
                     List<string> files = new List<string>();
                     
-                    files.Add(Request.Url.Scheme+"://" + Request.Url.Authority+"/Upload/" + Path + "/" + filename);
+                    files.Add("/Upload/" + Path + "/" + filename);
                     return JsonConvert.SerializeObject(new { errno = 0, data = files });
                 }
             }
