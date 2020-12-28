@@ -41,17 +41,17 @@ namespace TradeForce.Controllers
                 //smtp.gmail.com
                 //string senderServerIp = "74.125.127.109";
                 //smtp.qq.com
-                string senderServerIp = "smtp.qq.com";
+                string senderServerIp = "smtp.gmail.com";
                 //string senderServerIp = "smtp.sina.com";
-                string toMailAddress = "2515434850@qq.com";
-                string fromMailAddress = "274852493@qq.com";
+                string toMailAddress = "jili.vvcc@gmail.com";
+                string fromMailAddress = "jili.vvcc@gmail.com";
                 string subjectInfo = "TradeForce questions or suggestions";
                 string bodyInfo = $"Company:{ques.Company}<br/>Country:{ques.Country}<br/>Name:{ques.Name}<br/>Email:{ques.Email}<br/>Phone:{ques.Phone}<br/>Content:{ques.Message}<br/>";
-                string mailUsername = "274852493@qq.com";
-                string mailPassword = "ugxypxsdsykmbgba"; //发送邮箱的密码（）
-                string mailPort = "25";
+                string mailUsername = "jili.vvcc@gmail.com";
+                string mailPassword = "Jili780324"; //发送邮箱的密码（）
+                string mailPort = "587";
 
-                MyEmail email = new MyEmail(senderServerIp, toMailAddress, fromMailAddress, subjectInfo, bodyInfo, mailUsername, mailPassword, mailPort, false, false);
+                MyEmail email = new MyEmail(senderServerIp, toMailAddress, fromMailAddress, subjectInfo, bodyInfo, mailUsername, mailPassword, mailPort, true, false);
                 email.Send();
                 var u = new Account().GetUser();
                 if (!string.IsNullOrEmpty(u.Email))
@@ -70,5 +70,6 @@ namespace TradeForce.Controllers
             }
             return JsonConvert.SerializeObject(res);
         }
+        
     }
 }
